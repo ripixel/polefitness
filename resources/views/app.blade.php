@@ -24,7 +24,8 @@
 
 @include('partials.footer')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{{ URL::asset('js/jquery.min.js') }}"></script>
+<script src="{{ URL::asset('js/smooth-link-scroll.js') }}"></script>
 @yield('javascript')
 </body>
 </html>

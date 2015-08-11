@@ -104,13 +104,28 @@ a {
     padding-top: 25vh;
 }
 
-.home-2 {
+.home-2, .home-4 {
     padding: 5vh 0;
     font-size: 1.5em;
 }
 
 .hero-home-3 {
-    background: url('../img/home-3-bg.png') no-repeat fixed center center;
+    background: url('../img/home-3-bg-blur.png') no-repeat fixed center center;
+    background-size: cover;
+    padding: 10vh 0;
+}
+
+.home-4 h1 {
+    font-style: italic;
+}
+
+.quote {
+    display: none;
+    vertical-align: middle;
+}
+
+.hero-home-5 {
+    background: url('../img/home-5-bg.jpg') no-repeat fixed center center;
     background-size: cover;
     padding: 10vh 0;
 }
