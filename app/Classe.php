@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classe extends Model
 {
-    public function user() {
+    public function owner() {
         return $this->belongsTo('App\User');
     }
 
@@ -15,7 +15,7 @@ class Classe extends Model
     }
 
     public function attendees() {
-        return $this->belongsToMany('App\Classe');
+        return $this->belongsToMany('App\Classe')->withTimestamps();
     }
 
     public function memberships_allowed() {

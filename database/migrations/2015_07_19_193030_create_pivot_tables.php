@@ -16,6 +16,7 @@ class CreatePivotTables extends Migration
         {
             $table->integer('class_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
+            $table->timestamps();
 
             $table->foreign('class_id')->references('id')->on('classes');
             $table->foreign('user_id')->references('id')->on('users');
