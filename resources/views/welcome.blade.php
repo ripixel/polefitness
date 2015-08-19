@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-University of Sheffield Pole Fitness Society
+    University of Sheffield Pole Fitness Society
 @endsection
 
 @section('content')

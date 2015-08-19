@@ -13,6 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
     text-decoration: none;
     color: #ffd990;
+    cursor: pointer;
 }
 
 .navbar {
@@ -93,6 +94,48 @@ a {
     margin: 0 10px;
 }
 
+.news-item {
+    z-index: 10;
+    background: #fff;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.news-item .news-image {
+    height: 100px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.news-item .news-image, .news-item .news-snippet {
+    position: relative;
+}
+
+.news-item .news-snippet {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.news-item .news-snippet .news-details {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    color: #888;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.news-overlay {
+    z-index: 11;
+    position: absolute;
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(0,0,0,0.7);
+    bottom: 0;
+    left: 0;
+}
+
 .hero-bottom {
     position: absolute;
     bottom: 30px;
@@ -117,6 +160,16 @@ a {
 
 .home-4 h1 {
     font-style: italic;
+}
+
+.hero-news {
+    background: url('../img/home-3-bg-blur.png') no-repeat fixed center center;
+    background-size: cover;
+    padding: 10vh 0;
+}
+
+.hero-news .hero-title {
+    margin-bottom: 30px;
 }
 
 .quote {
@@ -163,6 +216,11 @@ a {
     border-radius: 5px;
     border: 1px solid #fff;
     display: inline-block;
+}
+
+.button-on-white {
+    border-color: #333;
+    color: #333;
 }
 
 .button:hover {

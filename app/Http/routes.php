@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('news', function() {
+    return view('news');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
