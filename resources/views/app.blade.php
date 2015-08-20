@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title')</title>
-    <link rel="stylesheet" href="{{ URL::asset('css/pure-min.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('css/grids-responsive-min.css') }}" />
-    <link rel="stylesheet" href="{{ URL::asset('css/polefitness.css') }}" />
-    <link href='http://fonts.googleapis.com/css?family=Raleway:100,400,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>@yield('title')</title>
+	<link rel="stylesheet" href="{{ URL::asset('css/pure-min.css') }}" />
+	<link rel="stylesheet" href="{{ URL::asset('css/grids-responsive-min.css') }}" />
+	<link rel="stylesheet" href="{{ URL::asset('css/polefitness.css') }}" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -18,7 +18,7 @@
 
 <div class="content-wrapper">
 
-    @yield('content')
+	@yield('content')
 
 </div>
 
@@ -26,6 +26,7 @@
 
 <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('js/smooth-link-scroll.js') }}"></script>
+<script src="{{ URL::asset('js/polefitness.js') }}"></script>
 @yield('javascript')
 </body>
 </html>

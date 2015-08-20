@@ -11,8 +11,16 @@
 |
 */
 
+Route::get('classes', function() {
+    return view('classes');
+});
+
 Route::get('news', function() {
     return view('news');
+});
+
+Route::get('home', function () {
+    return view('welcome');
 });
 
 Route::get('/', function () {
