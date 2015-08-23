@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Input;
 use Redirect;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Blog_Item;
+use App\User;
 
 class NewsController extends Controller
 {
@@ -43,18 +43,11 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        // NOT USED IN THIS CLASS
+        $news_item = new Blog_Item($request->all());
+		$user = User::first();
+		$user->blog_items()->save($news_item);
+		
+		return Redirect::to('admin/news');
     }
 
     /**
@@ -80,7 +73,7 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         $news_item = Blog_Item::findOrFail($id);
-		$news_item->fill(Input::all());
+		$news_item->fill($request->all());
 		$news_item->save();
 		
 		return Redirect::to('admin/news');
@@ -94,6 +87,9 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $news_item = Blog_Item::findOrFail($id);
+		$news_item->delete();
+		
+		return Redirect::to('admin/news');
     }
 }

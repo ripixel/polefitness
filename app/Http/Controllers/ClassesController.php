@@ -21,7 +21,7 @@ class ClassesController extends Controller
 		$classes = Classe::Upcoming()->orderBy('date','asc')->get();
 		$next_class = $classes->shift();
 		
-		return view('classes', compact('classes', 'next_class'));
+		return view('classes.index', compact('classes', 'next_class'));
     }
 
     /**
@@ -56,7 +56,7 @@ class ClassesController extends Controller
         $class = Classe::where('id', $id)->first();
 		$user = User::first();
 		
-		return view('class', compact('class','user'));
+		return view('classes.show', compact('class','user'));
     }
 
     /**
@@ -70,7 +70,7 @@ class ClassesController extends Controller
         $class = Classe::where('id', $id)->first();
 		$user = User::first();
 		
-		return view('book', compact('class', 'user'));
+		return view('classes.book', compact('class', 'user'));
     }
 
     /**

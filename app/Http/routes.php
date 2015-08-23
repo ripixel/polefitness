@@ -18,6 +18,7 @@ Route::get('admin/news/new', 'NewsController@create');
 Route::post('admin/news/save', 'NewsController@store');
 Route::get('admin/news/{news_id}/edit', 'NewsController@edit');
 Route::patch('admin/news/{news_id}', 'NewsController@update');
+Route::delete('admin/news/{news_id}', 'NewsController@destroy');
 
 // Classes
 Route::get('classes', 'ClassesController@index');

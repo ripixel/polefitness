@@ -30,7 +30,6 @@
 							</div>
 						</div>
 						<div class="news-snippet pure-u-3-4">
-							<h2>Description</h2>
 							{!! $class->description !!}
 							<h2>Attendees {{ $class->attendees->count() }}/{{ $class->places_available }}</h2>
 							<div class="pure-g">

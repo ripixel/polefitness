@@ -6,10 +6,11 @@
 
 @section('content')
 	<h1>News Manager</h1>
-	<table class="pure-table pure-table-striped admin-table">
+	<a href="{{ action('NewsController@create') }}" class="button button-with-icon"><i class="fa fa-plus"></i> Add News Item</a>
+	<table class="admin-table pure-table pure-table-striped">
 		<thead>
 			<tr>
-				<th></td>
+				<th style="width: 1px;"></th>
 				<th>Title</th>
 				<th>Owner</th>
 				<th>Posted</th>

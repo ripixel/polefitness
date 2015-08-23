@@ -195,11 +195,11 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-5.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Maddie Sinclair</h3>
 						<p>Charities Officer</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<p><a href="http://www.twitter.com/maddiesinc"><i class="fa fa-twitter"></i></a> <a href="http://www.instagram.com/maddiesinc"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 			</div>

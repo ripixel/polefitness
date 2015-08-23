@@ -6,10 +6,11 @@
 
 @section('content')
 	<h1>Class Manager</h1>
+	<a href="{{ action('ClassesController@create') }}" class="button button-with-icon"><i class="fa fa-plus"></i> Add New Class</a>
 	<table class="pure-table pure-table-striped admin-table">
 		<thead>
 			<tr>
-				<th></td>
+				<th style="width: 1px;"></th>
 				<th>Title</th>
 				<th>Owner</th>
 				<th>Location</th>
@@ -21,7 +22,7 @@
 		<tbody>
 			@foreach($classes as $class)
 				<tr>
-					<td><a href="{{ action('ClassesController@edit') }}" class="button"><i class="fa fa-pencil"></i></a></td>
+					<td><a href="{{ action('ClassesController@edit', $class->id) }}" class="button"><i class="fa fa-pencil"></i></a></td>
 					<td>{{ $class->title }}</td>
 					<td>{{ $class->owner->fullname() }}</td>
 					<td>{{ $class->location->name }}</td>

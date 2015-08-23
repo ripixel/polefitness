@@ -28,6 +28,19 @@
 
 <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('js/polefitness.js') }}"></script>
+<script src="{{ URL::asset('js/tinymce/tinymce.min.js') }}"></script>
+<script type="text/javascript">
+	$(function() {
+		tinymce.init({
+			selector: ".tinymce"
+		});
+		
+		$(".confirmDelete").click(function() {
+			var confirmDelete = confirm("Are you sure you want to delete this?");
+			return confirmDelete;
+		});
+	});
+</script>
 @yield('javascript')
 </body>
 </html>

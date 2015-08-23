@@ -2,18 +2,17 @@
 
 @section('content')
 	<h1>Edit News Item</h1>
-	{!! Form::model($news_item, ['method' => 'PATCH', 'url' => action('NewsController@update', $news_item->id)] ) !!}
+	{!! Form::model($news_item, ['method' => 'PATCH', 'url' => action('NewsController@update', $news_item->id), 'class' => 'pure-form pure-form-stacked'] ) !!}
 	
-		{!! Form::label('title','Title') !!}
-		{!! Form::text('title') !!}
-	
-		{!! Form::label('body','Body') !!}
-		{!! Form::textarea('body') !!}
-	
-		{!! Form::label('picture_link','Picture URL') !!}
-		{!! Form::text('picture_link') !!}
-		
-		{!! Form::submit('Update News Item') !!}
+		@include('news.form', ['submit_text' => 'Update News Article'])
 	
 	{!! Form::close() !!}
+	
+	{!! Form::model($news_item, ['method' => 'DELETE', 'url' => action('NewsController@destroy', $news_item->id), 'class' => 'pure-form pure-form-stacked'] ) !!}
+		
+		{!! Form::submit('Delete News Item', ['class' => 'button confirmDelete']) !!}
+	
+	{!! Form::close() !!}
+	
+	
 @endsection

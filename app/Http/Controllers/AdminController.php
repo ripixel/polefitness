@@ -25,7 +25,7 @@ class AdminController extends Controller
 		
 		$classes = Classe::orderBy('created_at','desc')->get();
 		
-		return view('admin_classes', compact('classes'));
+		return view('classes.admin', compact('classes'));
 	}
 	
 	public function news() {
