@@ -16,6 +16,7 @@ class CreateMembershipsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->double('cost', 5,2);
+			$table->integer('free_classes');
             $table->timestamps();
         });
     }

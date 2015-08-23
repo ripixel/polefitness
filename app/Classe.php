@@ -26,7 +26,7 @@ class Classe extends Model
     }
 
     public function payment_methods_allowed() {
-        return $this->belongsToMany('App\Payment_Method');
+        return $this->belongsToMany('App\Payment_Method', 'classe_payment_method', 'classe_id', 'payment_method_id');
     }
 	
 	public function scopeUpcoming($query) {

@@ -181,6 +181,11 @@ a {
     padding: 10vh 0;
 }
 
+.attendee-img {
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
 .quote {
     display: none;
     vertical-align: middle;
@@ -236,6 +241,13 @@ a {
     color: #333;
     background: #ffd990;
     border-color: #ffd990;
+}
+
+.button-disabled, .button-disabled:hover {
+	cursor: default;
+	background: none;
+	color: #aaa;
+	border: 1px solid #aaa;
 }
 
 .hero-content .button {

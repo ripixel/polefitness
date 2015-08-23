@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classe;
+use App\User;
 
 class ClassesController extends Controller
 {
@@ -52,7 +53,24 @@ class ClassesController extends Controller
      */
     public function show($id)
     {
-        //
+        $class = Classe::where('id', $id)->first();
+		$user = User::first();
+		
+		return view('class', compact('class','user'));
+    }
+
+    /**
+     * Display the booking page for the class.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function book($id)
+    {
+        $class = Classe::where('id', $id)->first();
+		$user = User::first();
+		
+		return view('book', compact('class', 'user'));
     }
 
     /**

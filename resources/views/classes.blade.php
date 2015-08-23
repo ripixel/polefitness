@@ -17,7 +17,7 @@
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
 						<div class="news-image pure-u-1-4" style="background: url('{{ $next_class->picture_link}}') no-repeat center center; background-size: cover;">
-							<div class="news-overlay"><a class="button" href="#">See Info</a></div>
+							<div class="news-overlay"><a class="button" href="{{ action('ClassesController@show', $next_class->id) }}">See Info</a></div>
 						</div>
 						<div class="news-snippet pure-u-3-4">
 							<h3>Next Class</h3>
@@ -33,9 +33,9 @@
 				@foreach($classes as $index => $classe)
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('{{ $classe->picture_link }}') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>{{ $classe->title }} {{ $index }}</h3>
+						<h3>{{ $classe->title }}</h3>
 						<p>{{ $classe->date }}</p>
-						<p><a class="button" href="{{ action('ClassesController@index') }}">See Info</a></p>
+						<p><a class="button" href="{{ action('ClassesController@show', $classe->id) }}">See Info</a></p>
 					</div>
 				</div>
 

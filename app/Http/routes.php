@@ -16,6 +16,8 @@ Route::get('news', 'NewsController@index');
 
 // Classes
 Route::get('classes', 'ClassesController@index');
+Route::get('classes/{classe_id}', 'ClassesController@show');
+Route::get('classes/{classe_id}/book', 'ClassesController@book');
 
 // Home / Catchall
 Route::get('home', 'HomeController@index');

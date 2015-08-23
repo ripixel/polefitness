@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -60,4 +61,19 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function fullname() {
         return $this->first_name . ' ' . $this->last_name;
     }
+	
+	public function free_spaces_remaining() {
+		$valid_membership_spaces = DB::table('user_memberships')
+									->join('memberships', 'user_memberships.membership_id','=','memberships.id')
+									->join('transactions', 'user_memberships.transaction_id','=','transactions.id')
+									->where('transactions.successful','=',1)
+									->sum('memberships.free_classes');
+		
+		$free_spaces_used = DB::table('classe_user')
+							->where('used_free_space','=',1)
+							->where('user_id','=',$this->id)
+							->count();
+		
+		return $valid_membership_spaces - $free_spaces_used;
+	}
 }
