@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Input;
+use Redirect;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Blog_Item;
@@ -19,7 +22,7 @@ class NewsController extends Controller
     {
         $blog_items = Blog_Item::orderBy('created_at','desc')->get();
 		
-		return view('news', compact('blog_items'));
+		return view('news.index', compact('blog_items'));
     }
 
     /**
@@ -29,7 +32,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('news.create');
     }
 
     /**
@@ -62,7 +65,9 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $news_item = Blog_Item::findOrFail($id);
+		
+		return view('news.edit', compact('news_item'));
     }
 
     /**
@@ -74,7 +79,11 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $news_item = Blog_Item::findOrFail($id);
+		$news_item->fill(Input::all());
+		$news_item->save();
+		
+		return Redirect::to('admin/news');
     }
 
     /**

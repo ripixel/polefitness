@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classe;
-use App\User;
+use App\Blog_Item;
 
 class AdminController extends Controller
 {
@@ -20,4 +20,18 @@ class AdminController extends Controller
     {		
 		return view('admin_home');
     }
+	
+	public function classes() {
+		
+		$classes = Classe::orderBy('created_at','desc')->get();
+		
+		return view('admin_classes', compact('classes'));
+	}
+	
+	public function news() {
+		
+		$news_items = Blog_Item::orderBy('created_at','desc')->get();
+		
+		return view('news.admin', compact('news_items'));
+	}
 }
