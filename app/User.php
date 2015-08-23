@@ -56,4 +56,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function classes_attending() {
         return $this->belongsToMany('App\Classe')->withTimestamps();
     }
+    
+    public function fullname() {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }

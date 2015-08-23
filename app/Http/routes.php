@@ -11,12 +11,10 @@
 |
 */
 
+Route::get('news', 'NewsController@index');
+
 Route::get('classes', function() {
     return view('classes');
-});
-
-Route::get('news', function() {
-    return view('news');
 });
 
 Route::get('home', function () {

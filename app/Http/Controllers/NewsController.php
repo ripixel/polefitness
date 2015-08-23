@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Blog_Item;
 
 class NewsController extends Controller
 {
@@ -16,7 +17,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $blog_items = Blog_Item::orderBy('created_at','desc')->get();
+		
+		return view('news', compact('blog_items'));
     }
 
     /**
@@ -48,7 +51,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        //
+        // NOT USED IN THIS CLASS
     }
 
     /**
