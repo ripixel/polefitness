@@ -17,7 +17,7 @@
 				@foreach($blog_items as $blog_item)
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
-						<div class="news-image pure-u-1-4" style="background: url('{{ $blog_item->picture_link }}') no-repeat center center; background-size: cover;"></div>
+					<div class="news-image pure-u-1-4" style="background: url('{{ $blog_item->picture_link }}') no-repeat center center; background-size: cover;"></div>
 						<div class="news-snippet pure-u-3-4">
 							<h2>{{ $blog_item->title }}</h2>
 							{!! $blog_item->body !!}
