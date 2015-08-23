@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->string('description');
             $table->boolean('successful');
             $table->boolean('failed');
+			$table->boolean('rejected');
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');

@@ -17,9 +17,13 @@ class CreatePivotTables extends Migration
             $table->integer('classe_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
+			$table->boolean('used_free-space');
+			$table->integer('transaction_id')->unsigned()->nullable();
+			$table->boolean('rejected');
 
             $table->foreign('classe_id')->references('id')->on('classes');
             $table->foreign('user_id')->references('id')->on('users');
+			$table->foreign('transaction_id')->references('id')->on('transactions');
         });
 
         Schema::create('classe_membership', function(Blueprint $table)

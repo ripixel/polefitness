@@ -17,9 +17,14 @@ class Classe extends Model
         return $this->belongsTo('App\Location');
     }
 
-    public function attendees() {
+    public function all_attendees() {
         return $this->belongsToMany('App\User')->withTimestamps();
     }
+	
+	// only approved attendees
+	public function attendees() {
+		return $this->all_attendees()->where('rejected','=',0);
+	}
 
     public function memberships_allowed() {
         return $this->belongsToMany('App\Membership');
