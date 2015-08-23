@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Classe;
 
 class ClassesController extends Controller
 {
@@ -16,7 +17,10 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        //
+		$classes = Classe::Upcoming()->orderBy('date','asc')->get();
+		$next_class = $classes->shift();
+		
+		return view('classes', compact('classes', 'next_class'));
     }
 
     /**

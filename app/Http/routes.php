@@ -11,16 +11,12 @@
 |
 */
 
+// News
 Route::get('news', 'NewsController@index');
 
-Route::get('classes', function() {
-    return view('classes');
-});
+// Classes
+Route::get('classes', 'ClassesController@index');
 
-Route::get('home', function () {
-    return view('welcome');
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home / Catchall
+Route::get('home', 'HomeController@index');
+Route::get('/', 'HomeController@index');

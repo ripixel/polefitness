@@ -16,47 +16,34 @@
 
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
-						<div class="news-image pure-u-1-4" style="background: url('img/com-2.jpg') no-repeat center center; background-size: cover;">
+						<div class="news-image pure-u-1-4" style="background: url('{{ $next_class->picture_link}}') no-repeat center center; background-size: cover;">
 							<div class="news-overlay"><a class="button" href="#">See Info</a></div>
 						</div>
 						<div class="news-snippet pure-u-3-4">
 							<h3>Next Class</h3>
-							<h2>Advanced Spinning</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur delectus dolorum eius eos est expedita fugit id illum inventore, magnam maiores minima mollitia nam nisi optio quam saepe similique voluptatibus.</p>
-							<p><strong>Where:</strong> A Pole New Adventure</p>
-							<p><strong>When:</strong> 8:00pm Today</p>
-							<p><strong>Places Taken:</strong> 10/16</p>
+							<h2>{{ $next_class->title }}</h2>
+							{!! $next_class->description !!}
+							<p><strong>Where:</strong> {{ $next_class->location->name }}</p>
+							<p><strong>When:</strong> {{ $next_class->date }}</p>
+							<p><strong>Places Taken:</strong> {{ $next_class->attendees->count() }}/{{ $next_class->places_available }}</p>
 						</div>
 					</div>
 				</div>
 				
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-1.jpg') no-repeat center center; background-size: cover;">
+				@foreach($classes as $index => $classe)
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('{{ $classe->picture_link }}') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Introduction to Pole</h3>
-						<p>6:30pm Tomorrow</p>
-						<p><a class="button" href="#">See Info</a></p>
+						<h3>{{ $classe->title }} {{ $index }}</h3>
+						<p>{{ $classe->date }}</p>
+						<p><a class="button" href="{{ action('ClassesController@index') }}">See Info</a></p>
 					</div>
 				</div>
 
-				<div class="pure-u-1-8 spacer"></div>
+				@if(3 % ($index+1) != 0)
+					<div class="pure-u-1-8 spacer"></div>
+				@endif
 				
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-3.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Ben's Private Show</h3>
-						<p>12:00pm 15th September</p>
-						<p><a class="button" href="#">See Info</a></p>
-					</div>
-				</div>
-
-				<div class="pure-u-1-8 spacer"></div>
-				
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-1.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Introduction to Pole</h3>
-						<p>6:30pm 18th September</p>
-						<p><a class="button" href="#">See Info</a></p>
-					</div>
-				</div>
+				@endforeach
 				
 			</div>
 		</div>

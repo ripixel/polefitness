@@ -2,10 +2,13 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Classe extends Model
 {
+	protected $dates = ['date'];
+	
     public function owner() {
         return $this->belongsTo('App\User');
     }
@@ -15,7 +18,7 @@ class Classe extends Model
     }
 
     public function attendees() {
-        return $this->belongsToMany('App\Classe')->withTimestamps();
+        return $this->belongsToMany('App\User')->withTimestamps();
     }
 
     public function memberships_allowed() {
@@ -25,4 +28,8 @@ class Classe extends Model
     public function payment_methods_allowed() {
         return $this->belongsToMany('App\Payment_Method');
     }
+	
+	public function scopeUpcoming($query) {
+		$query->where('date', '>=', Carbon::now());
+	}
 }

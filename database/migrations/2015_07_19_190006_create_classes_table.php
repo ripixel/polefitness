@@ -16,7 +16,9 @@ class CreateClassesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->integer('location_id')->unsigned()->index();
-            $table->date('date');
+			$table->string('title');
+			$table->string('description');
+            $table->datetime('date');
             $table->string('picture_link');
             $table->integer('places_available');
             $table->boolean('members_only');
