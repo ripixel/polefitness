@@ -3,6 +3,16 @@
 	width: 95%;
 }
 
+.admin-table .good {
+	font-weight: bold;
+	color: green;
+}
+
+.admin-table .bad {
+	font-weight: bold;
+	color: red;
+}
+
 .admin-table thead, .admin-table tbody {
 	width: 100%;
 }
@@ -42,12 +52,26 @@
 	border: 1px solid #aaa;
 }
 
-.confirmDelete {
+.button-green {
+	border: 1px solid green;
+	color: green;
+}
+
+.button-green:hover {
+	background: green;
+	color: #fff;
+}
+
+.confirmDelete, .button-red {
 	border: 1px solid red;
 	color: red;
 }
 
-.confirmDelete:hover {
+.confirmDelete:hover, .button-red:hover {
 	background: red;
 	color: #fff;
+}
+
+.bold {
+	font-weight: bold;
 }

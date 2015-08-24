@@ -34,12 +34,12 @@
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('{{ $classe->picture_link }}') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>{{ $classe->title }}</h3>
-						<p>{{ $classe->date }}</p>
+						<p>{{ $classe->date }}<br />{{ $classe->attendees->count() }}/{{ $classe->places_available }} places taken</p>
 						<p><a class="button" href="{{ action('ClassesController@show', $classe->id) }}">See Info</a></p>
 					</div>
 				</div>
 
-				@if(3 % ($index+1) != 0)
+				@if(($index+1) % 3 != 0)
 					<div class="pure-u-1-8 spacer"></div>
 				@endif
 				

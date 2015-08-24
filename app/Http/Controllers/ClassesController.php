@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Redirect;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Classe;
 use App\User;
+use App\Location;
+use App\Transaction;
 
 class ClassesController extends Controller
 {
@@ -31,7 +35,15 @@ class ClassesController extends Controller
      */
     public function create()
     {
-        //
+		$locations = Location::lists('name','id');
+		return view('classes.create', compact('locations'));
+    }
+	
+    public function copy($id)
+    {
+        $class = Classe::findOrFail($id);
+		$locations = Location::lists('name','id');
+		return view('classes.clone', compact('locations','class'));
     }
 
     /**
@@ -42,7 +54,12 @@ class ClassesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $class = new Classe($request->all());
+		$class->location_id = $request->location_id;
+		$user = User::first();
+		$user->classes_running()->save($class);
+		
+		return Redirect::to('admin/classes');
     }
 
     /**
@@ -53,7 +70,7 @@ class ClassesController extends Controller
      */
     public function show($id)
     {
-        $class = Classe::where('id', $id)->first();
+        $class = Classe::findOrFail($id);
 		$user = User::first();
 		
 		return view('classes.show', compact('class','user'));
@@ -67,7 +84,7 @@ class ClassesController extends Controller
      */
     public function book($id)
     {
-        $class = Classe::where('id', $id)->first();
+        $class = Classe::findOrFail($id);
 		$user = User::first();
 		
 		return view('classes.book', compact('class', 'user'));
@@ -81,7 +98,10 @@ class ClassesController extends Controller
      */
     public function edit($id)
     {
-        //
+		$locations = Location::lists('name','id');
+        $class = Classe::findOrFail($id);
+		
+		return view('classes.edit', compact('class','locations'));
     }
 
     /**
@@ -93,7 +113,12 @@ class ClassesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		$class = Classe::findOrFail($id);
+		$class->fill($request->all());
+		$class->location_id = $request->location_id;
+		$class->save();
+		
+		return Redirect::to('admin/classes');
     }
 
     /**
@@ -104,6 +129,33 @@ class ClassesController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$class = Classe::findOrFail($id);
+		$class->all_attendees()->detach();
+		$class->payment_methods_allowed()->detach();
+		$class->delete();
+		
+		return Redirect::to('admin/classes');
     }
+	
+	public function editAttendees($id) {
+		$class = Classe::findOrFail($id);
+		
+		return view('classes.attendees', compact('class'));
+	}
+	
+	public function rejectAttendee($id, $user_id) {
+		$class = Classe::findOrFail($id);
+		
+		$class->all_attendees()->updateExistingPivot($user_id, ['rejected' => 1]);
+		
+		return Redirect::to('admin/classes/' . $id . '/edit/attendees');	
+	}
+	
+	public function acceptAttendee($id, $user_id) {
+		$class = Classe::findOrFail($id);
+		
+		$class->all_attendees()->updateExistingPivot($user_id, ['rejected' => 0]);
+		
+		return Redirect::to('admin/classes/' . $id . '/edit/attendees');	
+	}
 }

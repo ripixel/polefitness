@@ -10,7 +10,7 @@
 	
 	{!! Form::model($news_item, ['method' => 'DELETE', 'url' => action('NewsController@destroy', $news_item->id), 'class' => 'pure-form pure-form-stacked'] ) !!}
 		
-		{!! Form::submit('Delete News Item', ['class' => 'button confirmDelete']) !!}
+		{!! Form::submit('Delete News Item', ['class' => 'button button-red confirmAction', 'data-confirmmessage' => 'Are you sure you want to delete this news item?']) !!}
 	
 	{!! Form::close() !!}
 	

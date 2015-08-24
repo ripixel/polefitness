@@ -13,4 +13,4 @@
 {!! Form::text('picture_link', null, ['class' => 'pure-input-1']) !!}
 </div>
 
-{!! Form::submit($submit_text, ['class' => 'button']) !!}
+{!! Form::submit($submit_text, ['class' => 'button button-green']) !!}

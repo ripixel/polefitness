@@ -25,10 +25,17 @@ Route::get('classes', 'ClassesController@index');
 Route::get('classes/{classe_id}', 'ClassesController@show');
 Route::get('classes/{classe_id}/book', 'ClassesController@book');
 // Classes Admin
+// Class CRUD
 Route::get('admin/classes/new', 'ClassesController@create');
+Route::get('admin/classes/{classe_id}/clone', 'ClassesController@copy');
 Route::post('admin/classes/save', 'ClassesController@store');
 Route::get('admin/classes/{classe_id}/edit', 'ClassesController@edit');
 Route::patch('admin/classes/{classe_id}', 'ClassesController@update');
+Route::delete('admin/classes/{classe_id}', 'ClassesController@destroy');
+// Class Attendees
+Route::get('admin/classes/{classe_id}/edit/attendees', 'ClassesController@editAttendees');
+Route::get('admin/classes/{classe_id}/rejectAttendee/{user_id}', 'ClassesController@rejectAttendee');
+Route::get('admin/classes/{classe_id}/acceptAttendee/{user_id}', 'ClassesController@acceptAttendee');
 
 // Users
 // Users Admin
@@ -37,6 +44,10 @@ Route::patch('admin/users/{user_id}', 'UsersController@update');
 
 // Transactions Admin
 Route::get('admin/transactions/{transaction_id}/edit', 'TransactionsController@edit');
+Route::get('admin/transactions/{transaction_id}/edit/successful', 'TransactionsController@markSuccessful');
+Route::get('admin/transactions/{transaction_id}/edit/failed', 'TransactionsController@markFailed');
+Route::get('admin/transactions/{transaction_id}/edit/rejected', 'TransactionsController@markRejected');
+Route::get('admin/transactions/{transaction_id}/edit/awaiting', 'TransactionsController@markAwaiting');
 Route::patch('admin/transactions/{transaction_id}', 'TransactionsController@update');
 
 // Memberships Admin

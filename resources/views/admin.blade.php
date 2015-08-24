@@ -39,9 +39,13 @@
 		
 		$(".select2").select2();
 		
-		$(".confirmDelete").click(function() {
-			var confirmDelete = confirm("Are you sure you want to delete this?");
-			return confirmDelete;
+		$(".confirmAction").click(function() {
+			var confirmmessage = $(this).data("confirmmessage");
+			if(confirmmessage===undefined) {
+				confirmmessage = "Are you sure you want to do this?";
+			}
+			var confirmResult = confirm(confirmmessage);
+			return confirmResult;
 		});
 	});
 </script>

@@ -55,7 +55,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function classes_attending() {
-        return $this->belongsToMany('App\Classe')->withTimestamps();
+        return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
     }
     
     public function fullname() {
