@@ -6,7 +6,11 @@
 
 @section('content')
 	<h1>Class Manager</h1>
-	<a href="{{ action('ClassesController@create') }}" class="button button-with-icon"><i class="fa fa-plus"></i> Add New Class</a>
+	<h2>{{ $subtitle }}</h2>
+	<a href="{{ action('ClassesController@create') }}" class="button button-with-icon"><i class="fa fa-plus"></i> Add New Class</a> 
+	<a href="{{ action('AdminController@classes') }}" class="button button-with-icon">Show All</a> 
+	<a href="{{ action('AdminController@classesUpc') }}" class="button button-with-icon">Show Upcoming Only</a> 
+	<a href="{{ action('AdminController@classesMine') }}" class="button button-with-icon">Show Mine</a>
 	<table class="pure-table pure-table-striped admin-table">
 		<thead>
 			<tr>

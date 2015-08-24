@@ -7,6 +7,7 @@
 	<title>@yield('title')</title>
 	<link rel="stylesheet" href="{{ URL::asset('css/pure-min.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/grids-responsive-min.css') }}" />
+	<link rel="stylesheet" href="{{ URL::asset('css/select2.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/admin.css') }}" />
 	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -29,11 +30,14 @@
 <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
 <script src="{{ URL::asset('js/polefitness.js') }}"></script>
 <script src="{{ URL::asset('js/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ URL::asset('js/select2.min.js') }}"></script>
 <script type="text/javascript">
 	$(function() {
 		tinymce.init({
 			selector: ".tinymce"
 		});
+		
+		$(".select2").select2();
 		
 		$(".confirmDelete").click(function() {
 			var confirmDelete = confirm("Are you sure you want to delete this?");

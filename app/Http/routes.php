@@ -53,8 +53,13 @@ Route::patch('admin/locations/{location_id}', 'LocationsController@update');
 
 // Admin
 Route::get('admin', 'AdminController@index');
+// News
 Route::get('admin/news', 'AdminController@news');
+Route::get('admin/news/mine', 'AdminController@newsMine');
+// Classes
 Route::get('admin/classes', 'AdminController@classes');
+Route::get('admin/classes/upcoming', 'AdminController@classesUpc');
+Route::get('admin/classes/mine', 'AdminController@classesMine');
 Route::get('admin/users', 'AdminController@users');
 Route::get('admin/transactions', 'AdminController@transactions');
 Route::get('admin/memberships', 'AdminController@memberships');
