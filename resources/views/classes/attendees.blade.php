@@ -38,10 +38,7 @@
 						@php $transaction = \App\Transaction::findOrFail($attendee->pivot->transaction_id)
 						<td class="{{ $transaction->goodBadStatus() }}"> {{ $transaction->payment_method->name }} - {{ $transaction->status() }}</td>
 						<td>
-							<a href="{{ action('TransactionsController@markSuccessful', $transaction->id) }}" class="button button-green button-with-icon confirmAction" data-confirmmessage="Are you sure you want to mark this payment as successful?"><i class="fa fa-check"></i> Accepted</a> 
-							<a href="{{ action('TransactionsController@markAwaiting', $transaction->id) }}" class="button button-with-icon"><i class="fa fa-clock-o"></i> Awaiting</a> 
-							<a href="{{ action('TransactionsController@markFailed', $transaction->id) }}" class="button button-with-icon button-red confirmAction" data-confirmmessage="Are you sure you want to mark this payment as failed?"><i class="fa fa-times"></i> Failed</a> 
-							<a href="{{ action('TransactionsController@markRejected', $transaction->id) }}" class="button button-with-icon button-red confirmAction" data-confirmmessage="Are you sure you want to mark this payment as rejected?"><i class="fa fa-ban"></i> Rejected</a>
+							@include('transactions.payment_actions')
 						</td>
 					@endif
 				</tr>

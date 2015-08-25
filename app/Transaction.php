@@ -59,4 +59,22 @@ class Transaction extends Model
 		$this->failed = 1;
 		$this->save();
 	}
+	
+	public function scopeSuccessful($query) {
+		$query->where('successful','=',1);
+	}
+	
+	public function scopeFailed($query) {
+		$query->where('failed','=',1);
+	}
+	
+	public function scopeRejected($query) {
+		$query->where('rejected','=',1);
+	}
+	
+	public function scopeAwaiting($query) {
+		$query->where('rejected','=',0)
+			->where('successful','=',0)
+			->where('failed','=',0);
+	}
 }

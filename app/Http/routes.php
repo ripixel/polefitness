@@ -43,24 +43,22 @@ Route::get('admin/users/{user_id}/edit', 'UsersController@edit');
 Route::patch('admin/users/{user_id}', 'UsersController@update');
 
 // Transactions Admin
-Route::get('admin/transactions/{transaction_id}/edit', 'TransactionsController@edit');
 Route::get('admin/transactions/{transaction_id}/edit/successful', 'TransactionsController@markSuccessful');
 Route::get('admin/transactions/{transaction_id}/edit/failed', 'TransactionsController@markFailed');
 Route::get('admin/transactions/{transaction_id}/edit/rejected', 'TransactionsController@markRejected');
 Route::get('admin/transactions/{transaction_id}/edit/awaiting', 'TransactionsController@markAwaiting');
-Route::patch('admin/transactions/{transaction_id}', 'TransactionsController@update');
 
 // Memberships Admin
 Route::get('admin/memberships/new', 'MembershipsController@create');
 Route::post('admin/memberships/save', 'MembershipsController@store');
-Route::get('admin/memberships/{membership_id}/edit', 'MembershipsController@edit');
-Route::patch('admin/memberships/{membership_id}', 'MembershipsController@update');
+Route::get('admin/memberships/{membership_id}/edit/retire', 'MembershipsController@retire');
+Route::get('admin/memberships/{membership_id}/edit/reactive', 'MembershipsController@reactivate');
 
 // Locations Admin
-Route::get('admin/locations/new', 'LocationsController@create');
-Route::post('admin/locations/save', 'LocationsController@store');
-Route::get('admin/locations/{location_id}/edit', 'LocationsController@edit');
-Route::patch('admin/locations/{location_id}', 'LocationsController@update');
+Route::get('admin/locations/new', 'LocationController@create');
+Route::post('admin/locations/save', 'LocationController@store');
+Route::get('admin/locations/{location_id}/edit', 'LocationController@edit');
+Route::patch('admin/locations/{location_id}', 'LocationController@update');
 
 // Admin
 Route::get('admin', 'AdminController@index');
@@ -72,8 +70,17 @@ Route::get('admin/classes', 'AdminController@classes');
 Route::get('admin/classes/upcoming', 'AdminController@classesUpc');
 Route::get('admin/classes/mine', 'AdminController@classesMine');
 Route::get('admin/users', 'AdminController@users');
+// Transactions
 Route::get('admin/transactions', 'AdminController@transactions');
+Route::get('admin/transactions/successful', 'AdminController@transactionsSuccessful');
+Route::get('admin/transactions/awaiting', 'AdminController@transactionsAwaiting');
+Route::get('admin/transactions/failed', 'AdminController@transactionsFailed');
+Route::get('admin/transactions/rejected', 'AdminController@transactionsRejected');
+// Memberships
 Route::get('admin/memberships', 'AdminController@memberships');
+Route::get('admin/memberships/active', 'AdminController@membershipsActive');
+Route::get('admin/memberships/retired', 'AdminController@membershipsRetired');
+// Other
 Route::get('admin/locations', 'AdminController@locations');
 
 // Home / Catchall

@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Classe;
 use App\Blog_Item;
+use App\Transaction;
+use App\Location;
+use App\Membership;
 
 class AdminController extends Controller
 {
@@ -62,5 +65,76 @@ class AdminController extends Controller
 		$news_items = $user->blog_items()->orderBy('created_at','desc')->get();
 		
 		return view('news.admin', compact('news_items', 'subtitle'));
+	}
+	
+	public function transactions() {
+		
+		$subtitle = "Showing All Transactions";
+		$transactions = Transaction::orderBy('created_at','desc')->get();
+		
+		return view('transactions.admin', compact('transactions', 'subtitle'));
+	}
+	
+	public function transactionsSuccessful() {
+		
+		$subtitle = "Showing Successful Transactions";
+		$transactions = Transaction::Successful()->orderBy('created_at','desc')->get();
+		
+		return view('transactions.admin', compact('transactions', 'subtitle'));
+	}
+	
+	public function transactionsFailed() {
+		
+		$subtitle = "Showing Failed Transactions";
+		$transactions = Transaction::Failed()->orderBy('created_at','desc')->get();
+		
+		return view('transactions.admin', compact('transactions', 'subtitle'));
+	}
+	
+	public function transactionsRejected() {
+		
+		$subtitle = "Showing Rejected Transactions";
+		$transactions = Transaction::Rejected()->orderBy('created_at','desc')->get();
+		
+		return view('transactions.admin', compact('transactions', 'subtitle'));
+	}
+	
+	public function transactionsAwaiting() {
+		
+		$subtitle = "Showing Awaiting Transactions";
+		$transactions = Transaction::Awaiting()->orderBy('created_at','desc')->get();
+		
+		return view('transactions.admin', compact('transactions', 'subtitle'));
+	}
+	
+	public function locations() {
+		
+		$locations = Location::all();
+		
+		return view('locations.admin', compact('locations'));
+	}
+	
+	public function memberships() {
+		
+		$memberships = Membership::all();
+		$subtitle = "Showing All Memberships";
+		
+		return view('memberships.admin', compact('memberships', 'subtitle'));
+	}
+	
+	public function membershipsActive() {
+		
+		$memberships = Membership::Active()->get();
+		$subtitle = "Showing Active Memberships";
+		
+		return view('memberships.admin', compact('memberships', 'subtitle'));
+	}
+	
+	public function membershipsRetired() {
+		
+		$memberships = Membership::Retired()->get();
+		$subtitle = "Showing Retired Memberships";
+		
+		return view('memberships.admin', compact('memberships', 'subtitle'));
 	}
 }

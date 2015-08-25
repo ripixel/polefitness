@@ -18,11 +18,11 @@
 <body>
 
 <div class="pure-g">
-	<div class="pure-u-1-6">
+	<div class="pure-u-1-8">
 		@include('partials.admin_nav')
 	</div>
 	
-	<div class="pure-u-5-6">
+	<div class="pure-u-7-8">
 
 		@yield('content')
 
