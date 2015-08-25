@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Classe;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -16,6 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+		$classes_available = Classe::Upcoming()->where('date','<', Carbon::now()->next(Carbon::MONDAY))->count();
+        return view('welcome', compact('classes_available'));
     }
 }

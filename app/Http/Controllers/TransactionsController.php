@@ -45,27 +45,27 @@ class TransactionsController extends Controller
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markAwaiting();
 		
-		return Redirect::back();
+		return Redirect::back()->with("good", "Successfully marked payment as awaiting.");
 	}
 	
 	public function markSuccessful($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markSuccessful();
 		
-		return Redirect::back();
+		return Redirect::back()->with("good", "Successfully marked payment as successful.");
 	}
 	
 	public function markFailed($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markFailed();
 		
-		return Redirect::back();
+		return Redirect::back()->with("good", "Successfully marked payment as failed.");
 	}
 	
 	public function markRejected($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markRejected();
 		
-		return Redirect::back();
+		return Redirect::back()->with("good", "Successfully marked payment as rejected.");
 	}
 }

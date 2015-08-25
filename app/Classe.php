@@ -35,4 +35,9 @@ class Classe extends Model
 	public function scopeUpcoming($query) {
 		$query->where('date', '>=', Carbon::now());
 	}
+	
+	public function setDateAttribute($date) {
+		$date = Carbon::createFromFormat('l jS M g:ia', $date);
+		$this->attributes['date'] = $date->toDateTimeString();
+	}
 }

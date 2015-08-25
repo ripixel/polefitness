@@ -9,6 +9,8 @@
 	<link rel="stylesheet" href="{{ URL::asset('css/grids-responsive-min.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/select2.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/admin.css') }}" />
+	<link rel="stylesheet" href="{{ URL::asset('css/toastr.min.css') }}" />
+	<link rel="stylesheet" href="{{ URL::asset('css/jquery.datetimepicker.css') }}" />
 	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -31,6 +33,8 @@
 <script src="{{ URL::asset('js/polefitness.js') }}"></script>
 <script src="{{ URL::asset('js/tinymce/tinymce.min.js') }}"></script>
 <script src="{{ URL::asset('js/select2.min.js') }}"></script>
+<script src="{{ URL::asset('js/toastr.min.js') }}"></script>
+<script src="{{ URL::asset('js/jquery.datetimepicker.js') }}"></script>
 <script type="text/javascript">
 	$(function() {
 		tinymce.init({
@@ -47,6 +51,36 @@
 			var confirmResult = confirm(confirmmessage);
 			return confirmResult;
 		});
+		
+		$(".datepicker").datetimepicker({
+			format:'l jS M g:ia'
+		});
+		
+		toastr.options = {
+			"closeButton": true,
+			"debug": false,
+			"newestOnTop": false,
+			"progressBar": false,
+			"positionClass": "toast-bottom-full-width",
+			"preventDuplicates": false,
+			"onclick": null,
+			"showDuration": "300",
+			"hideDuration": "1000",
+			"timeOut": null,
+			"extendedTimeOut": "1000",
+			"showEasing": "swing",
+			"hideEasing": "linear",
+			"showMethod": "fadeIn",
+			"hideMethod": "fadeOut"
+			}
+		
+		@if(Session::get('bad') != null)
+			toastr["error"]("{{ Session::get('bad') }}");
+		@endif
+		
+		@if(Session::get('good') != null)
+			toastr["success"]("{{ Session::get('good') }}");
+		@endif
 	});
 </script>
 @yield('javascript')

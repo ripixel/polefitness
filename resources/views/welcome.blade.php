@@ -12,9 +12,9 @@
 			<div class="pure-u-1 hero-content hero-content-center center">
 				<img src="img/logo-white.png" class="main-logo" /><br />
 				<h2>The greatest Pole Fitness Society on the planet. Probably.</h2>
-				<h3>There are <strong>3</strong> classes with spaces remaining this week.</h3>
+				<h3>There are <strong>{{ $classes_available }}</strong> classes happening this week</h3>
 				<br />
-				<a href="#" class="button" style="margin-bottom: 10px;"><i class="fa fa-calendar" style="margin-right: 10px;"></i> Book your place now</a>
+				<a href="{{ action('ClassesController@index') }}" class="button" style="margin-bottom: 10px;"><i class="fa fa-calendar" style="margin-right: 10px;"></i> Book your place now</a>
 				<br />
 				<a href="#story" class="button"><i class="fa fa-book" style="margin-right: 10px;"></i> Read our story</a>
 				<br/>

@@ -47,7 +47,7 @@ class NewsController extends Controller
 		$user = User::first();
 		$user->blog_items()->save($news_item);
 		
-		return Redirect::to('admin/news');
+		return Redirect::to('admin/news')->with("good", "Successfully created news item.");
     }
 
     /**
@@ -76,7 +76,7 @@ class NewsController extends Controller
 		$news_item->fill($request->all());
 		$news_item->save();
 		
-		return Redirect::to('admin/news');
+		return Redirect::to('admin/news')->with("good", "Successfully updated news item.");
     }
 
     /**
@@ -90,6 +90,6 @@ class NewsController extends Controller
         $news_item = Blog_Item::findOrFail($id);
 		$news_item->delete();
 		
-		return Redirect::to('admin/news');
+		return Redirect::to('admin/news')->with("good", "Successfully deleted news item.");
     }
 }

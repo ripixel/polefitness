@@ -112,7 +112,7 @@ class Carbon extends DateTime
      *
      * @var string
      */
-    const DEFAULT_TO_STRING_FORMAT = 'Y-m-d H:i:s';
+    const DEFAULT_TO_STRING_FORMAT = 'l jS M g:ia';
 
     /**
      * Format to use for __toString method when type juggling occurs.

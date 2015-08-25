@@ -17,7 +17,6 @@
 				<th>Title</th>
 				<th>Owner</th>
 				<th>Posted</th>
-				<th>Last Updated</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,7 +26,6 @@
 					<td>{{ $news_item->title }}</td>
 					<td>{{ $news_item->user->fullname() }}</td>
 					<td>{{ $news_item->created_at }}</td>
-					<td>{{ $news_item->updated_at }}</td>
 				</tr>
 			@endforeach
 		</tbody>
