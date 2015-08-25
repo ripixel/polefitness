@@ -137,4 +137,20 @@ class AdminController extends Controller
 		
 		return view('memberships.admin', compact('memberships', 'subtitle'));
 	}
+	
+	public function users() {
+		
+		$users = Users::orderBy('first_name','asc')->get();
+		$subtitle = "Showing All Users";
+		
+		return view('users.admin', compact('users', 'subtitle'));
+	}
+	
+	public function users($name) {
+		
+		$users = Users::where('first_name','LIKE',"%{$name}%")->orWhere('last_name','LIKE',"%{$name}%")->orderBy('first_name','asc')->get();
+		$subtitle = "Showing User Search for: " . $name;
+		
+		return view('users.admin', compact('users', 'subtitle'));
+	}
 }
