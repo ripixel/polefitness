@@ -87,7 +87,7 @@
 					<div class="committee-member-desc">
 						<h3>Amy Walpole</h3>
 						<p>Secretary</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<p><a href="#"><a href="http://www.instagram.com/teffgal"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
@@ -111,11 +111,10 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-6.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Janice Dhanaraj</h3>
 						<p>Social Secretary</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
@@ -133,7 +132,6 @@
 					<div class="committee-member-desc">
 						<h3>Ben Hawker</h3>
 						<p>Inclusions Officer</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
@@ -167,11 +165,11 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-8.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Emma Brudenell</h3>
 						<p>Tour Secretary</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<p><a href="http://www.instagram.com/emmabrudenell03"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
