@@ -109,14 +109,14 @@ class AdminController extends Controller
 	
 	public function locations() {
 		
-		$locations = Location::all();
+		$locations = Location::orderBy('created_at','desc')->get();
 		
 		return view('locations.admin', compact('locations'));
 	}
 	
 	public function memberships() {
 		
-		$memberships = Membership::all();
+		$memberships = Membership::orderBy('created_at','desc')->get();
 		$subtitle = "Showing All Memberships";
 		
 		return view('memberships.admin', compact('memberships', 'subtitle'));
@@ -124,7 +124,7 @@ class AdminController extends Controller
 	
 	public function membershipsActive() {
 		
-		$memberships = Membership::Active()->get();
+		$memberships = Membership::Active()->orderBy('created_at','desc')->get();
 		$subtitle = "Showing Active Memberships";
 		
 		return view('memberships.admin', compact('memberships', 'subtitle'));
@@ -132,7 +132,7 @@ class AdminController extends Controller
 	
 	public function membershipsRetired() {
 		
-		$memberships = Membership::Retired()->get();
+		$memberships = Membership::Retired()->orderBy('created_at','desc')->get();
 		$subtitle = "Showing Retired Memberships";
 		
 		return view('memberships.admin', compact('memberships', 'subtitle'));

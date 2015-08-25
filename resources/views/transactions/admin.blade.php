@@ -15,6 +15,7 @@
 			<tr>
 				<th>Date</th>
 				<th>User</th>
+				<th>Amount</th>
 				<th>Title</th>
 				<th>Description</th>
 				<th>Method</th>
@@ -27,6 +28,7 @@
 				<tr>
 					<td>{{ $transaction->created_at }}</td>
 					<td>{{ $transaction->user->fullname() }}</td>
+					<td class="{{ $transaction->goodBadStatus() }}">{{ sprintf('£%01.2f', $transaction->amount) }}</td>
 					<td>{{ $transaction->name }}</td>
 					<td>{{ $transaction->description }}</td>
 					<td>{{ $transaction->payment_method->name }}</td>

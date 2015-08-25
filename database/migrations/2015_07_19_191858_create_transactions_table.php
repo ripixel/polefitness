@@ -18,6 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('payment_method_id')->unsigned()->index();
             $table->string('name');
             $table->string('description');
+            $table->double('amount');
             $table->boolean('successful');
             $table->boolean('failed');
 			$table->boolean('rejected');

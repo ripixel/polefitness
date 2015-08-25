@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 
 use Redirect;
 
-use App\Http\Requests;
+use App\Http\Requests\ClasseRequest;
 use App\Http\Controllers\Controller;
 use App\Classe;
 use App\User;
 use App\Location;
 use App\Transaction;
+use App\Payment_Method;
 
 class ClassesController extends Controller
 {
@@ -36,7 +37,8 @@ class ClassesController extends Controller
     public function create()
     {
 		$locations = Location::lists('name','id');
-		return view('classes.create', compact('locations'));
+		$payment_methods = Payment_Method::lists('name','id');
+		return view('classes.create', compact('locations', 'payment_methods'));
     }
 	
     public function copy($id)
@@ -52,12 +54,15 @@ class ClassesController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
-    {
+    public function store(ClasseRequest $request)
+    {		
         $class = new Classe($request->all());
 		$class->location_id = $request->location_id;
 		$user = User::first();
 		$user->classes_running()->save($class);
+		
+		$payment_methods_allowed = ($request->payment_methods_allowed ?: []);
+		$class->payment_methods_allowed()->sync($payment_methods_allowed);
 		
 		return Redirect::to('admin/classes')->with("good", "Successfully created class.");
     }
@@ -99,9 +104,10 @@ class ClassesController extends Controller
     public function edit($id)
     {
 		$locations = Location::lists('name','id');
+		$payment_methods = Payment_Method::lists('name','id');
         $class = Classe::findOrFail($id);
 		
-		return view('classes.edit', compact('class','locations'));
+		return view('classes.edit', compact('class','locations','payment_methods'));
     }
 
     /**
@@ -111,7 +117,7 @@ class ClassesController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(ClasseRequest $request, $id)
     {
 		$class = Classe::findOrFail($id);
 		$class->fill($request->all());
@@ -120,6 +126,9 @@ class ClassesController extends Controller
 		if($class->places_available < $class->attendees()->count()) {
 			return Redirect::back()->with("bad", "You cannot reduce the number of available places to lower than the amount of people already attending. You must reject some people from the course first if you wish to do this.");
 		}
+		
+		$payment_methods_allowed = ($request->payment_methods_allowed ?: []);
+		$class->payment_methods_allowed()->sync($payment_methods_allowed);
 		
 		$class->save();
 		

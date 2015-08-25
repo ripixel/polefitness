@@ -2,6 +2,7 @@
 
 namespace App;
 
+use DB;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class Classe extends Model
 {
 	protected $dates = ['date'];
 	
-	protected $fillable = ['title', 'description', 'picture_link', 'date', 'places_available', 'members_only'];
+	protected $fillable = ['title', 'description', 'picture_link', 'date', 'places_available', 'members_only', 'cost'];
 	
     public function owner() {
         return $this->belongsTo('App\User', 'user_id');
@@ -39,5 +40,32 @@ class Classe extends Model
 	public function setDateAttribute($date) {
 		$date = Carbon::createFromFormat('l jS M g:ia', $date);
 		$this->attributes['date'] = $date->toDateTimeString();
+	}
+	
+	public function goodBadPaymentStatus() {
+		if($this->paymentStatus()=="Payments Complete") {
+			return "good";
+		}
+		return "bad";
+	}
+	
+	public function paymentStatus() {
+		$payments_complete_count = DB::table('classe_user')
+			->join('transactions', 'classe_user.transaction_id','=','transactions.id')
+			->where('transactions.successful','=',1)
+			->where('classe_user.classe_id','=',$this->id)
+			->count();
+		$used_free_spaces_count = DB::table('classe_user')
+			->where('used_free_space','=',1)
+			->where('classe_id','=',$this->id)
+			->count();
+			
+		$outstanding_payments = $this->attendees->count() - ($payments_complete_count + $used_free_spaces_count);
+		
+		if($outstanding_payments == 0) {
+			return "Payments Complete";
+		} 
+		
+		return $outstanding_payments . " Payments Outstanding";
 	}
 }

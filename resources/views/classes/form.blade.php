@@ -23,9 +23,14 @@
 {!! Form::text('places_available', null, ['class' => 'pure-input-1 spinner']) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('payment_methods_allowed', 'Payment Methods Allowed') !!}
+    {!! Form::select('payment_methods_allowed[]', $payment_methods, $class->payment_methods_allowed->lists('id')->toArray(), ['id' => 'payment_methods_allowed', 'class' => 'select2 pure-input-1', 'multiple']) !!}
+</div>
+
 <div>
-{!! Form::label('members_only','Members Only') !!}
-{!! Form::checkbox('members_only') !!}
+{!! Form::label('cost','Cost') !!}
+{!! Form::text('cost', null, ['class' => 'pure-input-1 spinner-decimal']) !!}
 </div>
 
 <div>

@@ -36,7 +36,7 @@
 						<td></td>
 					@else
 						@php $transaction = \App\Transaction::findOrFail($attendee->pivot->transaction_id)
-						<td class="{{ $transaction->goodBadStatus() }}"> {{ $transaction->payment_method->name }} - {{ $transaction->status() }}</td>
+						<td class="{{ $transaction->goodBadStatus() }}"> {{ $transaction->payment_method->name }} - {{ $transaction->status() }} - {{ sprintf('£%01.2f', $transaction->amount) }}</td>
 						<td>
 							@include('transactions.payment_actions')
 						</td>

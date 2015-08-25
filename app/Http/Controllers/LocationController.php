@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Redirect;
 
-use App\Http\Requests;
+use App\Http\Requests\LocationRequest;
 use App\Http\Controllers\Controller;
 use App\Location;
 
@@ -28,7 +28,7 @@ class LocationController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(LocationRequest $request)
     {
         $location = new Location($request->all());
 		$location->save();
@@ -56,7 +56,7 @@ class LocationController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(LocationRequest $request, $id)
     {
         $location = Location::findOrFail($id);
 		$location->fill($request->all());

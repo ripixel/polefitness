@@ -21,7 +21,7 @@ class CreateClassesTable extends Migration
             $table->datetime('date');
             $table->string('picture_link');
             $table->integer('places_available');
-            $table->boolean('members_only');
+            $table->double('cost');
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');

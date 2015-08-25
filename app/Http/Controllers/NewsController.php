@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Redirect;
 
-use App\Http\Requests;
+use App\Http\Requests\NewsRequest;
 use App\Http\Controllers\Controller;
 use App\Blog_Item;
 use App\User;
@@ -41,7 +41,7 @@ class NewsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(NewsRequest $request)
     {
         $news_item = new Blog_Item($request->all());
 		$user = User::first();
@@ -70,7 +70,7 @@ class NewsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(NewsRequest $request, $id)
     {
         $news_item = Blog_Item::findOrFail($id);
 		$news_item->fill($request->all());

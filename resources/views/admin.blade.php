@@ -74,6 +74,12 @@
 			"hideMethod": "fadeOut"
 			}
 		
+		@if($errors->has())
+			@foreach ($errors->all() as $error)
+				toastr["error"]("{{ $error }}");
+			@endforeach
+		@endif
+		
 		@if(Session::get('bad') != null)
 			toastr["error"]("{{ Session::get('bad') }}");
 		@endif

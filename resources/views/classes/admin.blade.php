@@ -18,6 +18,7 @@
 				<th>Owner</th>
 				<th>Location</th>
 				<th>Date</th>
+				<th>Payments</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,6 +33,7 @@
 					<td>{{ $class->owner->fullname() }}</td>
 					<td>{{ $class->location->name }}</td>
 					<td>{{ $class->date }}</td>
+					<td class="{{ $class->goodBadPaymentStatus() }}">{{ $class->paymentStatus() }}</td>
 				</tr>
 			@endforeach
 		</tbody>
