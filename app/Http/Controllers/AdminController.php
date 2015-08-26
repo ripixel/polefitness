@@ -12,6 +12,7 @@ use App\Blog_Item;
 use App\Transaction;
 use App\Location;
 use App\Membership;
+use Input;
 
 class AdminController extends Controller
 {
@@ -140,16 +141,18 @@ class AdminController extends Controller
 	
 	public function users() {
 		
-		$users = Users::orderBy('first_name','asc')->get();
+		$users = User::orderBy('first_name','asc')->get();
 		$subtitle = "Showing All Users";
 		
 		return view('users.admin', compact('users', 'subtitle'));
 	}
 	
-	public function users($name) {
+	public function userSearch(Request $request) {		
+		$first_name = $request->first_name;
+		$last_name = $request->last_name;
 		
-		$users = Users::where('first_name','LIKE',"%{$name}%")->orWhere('last_name','LIKE',"%{$name}%")->orderBy('first_name','asc')->get();
-		$subtitle = "Showing User Search for: " . $name;
+		$users = User::where('first_name','LIKE',"%{$first_name}%")->where('last_name','LIKE',"%{$last_name}%")->orderBy('first_name','asc')->get();
+		$subtitle = "Showing User Search for: " . $first_name . ' ' . $last_name;
 		
 		return view('users.admin', compact('users', 'subtitle'));
 	}

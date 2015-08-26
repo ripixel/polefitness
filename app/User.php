@@ -76,4 +76,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		
 		return $valid_membership_spaces - $free_spaces_used;
 	}
+	
+	public function goodBadStatus() {
+		if($this->status()=="Email Unconfirmed") {
+			return "bad";
+		}
+		return "good";
+	}
+	
+	public function status() {
+		if($this->email_confirmed) {
+			if($this->admin) {
+				return "Administrator";
+			}
+			return "Confirmed User";
+		}
+		return "Email Unconfirmed";
+	}
 }

@@ -2,7 +2,66 @@ body {
 	font-size: 0.9em;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Raleway', sans-serif;
+}
+
+.admin-nav-sidebar {
+	background: #333;
+	color: #fff;
+	min-height: 100vh;
+	box-sizing: border-box;
+}
+
+.admin-nav-sidebar ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.admin-nav-sidebar li {
+	width: 100%;
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+.admin-nav-sidebar li a {
+	display: block;
+	color: #fff;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	text-align: center;
+	line-height: 50px;
+	background: #222;
+	font-family: 'Raleway', Calibri, Arial, sans;
+}
+
+.admin-nav-sidebar li a:hover {
+	background: rgb(255,217,144);
+	color: #333;
+}
+
+.admin-header {
+	background: #333;
+	color: rgb(255,217,144);
+	padding-left: 20px;
+}
+
+.admin-subheader {
+	font-style: italic;
+	font-weight: normal;
+	margin-right: 20px;
+}
+
+.admin-content {
+	padding-left: 20px;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+}
+
 .admin-table {
+	margin-top: 8px;
 	box-sizing: border-box;
 	width: 95%;
 	font-size: 0.9em;
@@ -33,7 +92,7 @@ body {
 .button {
     padding: 10px 20px;
     border-radius: 5px;
-	margin-bottom: 10px;
+	margin: 2px 0;
     border: 1px solid #333;
     color: #333;
 	background: #fff;

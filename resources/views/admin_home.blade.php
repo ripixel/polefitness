@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-	<h1>Admin Home</h1>
 	<h2>News</h2>
 	@include('news.actions')
 	
@@ -13,7 +12,7 @@
 	@include('classes.actions')
 	
 	<h2>Users</h2>
-	<p>TODO</p>
+	@include('users.actions')
 	
 	<h2>Transactions</h2>
 	@include('transactions.actions')

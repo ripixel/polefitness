@@ -6,6 +6,7 @@
 
 @section('content')
 	<h1>Location Manager</h1>
+	<h2>Showing All Locations</h2>
 	
 	@include('locations.actions')
 	

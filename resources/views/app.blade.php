@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="{{ URL::asset('css/pure-min.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/grids-responsive-min.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/polefitness.css') }}" />
-	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,300,700|Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 </head>

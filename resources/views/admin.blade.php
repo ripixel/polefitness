@@ -11,21 +11,23 @@
 	<link rel="stylesheet" href="{{ URL::asset('css/admin.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/toastr.min.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/jquery.datetimepicker.css') }}" />
-	<link href='http://fonts.googleapis.com/css?family=Raleway:100,400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 </head>
 <body>
 
 <div class="pure-g">
-	<div class="pure-u-1-8">
+	<div class="pure-u-1 admin-header">
+		<h1><span class="admin-subheader">UoS Pole Fitness Society</span> Admin Area</h1>
+	</div>
+	
+	<div class="pure-u-1-8 admin-nav-sidebar">
 		@include('partials.admin_nav')
 	</div>
 	
-	<div class="pure-u-7-8">
-
+	<div class="pure-u-7-8 admin-content">
 		@yield('content')
-
 	</div>
 </div>
 

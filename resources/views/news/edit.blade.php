@@ -1,7 +1,9 @@
 @extends('admin')
 
 @section('content')
-	<h1>Edit News Item</h1>
+	<h1>News Manager</h1>
+	<h2>Edit News Item</h2>
+	
 	{!! Form::model($news_item, ['method' => 'PATCH', 'url' => action('NewsController@update', $news_item->id), 'class' => 'pure-form pure-form-stacked'] ) !!}
 	
 		@include('news.form', ['submit_text' => 'Update News Article'])

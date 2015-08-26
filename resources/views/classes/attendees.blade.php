@@ -1,7 +1,8 @@
 @extends('admin')
 
 @section('content')
-	<h1>Edit Attendees for {{ $class->title }}</h1>
+	<h1>Class Manager</h1>
+	<h2>Attendees for {{ $class->title }}</h2>
 	<a href="{{ action('ClassesController@edit', $class->id) }}" class="button button-with-icon"><i class="fa fa-pencil"></i> Edit Class</a>
 	
 	<table class="pure-table pure-table-striped admin-table pure-table-horizontal">

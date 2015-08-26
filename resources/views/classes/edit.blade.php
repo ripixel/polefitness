@@ -1,8 +1,10 @@
 @extends('admin')
 
 @section('content')
-	<h1>Edit Class</h1>
-	<a href="{{ action('ClassesController@editAttendees', $class->id) }}" class="button button-with-icon"><i class="fa fa-users"></i> Edit Attendees</a>
+	<h1>Class Manager</h1>
+	<h2>Edit Class</h2>
+	
+	<a href="{{ action('ClassesController@editAttendees', $class->id) }}" class="button button-with-icon"><i class="fa fa-users"></i> Attendees</a>
 	
 	{!! Form::model($class, ['method' => 'PATCH', 'url' => action('ClassesController@update', $class->id), 'class' => 'pure-form pure-form-stacked'] ) !!}
 	

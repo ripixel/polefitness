@@ -38,16 +38,16 @@ Route::get('admin/classes/{classe_id}/rejectAttendee/{user_id}', 'ClassesControl
 Route::get('admin/classes/{classe_id}/acceptAttendee/{user_id}', 'ClassesController@acceptAttendee');
 
 // Users / Profile
-Route::get('profile', 'UsersController@profile');
-Route::get('profile/edit', 'UsersController@edit');
-Route::patch('profile', 'UsersController@update');
-Route::get('profile/transactions', 'UsersController@adminTransactions');
-Route::get('profile/classes', 'UsersController@adminClasses');
+Route::get('profile', 'UserController@profile');
+Route::get('profile/edit', 'UserController@edit');
+Route::patch('profile', 'UserController@update');
+Route::get('profile/transactions', 'UserController@adminTransactions');
+Route::get('profile/classes', 'UserController@adminClasses');
 // Users Admin
-Route::get('admin/users/{user_id}/edit', 'UsersController@adminEdit');
-Route::patch('admin/users/{user_id}', 'UsersController@update');
-Route::get('admin/users/{user_id}/transactions', 'UsersController@adminTransactions');
-Route::get('admin/users/{user_id}/classes', 'UsersController@adminClasses');
+Route::get('admin/users/{user_id}/edit', 'UserController@adminEdit');
+Route::patch('admin/users/{user_id}', 'UserController@update');
+Route::get('admin/users/{user_id}/transactions', 'UserController@adminTransactions');
+Route::get('admin/users/{user_id}/classes', 'UserController@adminClasses');
 
 // Transactions Admin
 Route::get('admin/transactions/{transaction_id}/edit/successful', 'TransactionsController@markSuccessful');
@@ -89,7 +89,8 @@ Route::get('admin/memberships/active', 'AdminController@membershipsActive');
 Route::get('admin/memberships/retired', 'AdminController@membershipsRetired');
 // Users
 Route::get('admin/users', 'AdminController@users');
-Route::get('admin/users/byname/{$name}', 'AdminController@users');
+Route::post('admin/users/byname', 'AdminController@userSearch');
+Route::get('admin/users/emails', 'UserController@emailDump');
 // Other
 Route::get('admin/locations', 'AdminController@locations');
 

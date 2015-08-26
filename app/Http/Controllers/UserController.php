@@ -77,4 +77,9 @@ class UserController extends Controller
 		
 		return Redirect::back()->with("good", "Successfully updated user");
     }
+	
+	public function emailDump() {
+		$emails = User::where('email_confirmed','=',1)->lists('email');
+		return view('users.emaildump', compact('emails'));
+	}
 }
