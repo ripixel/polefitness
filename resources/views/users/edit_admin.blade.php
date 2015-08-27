@@ -36,9 +36,17 @@
 			{!! Form::text('picture_link', null, ['class' => 'pure-input-1']) !!}
 		</div>
 		
-		<div>
-			{!! Form::label('admin','Admin') !!}
-			{!! Form::checkbox('admin') !!}
+		<div class="pure-u-1">
+			<div class="pure-g">
+				<div class="pure-u-1-2" style="box-sizing: border-box; padding-right: 10px;">
+					{!! Form::label('email_confirmed','Active') !!}
+					{!! Form::checkbox('email_confirmed') !!}
+				</div>
+				<div class="pure-u-1-2">
+					{!! Form::label('admin','Admin') !!}
+					{!! Form::checkbox('admin') !!}
+				</div>
+			</div>
 		</div>
 	
 		{!! Form::submit('Save User', ['class' => 'button button-green']) !!}

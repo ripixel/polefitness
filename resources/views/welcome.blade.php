@@ -23,9 +23,11 @@
 		</div>
 	</div>
 
-	<div class="home-2 center container">
-		<h1>The best way to work out and have fun</h1>
-		<p>Some sub-text about why it's awesome to be a pole fitness-goer whatchamacallit</p>
+	<div style="background: #fff;">
+		<div class="home-2 center container">
+			<h1>The best way to work out and have fun</h1>
+			<p>Some sub-text about why it's awesome to be a pole fitness-goer whatchamacallit</p>
+		</div>
 	</div>
 
 	<div id="story" class="hero hero-home-3">

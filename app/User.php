@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'admin', 'picture_url'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'admin', 'picture_url', 'email_confirmed'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -67,6 +67,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 									->join('memberships', 'user_memberships.membership_id','=','memberships.id')
 									->join('transactions', 'user_memberships.transaction_id','=','transactions.id')
 									->where('transactions.successful','=',1)
+									->where('user_memberships.user_id','=',$this->id)
 									->sum('memberships.free_classes');
 		
 		$free_spaces_used = DB::table('classe_user')
@@ -78,7 +79,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 	
 	public function goodBadStatus() {
-		if($this->status()=="Email Unconfirmed") {
+		if($this->status()=="Inactive") {
 			return "bad";
 		}
 		return "good";
@@ -89,8 +90,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			if($this->admin) {
 				return "Administrator";
 			}
-			return "Confirmed User";
+			return "Active User";
 		}
-		return "Email Unconfirmed";
+		return "Inactive";
 	}
 }

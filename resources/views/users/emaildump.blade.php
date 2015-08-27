@@ -9,6 +9,8 @@
 	<h2>Showing Confirmed Emails</h2>
 	
 	@include('users.actions')
+	
+	<div style="margin-top: 8px;"></div>
 	@foreach($emails as $email)
 		{{ $email }}<br/>
 	@endforeach

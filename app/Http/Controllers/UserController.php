@@ -44,7 +44,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit()
     {
         $user = User::findOrFail($id);
 		
@@ -93,7 +93,7 @@ class UserController extends Controller
     public function memberships()
     {
         $user = User::first();
-		$memberships = Membership::active()->get();
+		$memberships = Membership::active()->orderBy('cost','desc')->get();
 		
 		return view('users.memberships', compact('user','memberships'));
     }
@@ -115,6 +115,13 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 		$user->fill($request->all());
+		
+		$admin_check = $request->admin ? 1 : 0;
+		$active_check = $request->email_confirmed ? 1 : 0;
+		
+		$user->admin = $admin_check;
+		$user->email_confirmed = $active_check;
+		
 		$user->save();
 		
 		return Redirect::back()->with("good", "Successfully updated user");

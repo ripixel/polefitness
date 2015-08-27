@@ -20,7 +20,7 @@
 							<p>You currently have <strong>{{ $user->free_spaces_remaining() }}</strong> free spaces from memberships.</p>
 							<p>You can purchase more membership spaces below:</p>
 							@foreach($memberships as $membership)
-								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white">{{ $membership->name }} - {{ sprintf('£%01.2f', $membership->cost) }} - {{ $membership->free_spaces }} free classes</a><br/>
+								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white">{{ $membership->name }} - {{ sprintf('£%01.2f', $membership->cost) }} - {{ $membership->free_classes }} free classes</a><br/>
 							@endforeach
 						</div>
 					</div>
