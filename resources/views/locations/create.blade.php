@@ -1,5 +1,9 @@
 @extends('admin')
 
+@section('title')
+	Create Location | Uos Pole Fitness Society Admin
+@endsection
+
 @section('content')
 	<h1>Location Manager</h1>
 	<h2>Create Location</h2>

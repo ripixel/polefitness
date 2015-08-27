@@ -1,5 +1,9 @@
 @extends('admin')
 
+@section('title')
+	Create Membership | Uos Pole Fitness Society Admin
+@endsection
+
 @section('content')
 	<h1>Membership Manager</h1>
 	<h2>Create Membership</h2>

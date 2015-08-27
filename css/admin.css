@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .admin-content {
-	padding-left: 20px;
+	padding: 0 20px;
 	box-sizing: border-box;
 	font-family: 'Open Sans', sans-serif;
 }
@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
 .admin-table {
 	margin-top: 8px;
 	box-sizing: border-box;
-	width: 95%;
+	width: 100%;
 	font-size: 0.9em;
 }
 

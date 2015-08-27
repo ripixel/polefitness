@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="{{ URL::asset('css/admin.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/toastr.min.css') }}" />
 	<link rel="stylesheet" href="{{ URL::asset('css/jquery.datetimepicker.css') }}" />
+	<link rel="stylesheet" href="{{ URL::asset('css/SpinBox.css') }}" />
 	<link href='http://fonts.googleapis.com/css?family=Raleway:400,700|Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -37,6 +38,7 @@
 <script src="{{ URL::asset('js/select2.min.js') }}"></script>
 <script src="{{ URL::asset('js/toastr.min.js') }}"></script>
 <script src="{{ URL::asset('js/jquery.datetimepicker.js') }}"></script>
+<script src="{{ URL::asset('js/SpinBox.js') }}"></script>
 <script type="text/javascript">
 	$(function() {
 		tinymce.init({
@@ -45,6 +47,27 @@
 		
 		$(".select2").select2();
 		
+		$(".datepicker").datetimepicker({
+			format:'l jS M g:ia'
+		});
+		
+		$(".spinner .spinner-decimal").each(function() {
+			$(this).html('<span class="spinbox">' + $(this).html() + "</span>");
+		});
+		
+		$(".spinner").each(function() {
+			spinbox = new SpinBox($(this).parent()[0], {
+				'minimum' : 0
+			});
+		})
+		
+		$(".spinner-decimal").each(function() {
+			spinbox = new SpinBox($(this).parent()[0], {
+				'minimum' : 0,
+				'decimals' : 2
+			});
+		})
+		
 		$(".confirmAction").click(function() {
 			var confirmmessage = $(this).data("confirmmessage");
 			if(confirmmessage===undefined) {
@@ -52,10 +75,6 @@
 			}
 			var confirmResult = confirm(confirmmessage);
 			return confirmResult;
-		});
-		
-		$(".datepicker").datetimepicker({
-			format:'l jS M g:ia'
 		});
 		
 		toastr.options = {

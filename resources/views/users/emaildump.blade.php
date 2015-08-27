@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('title')
-	User Manager | UoS PFS Admin
+	Confirmed Emails | UoS PFS Admin
 @endsection
 
 @section('content')

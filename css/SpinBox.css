@@ -1,0 +1,30 @@
+.spinBox{
+  position: relative;
+}
+
+.spinBoxUp,
+.spinBoxDown{
+  position: absolute;
+  right: 4px;
+  display: block;
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.spinBoxUp span,
+.spinBoxDown span{
+  display: block;
+  width: 0.75em;
+  height: 0.75em;
+}
+
+.spinBoxUp{
+  bottom: 20px;
+  background: url('arrow-up.png') no-repeat center center;
+}
+
+.spinBoxDown{
+  bottom: 2px;
+  background: url('arrow-down.png') no-repeat center center;
+}

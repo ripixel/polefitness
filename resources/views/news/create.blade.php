@@ -1,5 +1,9 @@
 @extends('admin')
 
+@section('title')
+	Create News Item | Uos Pole Fitness Society Admin
+@endsection
+
 @section('content')
 	<h1>News Manager</h1>
 	<h2>Create News Item</h2>

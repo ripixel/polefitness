@@ -26,7 +26,7 @@
 									<a href="#" class="button button-on-white">Use a free space to book onto this class</a>
 								@else 
 									<p>You do not currently have any free spaces available for use.</p>
-									<a href="#" class="button button-on-white">Sign up for a new membership</a>
+									<a href="{{ action('UserController@memberships') }}" class="button button-on-white">Sign up for a new membership</a>
 								@endif
 								
 								@if($class->payment_methods_allowed->count() > 0)

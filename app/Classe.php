@@ -10,7 +10,7 @@ class Classe extends Model
 {
 	protected $dates = ['date'];
 	
-	protected $fillable = ['title', 'description', 'picture_link', 'date', 'places_available', 'members_only', 'cost'];
+	protected $fillable = ['title', 'description', 'picture_link', 'date', 'places_available', 'members_only', 'cost', 'location_id'];
 	
     public function owner() {
         return $this->belongsTo('App\User', 'user_id');

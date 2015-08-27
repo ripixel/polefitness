@@ -1,5 +1,9 @@
 @extends('admin')
 
+@section('title')
+	Attendees for {{ $class->title }} | Uos Pole Fitness Society Admin
+@endsection
+
 @section('content')
 	<h1>Class Manager</h1>
 	<h2>Attendees for {{ $class->title }}</h2>
@@ -8,7 +12,7 @@
 	<table class="pure-table pure-table-striped admin-table pure-table-horizontal">
 		<thead>
 			<tr>
-				<th style="width: 1px;"></th>
+				<th></th>
 				<th>Name</th>
 				<th>Status</th>
 				<th>Signed Up</th>
@@ -21,10 +25,11 @@
 				<tr>
 					<td>
 						@if($attendee->pivot->rejected)
-							<a href="{{ action('ClassesController@acceptAttendee', [$class->id, $attendee->id]) }}" class="button button-green"><i class="fa fa-check"></i></a></td>
+							<a href="{{ action('ClassesController@acceptAttendee', [$class->id, $attendee->id]) }}" class="button button-green button-with-icon"><i class="fa fa-check"></i> Accept</a>
 						@else
-							<a href="{{ action('ClassesController@rejectAttendee', [$class->id, $attendee->id]) }}" class="button button-red confirmAction" data-confirmmessage="Are you sure you want to reject this user from the class?"><i class="fa fa-ban"></i></a></td>
+							<a href="{{ action('ClassesController@rejectAttendee', [$class->id, $attendee->id]) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to reject this user from the class?"><i class="fa fa-ban"></i> Reject</a>
 						@endif
+					</td>
 					<td>{{ $attendee->fullname() }}</td>
 					@if($attendee->pivot->rejected)
 						<td class="bad">Rejected</td>

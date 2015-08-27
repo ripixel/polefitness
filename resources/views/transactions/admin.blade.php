@@ -27,14 +27,17 @@
 			@foreach($transactions as $transaction)
 				<tr>
 					<td>{{ $transaction->created_at }}</td>
-					<td>{{ $transaction->user->fullname() }}</td>
+					<td><a href="{{ action('UserController@adminTransactions', $transaction->user_id) }}" class="button">{{ $transaction->user->fullname() }}</a></td>
 					<td class="{{ $transaction->goodBadStatus() }}">{{ sprintf('£%01.2f', $transaction->amount) }}</td>
 					<td>{{ $transaction->name }}</td>
 					<td>{{ $transaction->description }}</td>
 					<td>{{ $transaction->payment_method->name }}</td>
 					<td class="{{ $transaction->goodBadStatus() }}">{{ $transaction->status() }}</td>
 					<td>
-						@include('transactions.payment_actions')
+						@include('transactions.payment_actions') 
+						@if($transaction->hasClass())
+						<a href="{{ action('ClassesController@editAttendees', $transaction->classId()) }}" class="button button-with-icon"><i class="fa fa-calendar"></i> Jump to Class</a>
+						@endif
 					</td>
 				</tr>
 			@endforeach

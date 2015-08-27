@@ -62,6 +62,6 @@ class LocationController extends Controller
 		$location->fill($request->all());
 		$location->save();
 		
-		return Redirect::to('admin/locations')->with("good", "Successfully updated location.");
+		return Redirect::back()->with("good", "Successfully updated location.");
     }
 }

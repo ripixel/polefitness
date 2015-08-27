@@ -24,8 +24,8 @@
 				<tr>
 					<td>
 						<a href="{{ action('UserController@adminEdit', $user->id) }}" class="button button-with-icon"><i class="fa fa-pencil"></i> Edit</a> 
-						<a href="{{ action('UserController@adminTransactions', $user->id) }}" class="button button-with-icon"><i class="fa fa-money"></i> Transactions</a> 
 						<a href="{{ action('UserController@adminClasses', $user->id) }}" class="button button-with-icon"><i class="fa fa-calendar"></i> Classes</a>
+						@include('users.transaction_button')
 					</td>
 					<td>{{ $user->fullname() }}</td>
 					<td>{{ $user->email }}</td>

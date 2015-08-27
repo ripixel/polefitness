@@ -9,6 +9,8 @@ use Redirect;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Membership;
+use App\User_Membership;
 
 class UserController extends Controller
 {
@@ -59,8 +61,48 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 		
-		return view('users.edit', compact('user'));
+		return view('users.edit_admin', compact('user'));
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function adminTransactions($id)
+    {
+        $user = User::findOrFail($id);
+		
+		return view('users.transactions_admin', compact('user'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function adminClasses($id)
+    {
+        $user = User::findOrFail($id);
+		
+		return view('users.classes_admin', compact('user'));
+    }
+	
+    public function memberships()
+    {
+        $user = User::first();
+		$memberships = Membership::active()->get();
+		
+		return view('users.memberships', compact('user','memberships'));
+    }
+	
+	public function purchaseMembership($membership_id) {
+		$user = User::first();
+		$membership = Membership::findOrFail($membership_id);
+		$user_membership = new User_Membership();
+	}
 
     /**
      * Update the specified resource in storage.
@@ -72,8 +114,8 @@ class UserController extends Controller
     public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
-		$user>fill($request->all());
-		$user>save();
+		$user->fill($request->all());
+		$user->save();
 		
 		return Redirect::back()->with("good", "Successfully updated user");
     }

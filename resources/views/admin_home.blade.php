@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('title')
-	Home | UoS PFS Admin
+	Admin Area | UoS Pole Fitness Society Admin
 @endsection
 
 @section('content')

@@ -41,8 +41,10 @@ Route::get('admin/classes/{classe_id}/acceptAttendee/{user_id}', 'ClassesControl
 Route::get('profile', 'UserController@profile');
 Route::get('profile/edit', 'UserController@edit');
 Route::patch('profile', 'UserController@update');
-Route::get('profile/transactions', 'UserController@adminTransactions');
-Route::get('profile/classes', 'UserController@adminClasses');
+Route::get('profile/transactions', 'UserController@transactions');
+Route::get('profile/classes', 'UserController@classes');
+Route::get('profile/memberships', 'UserController@memberships');
+Route::get('profile/memberships/{membership_id}', 'UserController@purchaseMembership');
 // Users Admin
 Route::get('admin/users/{user_id}/edit', 'UserController@adminEdit');
 Route::patch('admin/users/{user_id}', 'UserController@update');

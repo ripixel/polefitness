@@ -2,6 +2,8 @@
 
 namespace App;
 
+use DB;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
@@ -17,6 +19,24 @@ class Transaction extends Model
     public function user_membership() {
         return $this->hasOne('App\User_Membership');
     }
+	
+	public function hasClass() {
+		$classesFound = DB::table('classe_user')
+							->where('transaction_id','=',$this->id)
+							->count();
+		if($classesFound > 0) {
+			return TRUE;
+		}
+		return FALSE;
+	}
+	
+	public function classId() {
+		$classId = DB::table('classe_user')
+						->select('classe_id')
+						->where('transaction_id','=',$this->id)
+						->first()->classe_id;
+		return $classId;
+	}
 	
 	public function status() {
 		if($this->successful) return "Paid";

@@ -76,7 +76,7 @@ class NewsController extends Controller
 		$news_item->fill($request->all());
 		$news_item->save();
 		
-		return Redirect::to('admin/news')->with("good", "Successfully updated news item.");
+		return Redirect::back()->with("good", "Successfully updated news item.");
     }
 
     /**

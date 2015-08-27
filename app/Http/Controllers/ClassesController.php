@@ -57,7 +57,6 @@ class ClassesController extends Controller
     public function store(ClasseRequest $request)
     {		
         $class = new Classe($request->all());
-		$class->location_id = $request->location_id;
 		$user = User::first();
 		$user->classes_running()->save($class);
 		
@@ -121,7 +120,6 @@ class ClassesController extends Controller
     {
 		$class = Classe::findOrFail($id);
 		$class->fill($request->all());
-		$class->location_id = $request->location_id;
 		
 		if($class->places_available < $class->attendees()->count()) {
 			return Redirect::back()->with("bad", "You cannot reduce the number of available places to lower than the amount of people already attending. You must reject some people from the course first if you wish to do this.");
@@ -132,7 +130,7 @@ class ClassesController extends Controller
 		
 		$class->save();
 		
-		return Redirect::to('admin/classes')->with("good", "Successfully updated class.");
+		return Redirect::back()->with("good", "Successfully updated class.");
     }
 
     /**
@@ -162,7 +160,7 @@ class ClassesController extends Controller
 		
 		$class->all_attendees()->updateExistingPivot($user_id, ['rejected' => 1]);
 		
-		return Redirect::to('admin/classes/' . $id . '/edit/attendees')->with("good", "Successfully rejected user.");
+		return Redirect::back()->with("good", "Successfully rejected user.");
 	}
 	
 	public function acceptAttendee($id, $user_id) {
@@ -170,6 +168,6 @@ class ClassesController extends Controller
 		
 		$class->all_attendees()->updateExistingPivot($user_id, ['rejected' => 0]);
 		
-		return Redirect::to('admin/classes/' . $id . '/edit/attendees')->with("good", "Successfully accepted user.");
+		return Redirect::back()->with("good", "Successfully accepted user.");
 	}
 }
