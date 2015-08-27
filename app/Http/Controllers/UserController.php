@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Redirect;
 
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\PurchaseMembershipRequest;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Membership;
 use App\User_Membership;
+use App\Transaction;
+use App\Payment_Method;
 
 class UserController extends Controller
 {
@@ -101,7 +104,30 @@ class UserController extends Controller
 	public function purchaseMembership($membership_id) {
 		$user = User::first();
 		$membership = Membership::findOrFail($membership_id);
+		$payment_methods = Payment_Method::active()->lists('name', 'id');
+		
+		return view('users.purchase_membership', compact('user', 'membership','payment_methods'));
+	}
+	
+	public function purchaseMembershipComplete(PurchaseMembershipRequest $request) {
+		
+		$user = User::first();
+		
+		$membership = Membership::findOrFail($request->membership_id);
+		
+		$transaction = new Transaction();
+		$transaction->payment_method_id = $request->payment_method_id;
+		$transaction->name = "Membership Fee";
+		$transaction->description = "Membership type \"" . $membership->name . "\"";
+		$transaction->amount = $membership->cost;
+		$user->transactions()->save($transaction);
+		
 		$user_membership = new User_Membership();
+		$user_membership->membership_id = $membership->id;
+		$user_membership->transaction_id = $transaction->id;
+		$user->user_memberships()->save($user_membership);
+		
+		return view('users.purchase_membership_complete', compact('user', 'transaction', 'membership'));
 	}
 
     /**
@@ -116,11 +142,10 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 		$user->fill($request->all());
 		
-		$admin_check = $request->admin ? 1 : 0;
-		$active_check = $request->email_confirmed ? 1 : 0;
-		
-		$user->admin = $admin_check;
-		$user->email_confirmed = $active_check;
+		// Stupid checkboxes don't get a value sent back if they're not checked
+		// So if they're null, set the value to 0
+		$user->admin = $request->admin ? 1 : 0;
+		$user->email_confirmed = $request->email_confirmed ? 1 : 0;
 		
 		$user->save();
 		

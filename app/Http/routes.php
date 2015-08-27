@@ -45,6 +45,7 @@ Route::get('profile/transactions', 'UserController@transactions');
 Route::get('profile/classes', 'UserController@classes');
 Route::get('profile/memberships', 'UserController@memberships');
 Route::get('profile/memberships/{membership_id}', 'UserController@purchaseMembership');
+Route::post('profile/memberships/purchase', 'UserController@purchaseMembershipComplete');
 // Users Admin
 Route::get('admin/users/{user_id}/edit', 'UserController@adminEdit');
 Route::patch('admin/users/{user_id}', 'UserController@update');

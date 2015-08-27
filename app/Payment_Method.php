@@ -15,4 +15,8 @@ class Payment_Method extends Model
     public function classes() {
         return $this->belongsToMany('App\Classe', 'classe_payment_method', 'payment_method_id','classe_id');
     }
+	
+	public function scopeActive($query) {
+		$query->where('active','=',1);
+	}
 }

@@ -235,6 +235,7 @@ a {
 }
 
 .button-on-white {
+	background: #fff;
     border-color: #333;
     color: #333;
 }
