@@ -17,7 +17,6 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Status</th>
-				<th>Free Spaces Left</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -31,7 +30,6 @@
 					<td>{{ $user->fullname() }}</td>
 					<td>{{ $user->email }}</td>
 					<td class="{{ $user->goodBadStatus() }}">{{ $user->status() }}</td>
-					<td>{{ $user->free_spaces_remaining() }}</td>
 				</tr>
 			@endforeach
 		</tbody>

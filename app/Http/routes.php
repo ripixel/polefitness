@@ -25,7 +25,9 @@ Route::get('classes', 'ClassesController@index');
 Route::get('classes/{classe_id}', 'ClassesController@show');
 Route::get('classes/{classe_id}/book', 'ClassesController@book');
 Route::get('classes/{classe_id}/book/membership/{membership_id}/', 'ClassesController@bookClassMembership');
-Route::post('classes/book/purchase', 'ClassesController@bookClassMembershipComplete');
+Route::post('classes/book/purchase/membership', 'ClassesController@bookClassMembershipComplete');
+Route::get('classes/{classe_id}/book/payment/{payment_method_id}/', 'ClassesController@bookClassPayment');
+Route::post('classes/book/purchase/payment', 'ClassesController@bookClassPaymentComplete');
 // Classes Admin
 // Class CRUD
 Route::get('admin/classes/new', 'ClassesController@create');

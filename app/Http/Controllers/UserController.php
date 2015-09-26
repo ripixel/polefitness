@@ -93,12 +93,33 @@ class UserController extends Controller
 		return view('users.classes_admin', compact('user'));
     }
 	
+    public function profile()
+    {
+        $user = User::first();
+		
+		return view('users.profile', compact('user'));
+    }
+	
+    public function classes()
+    {
+        $user = User::first();
+		
+		return view('users.classes', compact('user'));
+    }
+	
     public function memberships()
     {
         $user = User::first();
 		$memberships = Membership::active()->orderBy('cost','desc')->get();
 		
 		return view('users.memberships', compact('user','memberships'));
+    }
+	
+    public function transactions()
+    {
+        $user = User::first();
+		
+		return view('users.transactions', compact('user'));
     }
 	
 	public function purchaseMembership($membership_id) {
@@ -118,7 +139,7 @@ class UserController extends Controller
 		$transaction = new Transaction();
 		$transaction->payment_method_id = $request->payment_method_id;
 		$transaction->name = "Membership Fee";
-		$transaction->description = "Membership type \"" . $membership->name . "\"";
+		$transaction->description = $membership->name;
 		$transaction->amount = $membership->cost;
 		$user->transactions()->save($transaction);
 		

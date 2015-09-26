@@ -8,6 +8,7 @@ use Redirect;
 
 use App\Http\Requests\ClasseRequest;
 use App\Http\Requests\BookClassMembershipRequest;
+use App\Http\Requests\BookClassPaymentRequest;
 use App\Http\Controllers\Controller;
 use App\Classe;
 use App\User;
@@ -249,6 +250,50 @@ class ClassesController extends Controller
 		
 		$user_membership->spaces_left = $user_membership->spaces_left - 1;
 		$user_membership->save();
+		
+		return view('classes.show', compact('class','user'));
+	}
+	
+	public function bookClassPayment($class_id, $payment_method_id) {
+		$user = User::first();
+		$payment_method = Payment_Method::findOrFail($payment_method_id);
+		$class = Classe::findOrFail($class_id);
+		
+		return view('classes.book_payment', compact('user', 'payment_method','class'));
+	}
+	
+	public function bookClassPaymentComplete(BookClassPaymentRequest $request) {
+		
+		$user = User::first();
+		
+		$class = Classe::findOrFail($request->classe_id);
+		$payment_method = Payment_Method::findOrFail($request->payment_method_id);
+		
+		$transaction = new Transaction();
+		$transaction->payment_method_id = $payment_method->id;
+		$transaction->name = "Class Payment";
+		$transaction->description = $class->title . " on " . $class->date;
+		if($payment_method->has_cost) {
+			if($user->member || $user->admin) {
+				$transaction->amount = $class->cost_member;	
+			} else {
+				$transaction->amount = $class->cost;
+			}	
+		} else {
+			$transaction->amount = 0;
+		}
+		$user->transactions()->save($transaction);
+		
+		
+		DB::table('classe_user')->insert([
+			'classe_id' => $class->id,
+			'user_id' => $user->id,
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+			'used_free_space' => 0,
+			'transaction_id' => $transaction->id,
+			'rejected' => 0
+		]);
 		
 		return view('classes.show', compact('class','user'));
 	}

@@ -91,6 +91,9 @@ a {
 
 .committee-member-desc p {
     margin-top: 5px;
+	box-sizing: bborder-box;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .committee-member-desc i {

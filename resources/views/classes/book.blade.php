@@ -53,7 +53,7 @@
 										</strong></p>
 										<p>The following payment methods are accepted to book onto this class:</p>
 										@foreach($class->payment_methods_allowed as $payment_method)
-											<a href="#" class="button button-on-white">Pay by <strong>{{ $payment_method->name }}</strong></a> 
+											<a href="{{ action('ClassesController@bookClassPayment', [$class->id, $payment_method->id]) }}" class="button button-on-white">Pay by <strong>{{ $payment_method->name }}</strong></a> 
 										@endforeach
 									@else
 										@if($booking_methods)
