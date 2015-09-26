@@ -20,7 +20,11 @@
 							<div class="news-overlay">
 								@if($class->attendees->count() < $class->places_available)
 									@if($class->attendees->contains($user) == FALSE)
-										<a class="button" href="{{ action('ClassesController@book', $class->id) }}">Book Now</a>
+										@if($class->date < Carbon\Carbon::now()->addWeek())
+											<a class="button" href="{{ action('ClassesController@book', $class->id) }}">Book Now</a>
+										@else
+											<a class="button button-disabled">Too early to book</a>	
+										@endif
 									@else
 										<a class="button button-disabled">You are already attending</a>
 									@endif	
@@ -30,6 +34,10 @@
 							</div>
 						</div>
 						<div class="news-snippet pure-u-3-4">
+							
+							@if($class->date > Carbon\Carbon::now()->addWeek())
+								<h3>It's too early to book onto this class - check back in {{ $class->date->diffInDays(Carbon\Carbon::now()->addWeek()) }} days</h3>
+							@endif
 							{!! $class->description !!}
 							<h2>Attendees {{ $class->attendees->count() }}/{{ $class->places_available }}</h2>
 							<div class="pure-g">

@@ -29,13 +29,16 @@
 					<td><a href="{{ action('UserController@adminTransactions', $transaction->user_id) }}" class="button">{{ $transaction->user->fullname() }}</a></td>
 					<td class="{{ $transaction->goodBadStatus() }}">{{ sprintf('£%01.2f', $transaction->amount) }}</td>
 					<td>{{ $transaction->name }}</td>
-					<td>{{ $transaction->description }}</td>
+					<td>
+						@if($transaction->hasClass())
+							<a href="{{ action('ClassesController@editAttendees', $transaction->classId()) }}" class="button button-with-icon">{{ $transaction->description }}</a>
+						@else
+							{{ $transaction->description }}
+						@endif
+					</td>
 					<td>{{ $transaction->payment_method->name }}</td>
 					<td>
 						@include('transactions.payment_actions') 
-						@if($transaction->hasClass())
-						<a href="{{ action('ClassesController@editAttendees', $transaction->classId()) }}" class="button button-with-icon"><i class="fa fa-calendar"></i> Jump to Class</a>
-						@endif
 					</td>
 				</tr>
 			@endforeach
