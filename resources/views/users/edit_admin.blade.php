@@ -38,11 +38,15 @@
 		
 		<div class="pure-u-1">
 			<div class="pure-g">
-				<div class="pure-u-1-2" style="box-sizing: border-box; padding-right: 10px;">
+				<div class="pure-u-1-3" style="box-sizing: border-box; padding-right: 10px;">
 					{!! Form::label('email_confirmed','Active') !!}
 					{!! Form::checkbox('email_confirmed') !!}
 				</div>
-				<div class="pure-u-1-2">
+				<div class="pure-u-1-3">
+					{!! Form::label('member','Society Member') !!}
+					{!! Form::checkbox('member') !!}
+				</div>
+				<div class="pure-u-1-3">
 					{!! Form::label('admin','Admin') !!}
 					{!! Form::checkbox('admin') !!}
 				</div>

@@ -169,6 +169,14 @@ class AdminController extends Controller
 		return view('users.admin', compact('users', 'subtitle'));
 	}
 	
+	public function usersAdmins() {
+		
+		$users = User::Admins()->orderBy('first_name','asc')->get();
+		$subtitle = "Showing Administrators";
+		
+		return view('users.admin', compact('users', 'subtitle'));
+	}
+	
 	public function userSearch(Request $request) {		
 		$first_name = $request->first_name;
 		$last_name = $request->last_name;

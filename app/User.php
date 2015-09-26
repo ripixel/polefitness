@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'admin', 'picture_url', 'email_confirmed'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'admin', 'member', 'picture_url', 'email_confirmed'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -97,13 +97,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		if($this->email_confirmed) {
 			if($this->admin) {
 				return "Administrator";
+			} else if($this->member) {
+				return "Society Member";
 			}
-			return "Active User";
+			return "Non-Member";
 		}
 		return "Inactive";
 	}
 	
 	public function scopeAdmins($query) {
-		$query->where('admin','=',1);
+		$query
+		->where('admin','=',1)
+		->where('email_confirmed','=',1);
 	}
 }

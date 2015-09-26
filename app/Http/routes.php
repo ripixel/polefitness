@@ -94,6 +94,7 @@ Route::get('admin/memberships/active', 'AdminController@membershipsActive');
 Route::get('admin/memberships/retired', 'AdminController@membershipsRetired');
 // Users
 Route::get('admin/users', 'AdminController@users');
+Route::get('admin/users/admins', 'AdminController@usersAdmins');
 Route::post('admin/users/byname', 'AdminController@userSearch');
 Route::get('admin/users/emails', 'UserController@emailDump');
 // Other
