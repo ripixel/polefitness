@@ -19,8 +19,7 @@
 				<th>Title</th>
 				<th>Description</th>
 				<th>Method</th>
-				<th>Status</th>
-				<th>Actions</th>
+				<th>Status Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -32,7 +31,6 @@
 					<td>{{ $transaction->name }}</td>
 					<td>{{ $transaction->description }}</td>
 					<td>{{ $transaction->payment_method->name }}</td>
-					<td class="{{ $transaction->goodBadStatus() }}">{{ $transaction->status() }}</td>
 					<td>
 						@include('transactions.payment_actions') 
 						@if($transaction->hasClass())

@@ -24,8 +24,10 @@ class ClasseRequest extends Request {
 		return [
 			'title' => 'required|max:255',
 			'description' => 'required',
+			'supervisor_id' => 'required|integer',
 			'picture_link' => 'required|url',
 			'date' => 'required',
+			'end_date' => 'required',
 			'places_available' => 'required|integer',
 			'cost' => 'required|numeric',
 			'location_id' => 'required|integer'

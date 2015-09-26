@@ -42,11 +42,33 @@ class AdminController extends Controller
 		return view('classes.admin', compact('classes', 'subtitle'));
 	}
 	
+	public function classesOutstanding() {
+		
+		$subtitle = "Showing Classes with Outstanding Payments";
+		$classes = Classe::orderBy('created_at','desc')->get();
+		foreach($classes as $key => $class) {
+			if($class->paymentStatus() == 'Payments Complete') {
+				$classes->forget($key);
+			}
+		}
+		
+		return view('classes.admin', compact('classes', 'subtitle'));
+	}
+	
 	public function classesMine() {
 		
 		$user = User::first();
-		$subtitle = "Showing Classes you've posted";
-		$classes = $user->classes_running()->orderBy('created_at','desc')->get();
+		$subtitle = "Showing Classes you've created";
+		$classes = $user->classes_created()->orderBy('created_at','desc')->get();
+		
+		return view('classes.admin', compact('classes', 'subtitle'));
+	}
+	
+	public function classesMineSupervisor() {
+		
+		$user = User::first();
+		$subtitle = "Showing Classes you're supervising";
+		$classes = $user->classes_supervising()->orderBy('created_at','desc')->get();
 		
 		return view('classes.admin', compact('classes', 'subtitle'));
 	}

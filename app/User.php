@@ -38,8 +38,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->hasMany('App\Blog_Item');
     }
 
-    public function classes_running() {
-        return $this->hasMany('App\Classe');
+    public function classes_supervising() {
+        return $this->hasMany('App\Classe','supervisor_id');
+    }
+
+    public function classes_created() {
+        return $this->hasMany('App\Classe','user_id');
     }
 
     public function tokens() {
@@ -57,6 +61,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function classes_attending() {
         return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
     }
+	
+	public function getFullnameAttribute() {
+		return $this->fullname();
+	}
     
     public function fullname() {
         return $this->first_name . ' ' . $this->last_name;
@@ -93,5 +101,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			return "Active User";
 		}
 		return "Inactive";
+	}
+	
+	public function scopeAdmins($query) {
+		$query->where('admin','=',1);
 	}
 }

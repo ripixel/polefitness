@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-right: 5px;
 }
 
-.button:hover {
+.button:hover, .button-selected {
     background: #333;
 	color: #fff;
 }
@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: green;
 }
 
-.button-green:hover {
+.button-green:hover, .button-green-selected {
 	background: green;
 	color: #fff;
 }
@@ -131,7 +131,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: red;
 }
 
-.confirmDelete:hover, .button-red:hover {
+.confirmDelete:hover, .button-red:hover, .button-red-selected {
 	background: red;
 	color: #fff;
 }

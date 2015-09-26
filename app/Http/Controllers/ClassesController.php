@@ -38,14 +38,20 @@ class ClassesController extends Controller
     {
 		$locations = Location::lists('name','id');
 		$payment_methods = Payment_Method::lists('name','id');
-		return view('classes.create', compact('locations', 'payment_methods'));
+		$admins = User::Admins()->get();
+		$supervisors = $admins->lists('fullname', 'id');
+		return view('classes.create', compact('locations', 'payment_methods', 'supervisors'));
     }
 	
     public function copy($id)
     {
         $class = Classe::findOrFail($id);
+		$class->title = $class->title . " - CLONED";
 		$locations = Location::lists('name','id');
-		return view('classes.clone', compact('locations','class'));
+		$payment_methods = Payment_Method::lists('name','id');
+		$admins = User::Admins()->get();
+		$supervisors = $admins->lists('fullname', 'id');
+		return view('classes.clone', compact('locations','class','payment_methods', 'supervisors'));
     }
 
     /**
@@ -57,8 +63,13 @@ class ClassesController extends Controller
     public function store(ClasseRequest $request)
     {		
         $class = new Classe($request->all());
+		
+		if($class->end_date < $class->date) {
+			$class->end_date = $class->date;
+		}
+		
 		$user = User::first();
-		$user->classes_running()->save($class);
+		$user->classes_created()->save($class);
 		
 		$payment_methods_allowed = ($request->payment_methods_allowed ?: []);
 		$class->payment_methods_allowed()->sync($payment_methods_allowed);
@@ -104,9 +115,11 @@ class ClassesController extends Controller
     {
 		$locations = Location::lists('name','id');
 		$payment_methods = Payment_Method::lists('name','id');
+		$admins = User::Admins()->get();
+		$supervisors = $admins->lists('fullname', 'id');
         $class = Classe::findOrFail($id);
 		
-		return view('classes.edit', compact('class','locations','payment_methods'));
+		return view('classes.edit', compact('class','locations','payment_methods', 'supervisors'));
     }
 
     /**
@@ -122,7 +135,11 @@ class ClassesController extends Controller
 		$class->fill($request->all());
 		
 		if($class->places_available < $class->attendees()->count()) {
-			return Redirect::back()->with("bad", "You cannot reduce the number of available places to lower than the amount of people already attending. You must reject some people from the course first if you wish to do this.");
+			return Redirect::back()->with("bad", "You cannot reduce the number of available places to lower than the amount of people already attending. You must reject some people from the class first if you wish to do this.");
+		}
+		
+		if($class->end_date < $class->date) {
+			$class->end_date = $class->date;
 		}
 		
 		$payment_methods_allowed = ($request->payment_methods_allowed ?: []);

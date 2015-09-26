@@ -15,16 +15,19 @@ class CreateClassesTable extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
+			$table->integer('supervisor_id')->unsigned()->index();
             $table->integer('location_id')->unsigned()->index();
 			$table->string('title');
 			$table->text('description');
             $table->datetime('date');
+			$table->datetime('end_date');
             $table->string('picture_link');
             $table->integer('places_available');
             $table->double('cost');
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');
+			//$table->foreign('supervisor_id')->references('id')->on('users');
             //$table->foreign('location_id')->references('id')->on('locations');
         });
     }

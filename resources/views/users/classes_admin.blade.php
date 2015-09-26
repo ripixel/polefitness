@@ -17,7 +17,7 @@
 				<th></th>
 				<th>Status</th>
 				<th>Title</th>
-				<th>Owner</th>
+				<th>Creator</th>
 				<th>Location</th>
 				<th>Date</th>
 			</tr>
@@ -34,7 +34,7 @@
 						<td class="good">Accepted</td>
 					@endif
 					<td>{{ $class->title }}</td>
-					<td>{{ $class->owner->fullname() }}</td>
+					<td>{{ $class->creator->fullname() }}</td>
 					<td>{{ $class->location->name }}</td>
 					<td>{{ $class->date }}</td>
 				</tr>

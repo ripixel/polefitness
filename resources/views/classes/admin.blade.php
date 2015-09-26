@@ -15,7 +15,8 @@
 			<tr>
 				<th></th>
 				<th>Title</th>
-				<th>Owner</th>
+				<th>Creator</th>
+				<th>Supervisor</th>
 				<th>Location</th>
 				<th>Date</th>
 				<th>Payments</th>
@@ -30,9 +31,10 @@
 						<a href="{{ action('ClassesController@editAttendees', $class->id) }}" class="button button-with-icon"><i class="fa fa-users"></i> Attendees {{ $class->attendees->count() }}/{{ $class->places_available }}</a>
 					</td>
 					<td>{{ $class->title }}</td>
-					<td>{{ $class->owner->fullname() }}</td>
+					<td>{{ $class->creator->fullname() }}</td>
+					<td>{{ $class->supervisor->fullname() }}</td>
 					<td>{{ $class->location->name }}</td>
-					<td>{{ $class->date }}</td>
+					<td>{{ $class->date }} - {{ $class->end_date->format('g:ia') }}</td>
 					<td class="{{ $class->goodBadPaymentStatus() }}">{{ $class->paymentStatus() }}</td>
 				</tr>
 			@endforeach

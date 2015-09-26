@@ -13,7 +13,7 @@
 					<h1 style="font-size: 3.5em">Classes</h1>
 					<h3>These are all the awesome classes we have coming up, check them out...</h3>	
 				</div>
-
+				@if($next_class)
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
 						<div class="news-image pure-u-1-4" style="background: url('{{ $next_class->picture_link}}') no-repeat center center; background-size: cover;">
@@ -24,17 +24,24 @@
 							<h2>{{ $next_class->title }}</h2>
 							{!! $next_class->description !!}
 							<p><strong>Where:</strong> {{ $next_class->location->name }}</p>
-							<p><strong>When:</strong> {{ $next_class->date }}</p>
+							<p><strong>When:</strong> {{ $next_class->date }} - {{ $next_class->end_date->format('g:ia') }}</p>
 							<p><strong>Places Taken:</strong> {{ $next_class->attendees->count() }}/{{ $next_class->places_available }}</p>
 						</div>
 					</div>
 				</div>
+				@else
+					<div class="pure-u-1 news-item">
+						<h3>Oh no! No classes are available to view right now - please check back again soon.</h3>
+					</div>
+				@endif
 				
 				@foreach($classes as $index => $classe)
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('{{ $classe->picture_link }}') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>{{ $classe->title }}</h3>
-						<p>{{ $classe->date }}<br />{{ $classe->attendees->count() }}/{{ $classe->places_available }} places taken</p>
+						<p>{{ $classe->date->format('l jS M') }}<br />
+						 {{ $classe->date->format('g:ia') }} - {{ $next_class->end_date->format('g:ia') }}<br />
+						 {{ $classe->attendees->count() }}/{{ $classe->places_available }} places taken</p>
 						<p><a class="button" href="{{ action('ClassesController@show', $classe->id) }}">See Info</a></p>
 					</div>
 				</div>

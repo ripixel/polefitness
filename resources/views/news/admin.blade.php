@@ -15,7 +15,7 @@
 			<tr>
 				<th></th>
 				<th>Title</th>
-				<th>Owner</th>
+				<th>Creator</th>
 				<th>Posted</th>
 			</tr>
 		</thead>

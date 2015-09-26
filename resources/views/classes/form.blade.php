@@ -9,13 +9,23 @@
 </div>
 
 <div>
+{!! Form::label('supervisor_id','Supervisor') !!}
+{!! Form::select('supervisor_id', $supervisors, null, ['id' => 'supervisor_id', 'class' => 'select2 pure-input-1']) !!}
+</div>
+
+<div>
 {!! Form::label('picture_link','Picture URL') !!}
 {!! Form::text('picture_link', null, ['class' => 'pure-input-1']) !!}
 </div>
 
 <div>
-{!! Form::label('date','Date') !!}
+{!! Form::label('date','Start Date/Time') !!}
 {!! Form::text('date', null, ['class' => 'pure-input-1 datepicker']) !!}
+</div>
+
+<div>
+{!! Form::label('end_date','End Date/Time') !!}
+{!! Form::text('end_date', null, ['class' => 'pure-input-1 datepicker']) !!}
 </div>
 
 <div>

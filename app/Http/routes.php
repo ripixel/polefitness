@@ -79,6 +79,8 @@ Route::get('admin/news/mine', 'AdminController@newsMine');
 Route::get('admin/classes', 'AdminController@classes');
 Route::get('admin/classes/upcoming', 'AdminController@classesUpc');
 Route::get('admin/classes/mine', 'AdminController@classesMine');
+Route::get('admin/classes/supervising', 'AdminController@classesMineSupervisor');
+Route::get('admin/classes/outstanding', 'AdminController@classesOutstanding');
 Route::get('admin/users', 'AdminController@users');
 // Transactions
 Route::get('admin/transactions', 'AdminController@transactions');
