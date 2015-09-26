@@ -11,6 +11,18 @@ class Membership extends Model
     public function user_memberships() {
         return $this->hasMany('App\User_Membership');
     }
+
+    public function classes() {
+        return $this->belongsToMany('App\Classe', 'classe_memberships', 'membership_id','classe_id');
+    }
+	
+	public function getNameAttribute($value) {
+		if($this->active) {
+			return $value;
+		}
+		
+		return $value . ' (Retired)';
+	}
 	
 	public function goodBadStatus() {
 		if($this->active) return "good";

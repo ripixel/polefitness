@@ -34,6 +34,10 @@ class Classe extends Model
 		return $this->all_attendees()->where('rejected','=',0);
 	}
 
+    public function memberships_allowed() {
+        return $this->belongsToMany('App\Membership', 'classe_memberships', 'classe_id', 'membership_id');
+    }
+
     public function payment_methods_allowed() {
         return $this->belongsToMany('App\Payment_Method', 'classe_payment_method', 'classe_id', 'payment_method_id');
     }

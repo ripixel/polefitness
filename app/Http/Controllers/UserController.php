@@ -125,6 +125,7 @@ class UserController extends Controller
 		$user_membership = new User_Membership();
 		$user_membership->membership_id = $membership->id;
 		$user_membership->transaction_id = $transaction->id;
+		$user_membership->spaces_left = $membership->free_classes;
 		$user->user_memberships()->save($user_membership);
 		
 		return view('users.purchase_membership_complete', compact('user', 'transaction', 'membership'));

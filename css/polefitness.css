@@ -294,3 +294,23 @@ a {
 .center {
 	text-align: center;
 }
+
+.public-table {
+	box-sizing: border-box;
+	width: 100%;
+	font-size: 0.9em;
+}
+
+.public-table .good {
+	font-weight: bold;
+	color: green;
+}
+
+.public-table .bad {
+	font-weight: bold;
+	color: red;
+}
+
+.public-table thead, .public-table tbody {
+	width: 100%;
+}

@@ -15,12 +15,32 @@
 
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
-						<div class="news-snippet center pure-u-1">
-							<h2>Current Memberships</h2>
-							<p>You currently have <strong>{{ $user->free_spaces_remaining() }}</strong> free spaces from memberships.</p>
-							<p>You can purchase more membership spaces below:</p>
+						<div class="news-snippet center pure-u-1">							
+							<h2>Memberships Purchased</h2>
+							<table class="public-table pure-table pure-table-striped pure-table-horizontal">
+								<thead>
+									<tr>
+										<th>Membership</th>
+										<th>Purchased</th>
+										<th>Payment Status</th>
+										<th>Free Spaces Remaining</th>
+									</tr>
+								</thead>
+								<tbody>
+							@foreach($user->user_memberships as $user_membership)
+									<tr>
+										<td><strong>{{ $user_membership->membership->name }}</strong></td>
+										<td>{{ $user_membership->created_at }}</td>
+										<td class="{{ $user_membership->transaction->goodBadStatus() }}">{{ $user_membership->transaction->status() }}</td>
+										<td>{{ $user_membership->spaces_left }}</td>
+									</tr>
+							@endforeach
+								</tbody>
+							</table>
+							
+							<h2>Purchase Memberships</h2>
 							@foreach($memberships as $membership)
-								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white">{{ $membership->name }} - {{ sprintf('£%01.2f', $membership->cost) }} - {{ $membership->free_classes }} free classes</a><br/>
+								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white"><strong>{{ $membership->name }}</strong> - {{ sprintf('£%01.2f', $membership->cost) }} - {{ $membership->free_classes }} free classes</a><br/>
 							@endforeach
 						</div>
 					</div>

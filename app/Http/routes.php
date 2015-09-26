@@ -24,6 +24,8 @@ Route::delete('admin/news/{news_id}', 'NewsController@destroy');
 Route::get('classes', 'ClassesController@index');
 Route::get('classes/{classe_id}', 'ClassesController@show');
 Route::get('classes/{classe_id}/book', 'ClassesController@book');
+Route::get('classes/{classe_id}/book/membership/{membership_id}/', 'ClassesController@bookClassMembership');
+Route::post('classes/book/purchase', 'ClassesController@bookClassMembershipComplete');
 // Classes Admin
 // Class CRUD
 Route::get('admin/classes/new', 'ClassesController@create');

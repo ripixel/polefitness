@@ -42,6 +42,11 @@
     {!! Form::select('payment_methods_allowed[]', $payment_methods, $class->payment_methods_allowed->lists('id')->toArray(), ['id' => 'payment_methods_allowed', 'class' => 'select2 pure-input-1', 'multiple']) !!}
 </div>
 
+<div class="form-group">
+    {!! Form::label('memberships_allowed', 'Memberships Allowed') !!}
+    {!! Form::select('memberships_allowed[]', $memberships, $class->memberships_allowed->lists('id')->toArray(), ['id' => 'memberships_allowed', 'class' => 'select2 pure-input-1', 'multiple']) !!}
+</div>
+
 
 <div class="pure-u-1">
 	<div class="pure-g">

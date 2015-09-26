@@ -57,6 +57,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function user_memberships() {
         return $this->hasMany('App\User_Membership');
     }
+	
+	public function membership_spaces_left($membership_id) {
+		return DB::table('user_memberships')
+			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+			->where('transactions.successful','=',1)
+			->where('user_memberships.membership_id','=', $membership_id)
+			->sum('user_memberships.spaces_left');
+	}
 
     public function classes_attending() {
         return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
@@ -69,22 +77,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function fullname() {
         return $this->first_name . ' ' . $this->last_name;
     }
-	
-	public function free_spaces_remaining() {
-		$valid_membership_spaces = DB::table('user_memberships')
-									->join('memberships', 'user_memberships.membership_id','=','memberships.id')
-									->join('transactions', 'user_memberships.transaction_id','=','transactions.id')
-									->where('transactions.successful','=',1)
-									->where('user_memberships.user_id','=',$this->id)
-									->sum('memberships.free_classes');
-		
-		$free_spaces_used = DB::table('classe_user')
-							->where('used_free_space','=',1)
-							->where('user_id','=',$this->id)
-							->count();
-		
-		return $valid_membership_spaces - $free_spaces_used;
-	}
 	
 	public function goodBadStatus() {
 		if($this->status()=="Inactive") {

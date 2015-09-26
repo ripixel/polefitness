@@ -34,6 +34,15 @@ class CreatePivotTables extends Migration
             $table->foreign('classe_id')->references('id')->on('classes');
             $table->foreign('payment_method_id')->references('id')->on('payment_methods');
         });
+
+        Schema::create('classe_memberships', function(Blueprint $table)
+        {
+            $table->integer('classe_id')->unsigned()->index();
+            $table->integer('membership_id')->unsigned()->index();
+
+            $table->foreign('classe_id')->references('id')->on('classes');
+            $table->foreign('membership_id')->references('id')->on('memberships');
+        });
     }
 
     /**
@@ -45,5 +54,6 @@ class CreatePivotTables extends Migration
     {
         Schema::drop('classe_user');
         Schema::drop('classe_payment_method');
+		Schema::drop('classe_memberships');
     }
 }
