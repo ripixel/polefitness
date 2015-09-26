@@ -30,6 +30,7 @@ class ClasseRequest extends Request {
 			'end_date' => 'required',
 			'places_available' => 'required|integer',
 			'cost' => 'required|numeric',
+			'cost_member' => 'required|numeric',
 			'location_id' => 'required|integer'
 		];
 	}

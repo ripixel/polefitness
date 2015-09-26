@@ -31,7 +31,14 @@
 									@endif
 									
 									@if($class->payment_methods_allowed->count() > 0)
-										<p>Additionally, the following payment methods are accepted to book onto this class:</p>
+										<p>The cost for booking onto this class for you as a <strong>{{ $user->status() }}</strong> is <strong>
+											@if($user->member || $user->admin)
+												{{ sprintf('£%01.2f', $class->cost_member) }}
+											@else
+												{{ sprintf('£%01.2f', $class->cost) }}
+											@endif
+										</strong></p>
+										<p>The following payment methods are accepted to book onto this class:</p>
 										@foreach($class->payment_methods_allowed as $payment_method)
 											<a href="#" class="button button-on-white">Pay by {{ $payment_method->name }}</a> 
 										@endforeach

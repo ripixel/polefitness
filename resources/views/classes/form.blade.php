@@ -18,14 +18,18 @@
 {!! Form::text('picture_link', null, ['class' => 'pure-input-1']) !!}
 </div>
 
-<div>
-{!! Form::label('date','Start Date/Time') !!}
-{!! Form::text('date', null, ['class' => 'pure-input-1 datepicker']) !!}
-</div>
-
-<div>
-{!! Form::label('end_date','End Date/Time') !!}
-{!! Form::text('end_date', null, ['class' => 'pure-input-1 datepicker']) !!}
+<div class="pure-u-1">
+	<div class="pure-g">
+		<div class="pure-u-1-2" style="box-sizing: border-box; padding-right: 10px;">
+			{!! Form::label('date','Start Date/Time') !!}
+			{!! Form::text('date', null, ['class' => 'pure-input-1 datepicker']) !!}
+		</div>
+		
+		<div class="pure-u-1-2">
+			{!! Form::label('end_date','End Date/Time') !!}
+			{!! Form::text('end_date', null, ['class' => 'pure-input-1 datepicker']) !!}
+		</div>
+	</div>
 </div>
 
 <div>
@@ -38,9 +42,18 @@
     {!! Form::select('payment_methods_allowed[]', $payment_methods, $class->payment_methods_allowed->lists('id')->toArray(), ['id' => 'payment_methods_allowed', 'class' => 'select2 pure-input-1', 'multiple']) !!}
 </div>
 
-<div>
-{!! Form::label('cost','Cost') !!}
-{!! Form::text('cost', null, ['class' => 'pure-input-1 spinner-decimal']) !!}
+
+<div class="pure-u-1">
+	<div class="pure-g">
+		<div class="pure-u-1-2" style="box-sizing: border-box; padding-right: 10px;">
+			{!! Form::label('cost','Cost for Non-Members') !!}
+			{!! Form::text('cost', null, ['class' => 'pure-input-1 spinner-decimal']) !!}
+		</div>
+		<div class="pure-u-1-2">
+			{!! Form::label('cost_member','Cost for Members') !!}
+			{!! Form::text('cost_member', null, ['class' => 'pure-input-1 spinner-decimal']) !!}
+		</div>
+	</div>
 </div>
 
 <div>

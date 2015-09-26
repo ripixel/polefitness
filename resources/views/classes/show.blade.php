@@ -11,7 +11,7 @@
 			<div class="pure-g hero-content-center center">
 				<div class="pure-u-1 hero-title hero-content">
 					<h1 style="font-size: 3.5em">{{ $class->title }}</h1>
-					<h3>{{ $class->date }}</h3>
+					<h2>{{ $class->date }}</h2>
 				</div>
 
 				<div class="pure-u-1 news-item">
@@ -36,10 +36,23 @@
 						<div class="news-snippet pure-u-3-4">
 							
 							@if($class->date > Carbon\Carbon::now()->addWeek())
-								<h3>It's too early to book onto this class - check back in {{ $class->date->diffInDays(Carbon\Carbon::now()->addWeek()) }} days</h3>
+								<h2>It's too early to book onto this class - check back in {{ $class->date->diffInDays(Carbon\Carbon::now()->addWeek()) }} days</h2>
+							@else
+								<h2>Class Details</h2>
 							@endif
+							<strong>Description:</strong><br />
 							{!! $class->description !!}
-							<h2>Attendees {{ $class->attendees->count() }}/{{ $class->places_available }}</h2>
+							<div class="pure-u-1">
+								<div class="pure-g">
+									<div class="pure-u-1-2">
+										<p><strong>Cost for Members:</strong> {{ sprintf('£%01.2f', $class->cost_member) }}</p>
+									</div>
+									<div class="pure-u-1-2">
+										<p><strong>Cost for Non-Members:</strong> {{ sprintf('£%01.2f', $class->cost) }}</p>
+									</div>
+								</div>
+							</div>
+							<strong>Attendees {{ $class->attendees->count() }}/{{ $class->places_available }}:</strong><br/>
 							<div class="pure-g">
 							@forelse($class->attendees as $attendee)
 								<img class="attendee-img pure-u-1-12 square" src="{{ $attendee->picture_link }}" alt="{{ $attendee->fullname() }}'s picture'" title="{{ $attendee->fullname() }}" />

@@ -24,6 +24,7 @@ class CreateClassesTable extends Migration
             $table->string('picture_link');
             $table->integer('places_available');
             $table->double('cost');
+			$table->double('cost_member');
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');
