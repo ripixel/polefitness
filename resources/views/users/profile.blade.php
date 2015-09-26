@@ -16,15 +16,17 @@
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
 						<div class="news-image pure-u-1-4" style="background: url('{{ $user->picture_link }}') no-repeat center center; background-size: cover;">
-							<!-- REMOVED Until Edit Functionality Created
-								<div class="news-overlay"><a class="button" href="{{ action('UserController@edit') }}">Edit Info</a></div> 
-							-->
+								<div class="news-overlay"><a class="button" href="{{ action('HomeController@doLogout') }}">Logout</a></div>
 						</div>
 						<div class="news-snippet pure-u-3-4">
 							<h2>Your Info</h2>
 							<p><strong>Name:</strong> {{ $user->fullname }}</p>
 							<p><strong>Email:</strong> {{ $user->email }}</p>
 							<p><strong>Status:</strong> {{ $user->status() }}</p>
+							<a class="button button-on-white" href="{{ action('UserController@edit') }}">Edit Information</a>
+							@if($user->admin)
+								<a class="button button-on-white" href="{{ action('AdminController@index') }}">Go to Admin Site</a>
+							@endif
 						</div>
 					</div>
 				</div>

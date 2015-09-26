@@ -85,7 +85,7 @@ class ClassesController extends Controller
 			$class->end_date = $class->date;
 		}
 		
-		$user = User::first();
+		$user = Auth::user();
 		$user->classes_created()->save($class);
 		
 		$payment_methods_allowed = ($request->payment_methods_allowed ?: []);
@@ -106,7 +106,7 @@ class ClassesController extends Controller
     public function show($id)
     {
         $class = Classe::findOrFail($id);
-		$user = User::first();
+		$user = Auth::user();
 		
 		return view('classes.show', compact('class','user'));
     }
@@ -120,7 +120,7 @@ class ClassesController extends Controller
     public function book($id)
     {
         $class = Classe::findOrFail($id);
-		$user = User::first();
+		$user = Auth::user();
 		
 		return view('classes.book', compact('class', 'user'));
     }
@@ -218,7 +218,7 @@ class ClassesController extends Controller
 	}
 	
 	public function bookClassMembership($class_id, $membership_id) {
-		$user = User::first();
+		$user = Auth::user();
 		$membership = Membership::findOrFail($membership_id);
 		$class = Classe::findOrFail($class_id);
 		
@@ -227,7 +227,7 @@ class ClassesController extends Controller
 	
 	public function bookClassMembershipComplete(BookClassMembershipRequest $request) {
 		
-		$user = User::first();
+		$user = Auth::user();
 		
 		$class = Classe::findOrFail($request->classe_id);
 		$user_membership_id = DB::table('user_memberships')
@@ -255,7 +255,7 @@ class ClassesController extends Controller
 	}
 	
 	public function bookClassPayment($class_id, $payment_method_id) {
-		$user = User::first();
+		$user = Auth::user();
 		$payment_method = Payment_Method::findOrFail($payment_method_id);
 		$class = Classe::findOrFail($class_id);
 		
@@ -264,7 +264,7 @@ class ClassesController extends Controller
 	
 	public function bookClassPaymentComplete(BookClassPaymentRequest $request) {
 		
-		$user = User::first();
+		$user = Auth::user();
 		
 		$class = Classe::findOrFail($request->classe_id);
 		$payment_method = Payment_Method::findOrFail($request->payment_method_id);

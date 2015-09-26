@@ -44,7 +44,7 @@ class NewsController extends Controller
     public function store(NewsRequest $request)
     {
         $news_item = new Blog_Item($request->all());
-		$user = User::first();
+		$user = Auth::user();
 		$user->blog_items()->save($news_item);
 		
 		return Redirect::to('admin/news')->with("good", "Successfully created news item.");

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Redirect;
 
+use Auth;
+
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\PurchaseMembershipRequest;
 use App\Http\Controllers\Controller;
@@ -49,9 +51,9 @@ class UserController extends Controller
      */
     public function edit()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 		
-		return view('profile.edit', compact('user'));
+		return view('users.edit', compact('user'));
     }
 
     /**
@@ -95,21 +97,21 @@ class UserController extends Controller
 	
     public function profile()
     {
-        $user = User::first();
+        $user = Auth::user();
 		
 		return view('users.profile', compact('user'));
     }
 	
     public function classes()
     {
-        $user = User::first();
+        $user = Auth::user();
 		
 		return view('users.classes', compact('user'));
     }
 	
     public function memberships()
     {
-        $user = User::first();
+        $user = Auth::user();
 		$memberships = Membership::active()->orderBy('cost','desc')->get();
 		
 		return view('users.memberships', compact('user','memberships'));
@@ -117,13 +119,13 @@ class UserController extends Controller
 	
     public function transactions()
     {
-        $user = User::first();
+        $user = Auth::user();
 		
 		return view('users.transactions', compact('user'));
     }
 	
 	public function purchaseMembership($membership_id) {
-		$user = User::first();
+		$user = Auth::user();
 		$membership = Membership::findOrFail($membership_id);
 		$payment_methods = Payment_Method::active()->lists('name', 'id');
 		
@@ -132,7 +134,7 @@ class UserController extends Controller
 	
 	public function purchaseMembershipComplete(PurchaseMembershipRequest $request) {
 		
-		$user = User::first();
+		$user = Auth::user();
 		
 		$membership = Membership::findOrFail($request->membership_id);
 		
@@ -169,6 +171,25 @@ class UserController extends Controller
 		$user->admin = $request->admin ? 1 : 0;
 		$user->email_confirmed = $request->email_confirmed ? 1 : 0;
 		
+		$user->save();
+		
+		return Redirect::back()->with("good", "Successfully updated user");
+    }
+	
+    public function updatePublic(UserRequest $request)
+    {
+        $user = Auth::user();
+		$user->fill($request->all());
+		
+		$user->save();
+		
+		return Redirect::back()->with("good", "Successfully updated user");
+    }
+	
+    public function updatePassword(UserRequest $request)
+    {
+        $user = Auth::user();
+		$user->password = bcrypt($request->password);		
 		$user->save();
 		
 		return Redirect::back()->with("good", "Successfully updated user");

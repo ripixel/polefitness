@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
+use Auth;
+use Redirect;
+
 class Authenticate
 {
     /**
@@ -34,13 +37,14 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->guest()) {
-            if ($request->ajax()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('auth/login');
-            }
+        if (!Auth::check()) {
+			return Redirect::to('login')->with("bad", "You must be logged in to view that page.");;
         }
+		
+		if(!Auth::user()->email_confirmed) {
+			Auth::logout();
+			return Redirect::to('home')->with("bad", "Your account has been deactivated. Please contact the committee about this issue.");;
+		}
 
         return $next($request);
     }

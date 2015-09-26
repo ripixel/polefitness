@@ -57,7 +57,7 @@ class AdminController extends Controller
 	
 	public function classesMine() {
 		
-		$user = User::first();
+		$user = Auth::user();
 		$subtitle = "Showing Classes you've created";
 		$classes = $user->classes_created()->orderBy('created_at','desc')->get();
 		
@@ -66,7 +66,7 @@ class AdminController extends Controller
 	
 	public function classesMineSupervisor() {
 		
-		$user = User::first();
+		$user = Auth::user();
 		$subtitle = "Showing Classes you're supervising";
 		$classes = $user->classes_supervising()->orderBy('created_at','desc')->get();
 		
@@ -83,7 +83,7 @@ class AdminController extends Controller
 	
 	public function newsMine() {
 		
-		$user = User::first();
+		$user = Auth::user();
 		$subtitle = "Showing News Items you've posted";
 		$news_items = $user->blog_items()->orderBy('created_at','desc')->get();
 		
