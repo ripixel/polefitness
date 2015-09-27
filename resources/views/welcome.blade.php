@@ -52,8 +52,12 @@
 	<div class="gold-background">
 		<div class="home-4 center container">
 			<div class="quote">
-				<h1>"Practice make <em>pole</em>fect."</h1>
-				<p>Beth Parsons</p>
+				<h2>"Before my first session I thought it would just be a fun, one off challenge but after the first spin I was hooked! At first, it felt really weird cause I'm hardly the most feminine girl around, but everyone was so lovely and supportive, and I feel so much better about myself and my body."</h2>
+				<p>Emily Reed</p>
+			</div>
+			<div class="quote">
+				<h2>"I joined pole for a way to get fit and make friends when I first joined university. I love pole because it’s so diverse all kinds of people do it!"</h2>
+				<p>Charlotte Maughan</p>
 			</div>
 		</div>
 	</div>
@@ -243,7 +247,7 @@
 
 		$(function() {
 			bouncerLoop();
-			beginQuoteCarousel(3000);
+			beginQuoteCarousel(5000);
 		});
 
 	</script>

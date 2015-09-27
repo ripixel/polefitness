@@ -40,7 +40,7 @@
 					<div class="committee-member-desc">
 						<h3>{{ $classe->title }}</h3>
 						<p>{{ $classe->date->format('l jS M') }}<br />
-						 {{ $classe->date->format('g:ia') }} - {{ $next_class->end_date->format('g:ia') }}<br />
+						 {{ $classe->date->format('g:ia') }} - {{ $classe->end_date->format('g:ia') }}<br />
 						 {{ $classe->attendees->count() }}/{{ $classe->places_available }} places taken</p>
 						<p><a class="button" href="{{ action('ClassesController@show', $classe->id) }}">See Info</a></p>
 					</div>

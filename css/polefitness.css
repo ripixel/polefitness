@@ -196,6 +196,10 @@ a {
     vertical-align: middle;
 }
 
+.quote h2 {
+	font-style: italic;
+}
+
 .hero-home-5 {
     background: url('../img/home-5-bg.jpg') no-repeat fixed center center;
     background-size: cover;
@@ -269,6 +273,7 @@ a {
     margin-left: auto;
     margin-right: auto;
     z-index: 2;
+	position: relative;
 }
 
 .gold-background {

@@ -11,7 +11,7 @@
 			<div class="pure-g hero-content-center center">
 				<div class="pure-u-1 hero-title hero-content">
 					<h1 style="font-size: 3.5em">{{ $class->title }}</h1>
-					<h2>{{ $class->date }}</h2>
+					<h2>{{ $class->date }} - {{ $class->end_date->format('g:ia') }}</h2>
 				</div>
 
 				<div class="pure-u-1 news-item">
