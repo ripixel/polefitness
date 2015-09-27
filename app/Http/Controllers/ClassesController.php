@@ -19,6 +19,7 @@ use App\Payment_Method;
 use App\User_Membership;
 use DB;
 use Carbon\Carbon;
+use Auth;
 
 class ClassesController extends Controller
 {

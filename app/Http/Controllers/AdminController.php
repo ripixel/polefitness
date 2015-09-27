@@ -13,6 +13,7 @@ use App\Transaction;
 use App\Location;
 use App\Membership;
 use Input;
+use Auth;
 
 class AdminController extends Controller
 {

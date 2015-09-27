@@ -9,6 +9,7 @@ use Redirect;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Transaction;
+use Auth;
 
 class TransactionsController extends Controller
 {	

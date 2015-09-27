@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="pure-u-1 hero-content hero-content-center center">
 				<img src="img/logo-white.png" class="main-logo" /><br />
-				<h2>The greatest Pole Fitness Society on the planet. Probably.</h2>
+				<h2>Practice make <em>pole</em>fect.</h2>
 				<h3>There are <strong>{{ $classes_available }}</strong> classes happening this week</h3>
 				<br />
 				<a href="{{ action('ClassesController@index') }}" class="button" style="margin-bottom: 10px;"><i class="fa fa-calendar" style="margin-right: 10px;"></i> Book your place now</a>
@@ -25,8 +25,8 @@
 
 	<div style="background: #fff;">
 		<div class="home-2 center container">
-			<h1>The best way to work out and have fun</h1>
-			<p>Some sub-text about why it's awesome to be a pole fitness-goer whatchamacallit</p>
+			<h1>The best way to work out and have fun!</h1>
+			<p>No matter what age, gender or ability you're always welcome at pole</p>
 		</div>
 	</div>
 
@@ -39,10 +39,10 @@
 				</div>
 
 				<div class="pure-u-1 hero-content">
-					<h2>How do you start the best pole fitness society in the north? With balls.</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda consequatur debitis dolorem earum eligendi esse fuga illo odit, officiis provident, quae quas qui quod rerum totam voluptas voluptatibus? Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab ad alias amet at aut, blanditiis deleniti dignissimos dolorem facilis in, nam quae quam sequi similique suscipit tempore totam voluptates.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, nisi temporibus! Ab aliquid error nemo quasi reprehenderit sapiente sit. Consequatur in itaque perspiciatis reiciendis repellendus, tempora! Esse neque omnis rerum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda atque debitis, ea eos facere fuga, in ipsum minus non omnis porro possimus praesentium quidem quisquam recusandae reprehenderit rerum, tempore.</p>
+					<p>We have been a society at the University of Sheffield for around 4 years and are growing and improving every year. We started out as a small society of like-minded polers who wanted to share our passion with others. Since then we have grown and now have approximately 100 active members.</p>
+					<p>Pole fitness is an emerging sport which combines skills from many different disciplines, including gymnastics and dance, but it is not necessary to have any background in these to begin your pole journey. Many people believe that you need to have upper body strength and a good level of fitness to be able to do pole - this is not true! You will develop upper body strength and fitness on your pole journey, along with great friends.</p>
+					<p>The most important thing to remember about pole fitness is to enjoy your journey.
+</p>
 					<a href="#committee" class="button"><i class="fa fa-group" style="margin-right: 10px;"></i> Meet the committee</a>
 				</div>
 			</div>
@@ -52,16 +52,8 @@
 	<div class="gold-background">
 		<div class="home-4 center container">
 			<div class="quote">
-				<h1>"It's the best thing I've ever signed up for!"</h1>
+				<h1>"Practice make <em>pole</em>fect."</h1>
 				<p>Beth Parsons</p>
-			</div>
-			<div class="quote">
-				<h1>"I've made the best friends I've ever had, and I fancy them all!"</h1>
-				<p>Horny Henry</p>
-			</div>
-			<div class="quote">
-				<h1>"There's something so rewarding about wrapping my thighs around a hard stiff greasy pole"</h1>
-				<p>Ben Hawker</p>
 			</div>
 		</div>
 	</div>
@@ -72,14 +64,14 @@
 			<div class="pure-g hero-content-center center">
 				<div class="pure-u-1 hero-content">
 					<h1 style="font-size: 3.5em">Meet your committee</h1>
-					<h3>They're pretty awesome, and pretty... well, pretty.</h3>
+					<h3>Feel free to contact any committee member or message us on our <a href="https://www.facebook.com/UniversityOfSheffieldPoleFitnessSociety?fref=ts" target="_blank">facebook page</a></h3>
 				</div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-1.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-12.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Bethany Parsons</h3>
 						<p>President</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<p><a href="http://www.twitter.com/bthnyprsns"><i class="fa fa-twitter"></i></a> <a href="https://www.facebook.com/bethanyparsons95"><i class="fa fa-facebook"></i></a> <a href="http://www.instagram.com/bthnyprsns"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
@@ -95,19 +87,17 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-19.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Sophie Fisk</h3>
 						<p>Treasurer</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-11.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Lara Natalia</h3>
-						<p>Social Secretary</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<h3>Victoria Holloway</h3>
+						<p>Kit Secretary</p>
 					</div>
 				</div>
 
@@ -122,11 +112,10 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-14.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Maria Moller Carter</h3>
+						<h3>Maria Moller-Carter</h3>
 						<p>Publicity Officer</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
@@ -139,57 +128,53 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-15.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Jingle Ng Jing Le</h3>
-						<p>Inclusions Officer</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<h3>Sharon Salt</h3>
+						<p>Media Officer</p>
+						<p><a href="http://www.twitter.com/sharonsalt"><i class="fa fa-twitter"></i></a> <a href="http://www.instagram.com/sharonsalt"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-10.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Teresa Liew</h3>
 						<p>Events Officer</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<p><a href="#"><a href="http://www.instagram.com/heartnapped"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-16.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Amy Spicer</h3>
 						<p>Tour Secretary</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-8.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-13.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Emma Brudenell</h3>
 						<p>Tour Secretary</p>
-						<p><a href="http://www.instagram.com/emmabrudenell03"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-17.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Janice Yip</h3>
-						<p>Competitions Secretary</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
+						<p>Competitions Secretary</p><a href="http://www.instagram.com/janiceyipp"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-20.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Georgina Hunt</h3>
 						<p>Competitions Secretary</p>
-						<p><a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
@@ -200,6 +185,15 @@
 						<h3>Maddie Sinclair</h3>
 						<p>Charities Officer</p>
 						<p><a href="http://www.twitter.com/maddiesinc"><i class="fa fa-twitter"></i></a> <a href="http://www.instagram.com/maddiesinc"><i class="fa fa-instagram"></i></a></p>
+					</div>
+				</div>
+
+				<div class="pure-u-1-8 spacer"></div>
+
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-18.jpg') no-repeat center center; background-size: cover;">
+					<div class="committee-member-desc">
+						<h3>Harriet Fisher</h3>
+						<p>Fundraising Officer</p>
 					</div>
 				</div>
 			</div>

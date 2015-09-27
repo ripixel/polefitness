@@ -10,6 +10,7 @@ use App\Http\Requests\NewsRequest;
 use App\Http\Controllers\Controller;
 use App\Blog_Item;
 use App\User;
+use Auth;
 
 class NewsController extends Controller
 {

@@ -9,6 +9,7 @@ use Redirect;
 use App\Http\Requests\LocationRequest;
 use App\Http\Controllers\Controller;
 use App\Location;
+use Auth;
 
 class LocationController extends Controller
 {

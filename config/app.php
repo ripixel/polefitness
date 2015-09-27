@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost/polefitness',
+    'url' => 'http://www.uospolefitness.co.uk',
 
     /*
     |--------------------------------------------------------------------------
