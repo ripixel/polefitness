@@ -16,7 +16,6 @@ use App\Membership;
 use App\User_Membership;
 use App\Transaction;
 use App\Payment_Method;
-use Auth;
 
 class UserController extends Controller
 {
