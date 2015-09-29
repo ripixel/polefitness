@@ -59,7 +59,7 @@
 							<p><strong>Attendees {{ $class->attendees->count() }}/{{ $class->places_available }}:</strong></p>
 							<div class="pure-g">
 							@forelse($class->attendees as $attendee)
-								<img class="attendee-img pure-u-1-12 square" src="{{ $attendee->picture_link }}" alt="{{ $attendee->fullname() }}'s picture'" title="{{ $attendee->fullname() }}" />
+								<img class="attendee-img pure-u-1-12 square" src="{{ $attendee->picture_link_default() }}" alt="{{ $attendee->fullname() }}'s picture'" title="{{ $attendee->fullname() }}" />
 							@empty
 								<p class="pure-u-1">Be the first to sign up - <strong>book now!</strong>
 							@endforelse

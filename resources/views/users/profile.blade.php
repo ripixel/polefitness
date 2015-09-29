@@ -15,7 +15,7 @@
 
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
-						<div class="news-image pure-u-1-4" style="background: url('{{ $user->picture_link }}') no-repeat center center; background-size: cover;">
+						<div class="news-image pure-u-1-4" style="background: url('{{ $user->picture_link_default() }}') no-repeat center center; background-size: cover;">
 								<div class="news-overlay"><a class="button" href="{{ action('HomeController@doLogout') }}">Logout</a></div>
 						</div>
 						<div class="news-snippet pure-u-3-4">

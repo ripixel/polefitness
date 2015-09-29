@@ -69,6 +69,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function classes_attending() {
         return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
     }
+    
+    public function picture_link_default() {
+        if($this->picture_link == null || $this->picture_link == "") {
+            return "http://www.uospolefitness.co.uk/img/profile.png";
+        } else {
+            return $this->picture_link;
+        }
+    }
 	
 	public function getFullnameAttribute() {
 		return $this->fullname();
