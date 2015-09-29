@@ -72,7 +72,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     
     public function picture_link_default() {
         if($this->picture_link == null || $this->picture_link == "") {
-            return "http://www.uospolefitness.co.uk/img/profile.png";
+            return "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=" . urlencode( "http://www.uospolefitness.co.uk/img/profile.png" ) . "&s=" . 200;
         } else {
             return $this->picture_link;
         }

@@ -39,7 +39,7 @@
 							</p>
 							
 							<p>
-								{!! Form::label('picture_link','Picture URL') !!}
+								{!! Form::label('picture_link','Picture URL') !!} - <em>If you have a <a href="https://en.gravatar.com/">Gravatar</a>, that will be used if this is left blank</em>
 								{!! Form::text('picture_link', null, ['class' => 'pure-input-1']) !!}
 							</p>
 							
