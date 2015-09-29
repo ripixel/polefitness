@@ -29,7 +29,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									@foreach($user->transactions as $transaction)
+									@foreach($user->transactions()->orderBy('created_at','desc')->get() as $transaction)
 											<tr>
 												<td>{{ $transaction->created_at }}</td>
 												<td>{{ $transaction->name }}</td>
