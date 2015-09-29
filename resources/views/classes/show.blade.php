@@ -26,7 +26,11 @@
 											<a class="button button-disabled">Too early to book</a>	
 										@endif
 									@else
-										<a class="button button-disabled">You are already attending</a>
+										@if($class->date < Carbon\Carbon::now()->addDay())
+											<a class="button button-disabled">You are already attending</a>
+										@else
+											<a class="button button-red confirmDelete" data-confirmmessage="Are you sure you want to remove yourself from this class?" href="{{ action('ClassesController@removeFromClassPublic', $class->id) }}">Remove from Class</a>
+										@endif
 									@endif	
 								@else
 									<a class="button button-disabled">No More Spaces</a>

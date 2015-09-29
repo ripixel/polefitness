@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function() {
 	// Classes
 	Route::get('classes/{classe_id}', 'ClassesController@show');
 	Route::get('classes/{classe_id}/book', 'ClassesController@book');
+	Route::get('classes/{classe_id}/remove', 'ClassesController@removeFromClassPublic');
 	Route::get('classes/{classe_id}/book/membership/{membership_id}/', 'ClassesController@bookClassMembership');
 	Route::post('classes/book/purchase/membership', 'ClassesController@bookClassMembershipComplete');
 	Route::get('classes/{classe_id}/book/payment/{payment_method_id}/', 'ClassesController@bookClassPayment');
@@ -62,10 +63,12 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/classes/{classe_id}/edit/attendees', 'ClassesController@editAttendees');
 	Route::get('admin/classes/{classe_id}/rejectAttendee/{user_id}', 'ClassesController@rejectAttendee');
 	Route::get('admin/classes/{classe_id}/acceptAttendee/{user_id}', 'ClassesController@acceptAttendee');
-	
+	Route::get('admin/classes/{classe_id}/removeAttendee/{user_id}', 'ClassesController@removeFromClassAdmin');
 	
 	// Users Admin
 	Route::get('admin/users/{user_id}/edit', 'UserController@adminEdit');
+	Route::post('admin/users/grantMemberships', 'UserController@grantMembership');
+	Route::post('admin/users/removeMemberships', 'UserController@removeMembership');
 	Route::patch('admin/users/{user_id}', 'UserController@update');
 	Route::get('admin/users/{user_id}/transactions', 'UserController@adminTransactions');
 	Route::get('admin/users/{user_id}/classes', 'UserController@adminClasses');

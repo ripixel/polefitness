@@ -29,8 +29,9 @@
 						@else
 							<a href="{{ action('ClassesController@rejectAttendee', [$class->id, $attendee->id]) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to reject this user from the class?"><i class="fa fa-ban"></i> Reject</a>
 						@endif
+						<a href="{{ action('ClassesController@removeFromClassAdmin', [$class->id, $attendee->id]) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to remove this user from the class?"><i class="fa fa-ban"></i> Remove</a>
 					</td>
-					<td>{{ $attendee->fullname() }}</td>
+					<td><a href="{{ action('UserController@adminEdit', $attendee->id) }}" class="button">{{ $attendee->fullname() }}</a></td>
 					@if($attendee->pivot->rejected)
 						<td class="bad">Rejected</td>
 					@else

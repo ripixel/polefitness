@@ -109,6 +109,10 @@ class ClassesController extends Controller
         $class = Classe::findOrFail($id);
 		$user = Auth::user();
 		
+		if($class->date < Carbon::now()) {
+			return Redirect::to('classes')->with("bad", "You can't view this class - it's already happened!");
+		}
+		
 		return view('classes.show', compact('class','user'));
     }
 
@@ -122,6 +126,10 @@ class ClassesController extends Controller
     {
         $class = Classe::findOrFail($id);
 		$user = Auth::user();
+		
+		if($class->date < Carbon::now()) {
+			return Redirect::to('classes')->with("bad", "You can't view this class - it's already happened!");
+		}
 		
 		return view('classes.book', compact('class', 'user'));
     }
@@ -191,6 +199,7 @@ class ClassesController extends Controller
 		$class = Classe::findOrFail($id);
 		$class->all_attendees()->detach();
 		$class->payment_methods_allowed()->detach();
+		$class->memberships_allowed()->detach();
 		$class->delete();
 		
 		return Redirect::to('admin/classes')->with("good", "Successfully deleted class.");
@@ -236,6 +245,7 @@ class ClassesController extends Controller
 			->where('transactions.successful','=',1)
 			->where('user_memberships.membership_id','=', $request->membership_id)
 			->where('user_memberships.user_id','=', $user->id)
+			->where('user_memberships.spaces_left','>',0)
 			->select('user_memberships.id')->first();
 			
 		$user_membership = User_Membership::findOrFail($user_membership_id->id);
@@ -246,6 +256,7 @@ class ClassesController extends Controller
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now(),
 			'used_free_space' => 1,
+			'user_membership_id' => $user_membership->id,
 			'rejected' => 0
 		]);
 		
@@ -297,5 +308,47 @@ class ClassesController extends Controller
 		]);
 		
 		return view('classes.show', compact('class','user'));
+	}
+	
+	public function removeFromClassPublic($classe_id) {
+		
+		$user = Auth::user();
+		$class = Classe::findOrFail($classe_id);
+		
+		$this->doRemoveFromClass($class, $user);
+		
+		return Redirect::back()->with("good", "Successfully removed from class.");
+	}
+	
+	public function removeFromClassAdmin($classe_id, $user_id) {
+		
+		$user = User::findOrFail($user_id);
+		$class = Classe::findOrFail($classe_id);
+		
+		$this->doRemoveFromClass($class, $user);
+		
+		return Redirect::back()->with("good", "Successfully removed from class.");
+	}
+	
+	private function doRemoveFromClass($class, $user) {
+		$classe_user_row = DB::table('classe_user')
+			->where('classe_id','=',$class->id)
+			->where('user_id','=',$user->id)
+			->select('transaction_id', 'used_free_space', 'user_membership_id')
+			->first();
+			
+		DB::table('classe_user')
+			->where('classe_id','=',$class->id)
+			->where('user_id','=',$user->id)
+			->delete();
+		
+		if($classe_user_row->used_free_space == True) {
+			$user_membership = User_Membership::findOrFail($classe_user_row->user_membership_id);
+			$user_membership->spaces_left = $user_membership->spaces_left + 1;
+			$user_membership->save();
+		} else {
+			$transaction = Transaction::findOrFail($classe_user_row->transaction_id);
+			$transaction->delete();
+		}
 	}
 }

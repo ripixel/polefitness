@@ -27,7 +27,7 @@
 									</tr>
 								</thead>
 								<tbody>
-							@foreach($user->user_memberships as $user_membership)
+							@foreach($user->user_memberships()->orderBy('created_at', 'desc')->get() as $user_membership)
 									<tr>
 										<td><strong>{{ $user_membership->membership->name }}</strong></td>
 										<td>{{ $user_membership->created_at }}</td>
