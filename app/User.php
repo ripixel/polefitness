@@ -63,6 +63,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
 			->where('transactions.successful','=',1)
 			->where('user_memberships.membership_id','=', $membership_id)
+			->where('user_memberships.user_id','=',$this->id)
 			->sum('user_memberships.spaces_left');
 	}
 
