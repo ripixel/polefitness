@@ -12,6 +12,7 @@
 				<div class="pure-u-1 hero-title hero-content">
 					<h1 style="font-size: 3.5em">Login</h1>
 					<h3><a href="{{ action('HomeController@showRegister') }}" class="button">Not got an account?</a></h3>
+					<h3><a href="{{ action('HomeController@showForgotten') }}" class="button">Forgotten your Password?</a></h3>
 				</div>
 
 				<div class="pure-u-1 news-item">

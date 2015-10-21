@@ -39,6 +39,11 @@
 								{!! Form::text('picture_link', null, ['class' => 'pure-input-1']) !!}
 							</p>
 							
+							<p>
+								{!! Form::label('password_input','Enter a new password to change it') !!}
+								{!! Form::password('password_input', ['class' => 'pure-input-1']) !!}
+							</p>
+							
 							{!! Form::submit('Update Information', ['class' => 'button button-on-white']) !!}
 							{!! Form::close() !!}
 						</div>

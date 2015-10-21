@@ -157,6 +157,10 @@ class UserController extends Controller
         $user = Auth::user();
 		$user->fill($request->all());
 		
+		if($request->password_input != '') {
+			$user->password = bcrypt($request->password_input);
+		}
+		
 		$user->save();
 		
 		return Redirect::back()->with("good", "Successfully updated user");

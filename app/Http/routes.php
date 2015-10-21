@@ -24,6 +24,9 @@ Route::get('register', 'HomeController@showRegister');
 Route::get('logout', 'HomeController@doLogout');
 Route::post('login', 'HomeController@doLogin');
 Route::get('login', 'HomeController@showLogin');
+Route::get('forgotten', 'HomeController@showForgotten');
+Route::post('forgotten', 'HomeController@doForgotten');
+Route::get('forgotten/{token}', 'HomeController@doPasswordReset');
 Route::get('home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 
