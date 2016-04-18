@@ -24,7 +24,7 @@ a {
     position: fixed;
     top: 0;
     z-index: 100;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
 }
 
 .navbar a {
@@ -250,6 +250,10 @@ a {
 	background: #fff;
     border-color: #333;
     color: #333;
+}
+
+.button-pad-vertical {
+	margin-top: 5px;
 }
 
 .button:hover {

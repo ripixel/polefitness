@@ -25,21 +25,20 @@
 									@if($class->memberships_allowed->count() > 0)
 										@php $booking_methods = True;
 										<p>There are currently {{ $class->places_available - $class->attendees->count() }} spaces available for this class.</p>
-
-										<p>The following membership bundles are accepted to book onto this class:</p>
+										<p>The following pass types are accepted to book onto this class:</p>
 										@php $has_membership = False;
 										@foreach($class->memberships_allowed as $membership)
 											@php $spaces_left = $user->membership_spaces_left($membership->id)
 											@if($spaces_left > 0)
-												<a href="{{ action('ClassesController@bookClassMembership', [$class->id, $membership->id]) }}" class="button button-on-white"><strong>{{ $membership->name }}</strong> - {{ $spaces_left }} free spaces remaining</a>
+												<a href="{{ action('ClassesController@bookClassMembership', [$class->id, $membership->id]) }}" class="button button-on-white button-pad-vertical"><strong>{{ $membership->name }}</strong> - Book using one of your {{ $spaces_left }} remaining passes of this type</a><br />
 											@else
-												<a class="button button-on-white button-disabled"><strong>{{ $membership->name }}</strong> - No free spaces remaining</a>
+												<a class="button button-on-white button-disabled button-pad-vertical"><strong>{{ $membership->name }}</strong> - You do not own any of this pass type</a><br />
 											@endif
 										@endforeach
 
 										@if(!$has_membership)
-											<p>You do not currently have any free spaces available for use.</p>
-											<a href="{{ action('UserController@memberships') }}" class="button button-on-white">Sign up for a new membership</a>
+											<p>Alternatively, you can sign up for more class passes by clicking below:</p>
+											<a href="{{ action('UserController@memberships') }}" class="button button-on-white">Sign up for a new pass bundle</a>
 										@endif
 									@endif
 
@@ -53,11 +52,11 @@
 										</strong></p>
 										<p>The following payment methods are accepted to book onto this class:</p>
 										@foreach($class->payment_methods_allowed as $payment_method)
-											<a href="{{ action('ClassesController@bookClassPayment', [$class->id, $payment_method->id]) }}" class="button button-on-white">Pay by <strong>{{ $payment_method->name }}</strong></a>
+											<a href="{{ action('ClassesController@bookClassPayment', [$class->id, $payment_method->id]) }}" class="button button-on-white button-pad-vertical">Pay by <strong>{{ $payment_method->name }}</strong></a>
 										@endforeach
 									@else
 										@if($booking_methods)
-											<p>The only way to be able to book onto this class is by having a membership.</p>
+											<p>The only way to be able to book onto this class is by having an eligible class pass.</p>
 										@else
 											<h2>Oops!</h2>
 											<p>It looks like this class has no way to pay for it! Please contact the University of Sheffield Pole Fitness Society committee and let them know.</p>

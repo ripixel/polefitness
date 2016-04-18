@@ -30,17 +30,17 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990;">
 					<div class="committee-member-desc">
-						<h3>Memberships</h3>
-						<p>See your current memberships, and buy more.</p>
-						<p><a class="button" href="{{ action('UserController@memberships') }}">View Memberships</a></p>
+						<h3>Passes</h3>
+						<p>See your current passes, and buy more.</p>
+						<p><a class="button" href="{{ action('UserController@memberships') }}">View Passes</a></p>
 					</div>
 				</div>
-				
+
 				<div class="pure-u-1-8 spacer"></div>
-				
+
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990;">
 					<div class="committee-member-desc">
 						<h3>Classes</h3>
@@ -48,9 +48,9 @@
 						<p><a class="button" href="{{ action('UserController@classes') }}">View Classes</a></p>
 					</div>
 				</div>
-				
+
 				<div class="pure-u-1-8 spacer"></div>
-				
+
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990;">
 					<div class="committee-member-desc">
 						<h3>Transactions</h3>
@@ -58,7 +58,7 @@
 						<p><a class="button" href="{{ action('UserController@transactions') }}">View Transactions</a></p>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-	Your Memberships | UoS Pole Fitness Society
+	Your Passes | UoS Pole Fitness Society
 @endsection
 
 @section('content')
@@ -10,17 +10,17 @@
 		<div class="container">
 			<div class="pure-g hero-content-center center">
 				<div class="pure-u-1 hero-title hero-content">
-					<h1 style="font-size: 3.5em">Your Memberships</h1>
+					<h1 style="font-size: 3.5em">Your Passes</h1>
 				</div>
 
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
-						<div class="news-snippet center pure-u-1">							
-							<h2>Memberships Purchased</h2>
+						<div class="news-snippet center pure-u-1">
+							<h2>Passes Purchased</h2>
 							<table class="public-table pure-table pure-table-striped pure-table-horizontal">
 								<thead>
 									<tr>
-										<th>Membership</th>
+										<th>Type</th>
 										<th>Purchased</th>
 										<th>Payment Status</th>
 										<th>Free Spaces Remaining</th>
@@ -37,15 +37,15 @@
 							@endforeach
 								</tbody>
 							</table>
-							
-							<h2>Purchase Memberships</h2>
+
+							<h2>Purchase Passes</h2>
 							@foreach($memberships as $membership)
-								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white"><strong>{{ $membership->name }}</strong> - {{ sprintf('£%01.2f', $membership->cost) }} - {{ $membership->free_classes }} free classes</a><br/>
+								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white"><strong>{{ $membership->name }}</strong> - {{ sprintf('£%01.2f', $membership->cost) }} - {{ $membership->free_classes }} passes</a><br/>
 							@endforeach
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

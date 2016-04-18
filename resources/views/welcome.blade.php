@@ -11,7 +11,7 @@
 		<div class="container">
 			<div class="pure-u-1 hero-content hero-content-center center">
 				<img src="img/logo-white.png" class="main-logo" /><br />
-				<h2>Practice make <em>pole</em>fect.</h2>
+				<h2>Practice makes <em>pole</em>fect.</h2>
 				<h3>There are <strong>{{ $classes_available }}</strong> classes happening this week</h3>
 				<br />
 				<a href="{{ action('ClassesController@index') }}" class="button" style="margin-bottom: 10px;"><i class="fa fa-calendar" style="margin-right: 10px;"></i> Book your place now</a>

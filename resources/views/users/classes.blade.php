@@ -38,7 +38,7 @@
 											<td class="good">Accepted</td>
 										@endif
 										@if($class->pivot->used_free_space)
-											<td class="good">Used Membership Space</td>
+											<td class="good">Used Class Pass</td>
 											<td></td>
 										@else
 											@php $transaction = \App\Transaction::findOrFail($class->pivot->transaction_id)
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>

@@ -19,19 +19,19 @@
 							<h2>Booking Details</h2>
 							<p>Here are the details for your booking:</p>
 							<p><strong>Class:</strong> {{ $class->title }} on {{ $class->date }}</p>
-							<p><strong>Membership:</strong> {{ $membership->name }}</p>
+							<p><strong>Pass Type:</strong> {{ $membership->name }}</p>
 							{!! Form::open(['method' => 'POST', 'url' => action('ClassesController@bookClassMembershipComplete'), 'class' => 'pure-form', 'style' => 'padding: 0;']) !!}
-							
+
 							{!! Form::hidden('membership_id', $membership->id) !!}
 							{!! Form::hidden('classe_id', $class->id) !!}
-							
+
 							{!! Form::submit('Book Onto Class', ['class' => 'button button-on-white pure-input-1', 'style' => 'margin-top: 10px;']) !!}
-							
+
 							{!! Form::close() !!}
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -40,7 +40,7 @@
 @section('javascript')
 	<script src="{{ URL::asset('js/select2.min.js') }}"></script>
 	<script type="text/javascript">
-		$(function() {		
+		$(function() {
 			$(".select2").select2();
 		});
 	</script>

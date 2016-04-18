@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-	Your Memberships | UoS Pole Fitness Society
+	Your Passes | UoS Pole Fitness Society
 @endsection
 
 @section('content')
@@ -20,13 +20,13 @@
 							<p>Your purchase has been complete, and is now awaiting payment.</p>
 							<p><strong>Transaction ID:</strong> {{ $transaction->id }}</p>
 							<p><strong>Transaction Date:</strong> {{ $transaction->created_at }}</p>
-							<p><strong>Membership Purchased:</strong> {{ $membership->name }}</p>
+							<p><strong>Passes Purchased:</strong> {{ $membership->name }}</p>
 							<p><strong>Payment Method:</strong> {{ $transaction->payment_method->name }}</p>
 							<p><strong>Total Amount:</strong> {{ sprintf('£%01.2f', $transaction->amount ) }}</p>
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
