@@ -13,6 +13,8 @@ function newsSquarify() {
 }
 
 $(function() {
-	squarify();
-	newsSquarify();
+	if ($(document).width() > 768) {
+		squarify();
+		newsSquarify();
+	}
 });

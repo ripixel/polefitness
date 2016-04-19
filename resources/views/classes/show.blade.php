@@ -16,14 +16,14 @@
 
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
-						<div class="news-image pure-u-1-4" style="background: url('{{ $class->picture_link}}') no-repeat center center; background-size: cover;">
+						<div class="news-image pure-u-1 pure-u-md-1-4" style="background: url('{{ $class->picture_link}}') no-repeat center center; background-size: cover;">
 							<div class="news-overlay">
 								@if($class->attendees->count() < $class->places_available)
 									@if($class->attendees->contains($user) == FALSE)
 										@if($class->date < Carbon\Carbon::now()->addWeek())
 											<a class="button" href="{{ action('ClassesController@book', $class->id) }}">Book Now</a>
 										@else
-											<a class="button button-disabled">Too early to book</a>	
+											<a class="button button-disabled">Too early to book</a>
 										@endif
 									@else
 										@if($class->date < Carbon\Carbon::now()->addDay())
@@ -31,14 +31,14 @@
 										@else
 											<a class="button button-red confirmDelete" data-confirmmessage="Are you sure you want to remove yourself from this class?" href="{{ action('ClassesController@removeFromClassPublic', $class->id) }}">Remove from Class</a>
 										@endif
-									@endif	
+									@endif
 								@else
 									<a class="button button-disabled">No More Spaces</a>
 								@endif
 							</div>
 						</div>
-						<div class="news-snippet pure-u-3-4">
-							
+						<div class="news-snippet pure-u-1 pure-u-md-3-4">
+
 							@if($class->date > Carbon\Carbon::now()->addWeek())
 								<h2>It's too early to book onto this class - check back in {{ $class->date->diffInDays(Carbon\Carbon::now()->addWeek()) }} days</h2>
 							@else
@@ -70,15 +70,15 @@
 
 				<div class="pure-u-1 news-item">
 					<div class="pure-g">
-						<div class="news-image pure-u-1-4" style="background: url('{{ $class->location->picture_link}}') no-repeat center center; background-size: cover;">
+						<div class="news-image pure-u-1 pure-u-md-1-4" style="background: url('{{ $class->location->picture_link}}') no-repeat center center; background-size: cover;">
 						</div>
-						<div class="news-snippet pure-u-3-4">
+						<div class="news-snippet pure-u-1 pure-u-md-3-4">
 							<h2>Where</h2>
 							{{ $class->location->address}}
 							<iframe frameborder="0" style="margin-top: 20px; display: block; width: 100%; height: 250px; border:0" src="https://www.google.com/maps/embed/v1/place?q={{ urlencode($class->location->address) }}&key=AIzaSyD-aVlLaCEDnlgq2BqYc54UtJ94cOypfVU" allowfullscreen></iframe>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
