@@ -18,6 +18,7 @@ class CreateMembershipsTable extends Migration
             $table->double('cost', 5,2);
 			$table->integer('free_classes');
 			$table->boolean('active')->default(1);
+			$table->boolean('includes_membership')->default(0);
             $table->timestamps();
         });
     }
