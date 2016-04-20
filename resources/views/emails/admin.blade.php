@@ -16,6 +16,7 @@
 				<th></th>
 				<th>Name</th>
 				<th>Subject</th>
+				<th>Sent To</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,6 +25,7 @@
 					<td><a href="{{ action('EmailsController@edit', $email->id) }}" class="button button-with-icon"><i class="fa fa-pencil"></i> Edit</a></td>
 					<td>{{ $email->name }}</td>
 					<td>{{ $email->subject }}</td>
+					<td>{{ $email->sent_to }}</td>
 				</tr>
 			@endforeach
 		</tbody>

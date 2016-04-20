@@ -1,5 +1,6 @@
 <div>
 <h3>{{ $email->name}} Template</h3>
+<p style="margin-top: -10px;"><em>Sent to <strong>{{ $email->sent_to }}</strong></em></p>
 </div>
 
 <div>

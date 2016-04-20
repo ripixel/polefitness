@@ -18,6 +18,7 @@ class CreateEmailsTable extends Migration
 			$table->string('tags_available');
 			$table->string('subject');
 			$table->text('content');
+            $table->string('sent_to');
             $table->timestamps();
         });
     }
