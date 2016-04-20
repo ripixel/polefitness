@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Redirect;
-use Mail;
+use App\Helpers\EmailHelper;
 
 use App\Http\Requests;
 use App\Http\Requests\RegisterRequest;
@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Classe;
 use App\User;
 use App\Token;
+use App\Email;
 use Auth;
 use Carbon\Carbon;
 
@@ -50,11 +51,13 @@ class HomeController extends Controller
 			$token->type = "Password Reset";
 			$user->tokens()->save($token);
 
-			Mail::send('emails.passwordreset', ['token' => $token->token], function ($m) use ($user) {
-				$m	->to($user->email, $user->fullname)
-					->subject('UoS Pole Fitness Society Password Reset')
-					->from('noreply@uospolefitness.co.uk', 'UoS Pole Fitness Society');
-			});
+			$tags = [
+				"token" => $token->token,
+				"first_name" => $user->first_name,
+				"last_name" => $user->last_name
+			];
+
+			EmailHelper::sendEmail(Email::PASSWORD_RESET, $tags, $user->email);
 		}
 
 		return Redirect::to('home')->with("good","Please check your inbox for an email from us.");

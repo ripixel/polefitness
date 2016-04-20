@@ -95,8 +95,21 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/locations/{location_id}/edit', 'LocationController@edit');
 	Route::patch('admin/locations/{location_id}', 'LocationController@update');
 
-	// Admin
+	// News Admin
+	Route::get('admin/news/new', 'NewsController@create');
+	Route::post('admin/news/save', 'NewsController@store');
+	Route::get('admin/news/{news_id}/edit', 'NewsController@edit');
+	Route::patch('admin/news/{news_id}', 'NewsController@update');
+	Route::delete('admin/news/{news_id}', 'NewsController@destroy');
+
+	// Email Admin
+	Route::get('admin/emails/{email_id}/edit', 'EmailsController@edit');
+	Route::patch('admin/emails/{email_id}', 'EmailsController@update');
+
+	// ADMIN CONTROLS
 	Route::get('admin', 'AdminController@index');
+	// Emails
+	Route::get('admin/emails', 'AdminController@emails');
 	// News
 	Route::get('admin/news', 'AdminController@news');
 	Route::get('admin/news/mine', 'AdminController@newsMine');
@@ -128,11 +141,4 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/users/emails', 'UserController@emailDump');
 	// Other
 	Route::get('admin/locations', 'AdminController@locations');
-
-	// News Admin
-	Route::get('admin/news/new', 'NewsController@create');
-	Route::post('admin/news/save', 'NewsController@store');
-	Route::get('admin/news/{news_id}/edit', 'NewsController@edit');
-	Route::patch('admin/news/{news_id}', 'NewsController@update');
-	Route::delete('admin/news/{news_id}', 'NewsController@destroy');
 });

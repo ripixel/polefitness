@@ -12,6 +12,7 @@ use App\Blog_Item;
 use App\Transaction;
 use App\Location;
 use App\Membership;
+use App\Email;
 use Input;
 use Auth;
 
@@ -72,6 +73,14 @@ class AdminController extends Controller
 		$classes = $user->classes_supervising()->orderBy('created_at','desc')->get();
 
 		return view('classes.admin', compact('classes', 'subtitle'));
+	}
+
+	public function emails() {
+
+		$subtitle = "Showing All Email Templates";
+		$emails = Email::orderBy('name','desc')->get();
+
+		return view('emails.admin', compact('emails', 'subtitle'));
 	}
 
 	public function news() {
