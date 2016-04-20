@@ -17,6 +17,7 @@ use App\Membership;
 use App\User_Membership;
 use App\Transaction;
 use App\Payment_Method;
+use App\Helpers\EmailHelper;
 
 use DB;
 
@@ -195,6 +196,7 @@ class UserController extends Controller
 		$user = Auth::user();
 
 		$membership = Membership::findOrFail($request->membership_id);
+		$payment_method = Payment_Method::findOrFail($request->payment_method_id);
 
 		$transaction = new Transaction();
 		$transaction->payment_method_id = $request->payment_method_id;
@@ -209,6 +211,17 @@ class UserController extends Controller
 		$user_membership->transaction_id = $transaction->id;
 		$user_membership->spaces_left = $membership->free_classes;
 		$user->user_memberships()->save($user_membership);
+
+		$tags = [
+			"first_name" => $user->first_name,
+			"last_name" => $user->last_name,
+			"transaction_name" => $transaction->name,
+			"transaction_description" => $transaction->description,
+			"transaction_amount" => sprintf('£%01.2f', $transaction->amount),
+			"payment_method" => $transaction->payment_method->name
+		];
+
+		EmailHelper::sendEmail(EmailHelper::PURCHASE_COMPLETE, $tags, $user->email);
 
 		return view('users.purchase_membership_complete', compact('user', 'transaction', 'membership'));
 	}
@@ -233,6 +246,8 @@ class UserController extends Controller
 		$user_membership->spaces_left = $request->spaces_to_change;
 		$user->user_memberships()->save($user_membership);
 
+		$this->emailAdminActionComplete($user, $transaction);
+
 		return Redirect::back()->with("good", "Successfully granted " . $request->spaces_to_change . " memberships.");
 
 	}
@@ -243,7 +258,7 @@ class UserController extends Controller
 
 		$spaces_left = $user->membership_spaces_left($request->membership_id);
 		if($spaces_left < $request->spaces_to_change) {
-			return Redirect::back()->with("bad", "You cannot remove more memberships than the user currently has (" . $spaces_left . ").");
+			return Redirect::back()->with("bad", "You cannot remove more passes than the user currently has (currently " . $spaces_left . " passes left of that type).");
 		}
 
 		$membership = Membership::findOrFail($request->membership_id);
@@ -274,7 +289,21 @@ class UserController extends Controller
 		$transaction->successful = 1;
 		$user->transactions()->save($transaction);
 
+		$this->emailAdminActionComplete($user, $transaction);
+
 		return Redirect::back()->with("good", "Successfully removed " . $request->spaces_to_change . " memberships.");
 
+	}
+
+	private function emailAdminActionComplete($user, $transaction) {
+		$tags = [
+			"first_name" => $user->first_name,
+			"last_name" => $user->last_name,
+			"transaction_name" => $transaction->name,
+			"transaction_description" => $transaction->description,
+			"transaction_amount" => sprintf('£%01.2f', $transaction->amount)
+		];
+
+		EmailHelper::sendEmail(EmailHelper::ADMIN_ACTION_COMPLETE, $tags, $user->email);
 	}
 }
