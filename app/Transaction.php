@@ -41,6 +41,7 @@ class Transaction extends Model
 	public function status() {
 		if($this->successful) return "Paid";
 		if($this->failed) return "Failed";
+		if($this->strike) return "Strike";
 		if($this->resolved) return "Resolved";
 		return "Awaiting Payment";
 	}
@@ -48,6 +49,7 @@ class Transaction extends Model
 	public function goodBadStatus() {
 		if($this->successful) return "good";
 		if($this->failed) return "bad";
+		if($this->strike) return "bad";
 		if($this->resolved) return "good";
 		return "bold";
 	}
@@ -56,6 +58,7 @@ class Transaction extends Model
 		$this->successful = 0;
 		$this->resolved = 0;
 		$this->failed = 0;
+		$this->strike = 0;
 		$this->save();
 	}
 
@@ -63,6 +66,7 @@ class Transaction extends Model
 		$this->successful = 1;
 		$this->resolved = 0;
 		$this->failed = 0;
+		$this->strike = 0;
 		$this->save();
 	}
 
@@ -70,6 +74,7 @@ class Transaction extends Model
 		$this->successful = 0;
 		$this->resolved = 1;
 		$this->failed = 0;
+		$this->strike = 0;
 		$this->save();
 	}
 
@@ -77,6 +82,15 @@ class Transaction extends Model
 		$this->successful = 0;
 		$this->resolved = 0;
 		$this->failed = 1;
+		$this->strike = 0;
+		$this->save();
+	}
+
+	public function markStrike() {
+		$this->successful = 0;
+		$this->resolved = 0;
+		$this->failed = 0;
+		$this->strike = 1;
 		$this->save();
 	}
 
@@ -88,6 +102,10 @@ class Transaction extends Model
 		$query->where('failed','=',1);
 	}
 
+	public function scopeStrike($query) {
+		$query->where('strike','=',1);
+	}
+
 	public function scopeResolved($query) {
 		$query->where('resolved','=',1);
 	}
@@ -95,6 +113,7 @@ class Transaction extends Model
 	public function scopeAwaiting($query) {
 		$query->where('resolved','=',0)
 			->where('successful','=',0)
-			->where('failed','=',0);
+			->where('failed','=',0)
+			->where('strike','=',0);
 	}
 }

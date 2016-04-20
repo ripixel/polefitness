@@ -79,6 +79,7 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	// Transactions Admin
 	Route::get('admin/transactions/{transaction_id}/edit/successful', 'TransactionsController@markSuccessful');
 	Route::get('admin/transactions/{transaction_id}/edit/failed', 'TransactionsController@markFailed');
+	Route::get('admin/transactions/{transaction_id}/edit/strike', 'TransactionsController@markStrike');
 	Route::get('admin/transactions/{transaction_id}/edit/resolved', 'TransactionsController@markResolved');
 	Route::get('admin/transactions/{transaction_id}/edit/awaiting', 'TransactionsController@markAwaiting');
 
@@ -111,6 +112,7 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/transactions/successful', 'AdminController@transactionsSuccessful');
 	Route::get('admin/transactions/awaiting', 'AdminController@transactionsAwaiting');
 	Route::get('admin/transactions/failed', 'AdminController@transactionsFailed');
+	Route::get('admin/transactions/strike', 'AdminController@transactionsStrike');
 	Route::get('admin/transactions/resolved', 'AdminController@transactionsResolved');
 	// Memberships
 	Route::get('admin/memberships', 'AdminController@memberships');

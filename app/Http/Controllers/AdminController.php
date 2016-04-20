@@ -115,6 +115,14 @@ class AdminController extends Controller
 		return view('transactions.admin', compact('transactions', 'subtitle'));
 	}
 
+	public function transactionsStrike() {
+
+		$subtitle = "Showing Strike Transactions";
+		$transactions = Transaction::Strike()->orderBy('created_at','desc')->get();
+
+		return view('transactions.admin', compact('transactions', 'subtitle'));
+	}
+
 	public function transactionsResolved() {
 
 		$subtitle = "Showing Resolved Transactions";

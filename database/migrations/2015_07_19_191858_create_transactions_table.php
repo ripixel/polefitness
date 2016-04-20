@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->double('amount');
             $table->boolean('successful');
             $table->boolean('failed');
+            $table->boolean('strike');
 			$table->boolean('resolved');
             $table->timestamps();
 

@@ -21,3 +21,9 @@
 @else
 	<a href="{{ action('TransactionsController@markFailed', $transaction->id) }}" class="button button-with-icon button-red confirmAction" data-confirmmessage="Are you sure you want to mark this payment as failed?"><i class="fa fa-times"></i> Failed</a>
 @endif
+
+@if($transaction->status() == 'Strike')
+	<a class="button button-with-icon button-red confirmAction button-red-selected"><i class="fa fa-exclamation-triangle"></i> Strike</a>
+@else
+	<a href="{{ action('TransactionsController@markStrike', $transaction->id) }}" class="button button-with-icon button-red confirmAction" data-confirmmessage="Are you sure you want to mark this payment as strike?"><i class="fa fa-exclamation-triangle"></i> Strike</a>
+@endif

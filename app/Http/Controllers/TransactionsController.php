@@ -34,6 +34,13 @@ class TransactionsController extends Controller
 		return Redirect::back()->with("good", "Successfully marked payment as failed.");
 	}
 
+	public function markStrike($id) {
+		$transaction = Transaction::findOrFail($id);
+		$transaction->markStrike();
+
+		return Redirect::back()->with("good", "Successfully marked payment as strike.");
+	}
+
 	public function markResolved($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markResolved();
