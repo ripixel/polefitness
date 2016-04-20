@@ -15,6 +15,7 @@
 				<th></th>
 				<th>Name</th>
 				<th>Status</th>
+				<th>Strikes</th>
 				<th>Signed Up</th>
 				<th>Payment</th>
 				<th>Payment Actions</th>
@@ -36,6 +37,12 @@
 						<td class="bad">Rejected</td>
 					@else
 						<td class="good">Accepted</td>
+					@endif
+					@php $strikes = $attendee->transactionsStrike()
+					@if($strikes > 0)
+						<td class="bad"><i class="fa fa-exclamation-triangle"></i> {{ $strikes }}</td>
+					@else
+						<td class="good">None</td>
 					@endif
 					<td>{{ $attendee->pivot->created_at }}</td>
 					@if($attendee->pivot->used_free_space)

@@ -30,7 +30,7 @@ class Classe extends Model
 
 	// regardless of approved/rejected status
     public function all_attendees() {
-        return $this->belongsToMany('App\User')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
+        return $this->belongsToMany('App\User')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id')->orderBy('first_name','asc');
     }
 
 	// only approved attendees

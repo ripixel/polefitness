@@ -68,6 +68,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			->sum('user_memberships.spaces_left');
 	}
 
+    public function total_membership_spaces_left() {
+        return DB::table('user_memberships')
+			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+			->where('transactions.failed','!=',1)
+			->where('transactions.strike','!=',1)
+			->where('user_memberships.user_id','=',$this->id)
+			->sum('user_memberships.spaces_left');
+    }
+
     public function classes_attending() {
         return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
     }
@@ -116,6 +125,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
         return $return;
 	}
+
+    public function transactionsOutstanding() {
+        return $this->transactions()->awaiting()->count();
+    }
+
+    public function transactionsStrike() {
+        return $this->transactions()->strike()->count();
+    }
 
     public function transactionStatus() {
         $awaiting = $this->transactions()->awaiting()->count();
