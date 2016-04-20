@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Transaction;
 use Auth;
 use App\User;
+use App\Helpers\EmailHelper;
 
 class TransactionsController extends Controller
 {
@@ -40,6 +41,21 @@ class TransactionsController extends Controller
 	public function markStrike($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markStrike();
+
+		$user = $transaction->user;
+
+		$strikeCount = $user->transactions()->strike()->count();
+
+		if($strikeCount >= 3) {
+			$tags = [
+				"first_name" => $user->first_name,
+				"last_name" => $user->last_name,
+				"user_email" => $user->email,
+				"strike_count" => $strikeCount
+			];
+
+			EmailHelper::sendEmail(EmailHelper::THREE_STRIKES, $tags, EmailHelper::POLE_EMAIL);
+		}
 
 		return Redirect::back()->with("good", "Successfully marked payment as strike.");
 	}

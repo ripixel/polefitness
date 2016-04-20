@@ -13,7 +13,6 @@ use App\Http\Controllers\Controller;
 use App\Classe;
 use App\User;
 use App\Token;
-use App\Email;
 use Auth;
 use Carbon\Carbon;
 
@@ -57,7 +56,7 @@ class HomeController extends Controller
 				"last_name" => $user->last_name
 			];
 
-			EmailHelper::sendEmail(Email::PASSWORD_RESET, $tags, $user->email);
+			EmailHelper::sendEmail(EmailHelper::PASSWORD_RESET, $tags, $user->email);
 		}
 
 		return Redirect::to('home')->with("good","Please check your inbox for an email from us.");
