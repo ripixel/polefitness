@@ -267,7 +267,8 @@ class ClassesController extends Controller
 		$class = Classe::findOrFail($request->classe_id);
 		$user_membership_id = DB::table('user_memberships')
 			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
-			->where('transactions.successful','=',1)
+			->where('transactions.failed','!=',1)
+			->where('transactions.strike','!=',1)
 			->where('user_memberships.membership_id','=', $request->membership_id)
 			->where('user_memberships.user_id','=', $user->id)
 			->where('user_memberships.spaces_left','>',0)
@@ -287,6 +288,15 @@ class ClassesController extends Controller
 
 		$user_membership->spaces_left = $user_membership->spaces_left - 1;
 		$user_membership->save();
+
+		$membership = Membership::findOrFail($request->membership_id);
+
+		$tags = [
+			"payment_method" => $membership->name,
+			"cost" => "Free"
+		];
+
+		$this->emailBookingComplete($user, $class, $tags);
 
 		return view('classes.show', compact('class','user'));
 	}
@@ -332,7 +342,30 @@ class ClassesController extends Controller
 			'rejected' => 0
 		]);
 
+		$tags = [
+			"payment_method" => $payment_method->name,
+			"cost" => sprintf('£%01.2f', $transaction->amount)
+		];
+
+		$this->emailBookingComplete($user, $class, $tags);
+
 		return view('classes.show', compact('class','user'));
+	}
+
+	private function emailBookingComplete($user, $class, $tagsIn) {
+		$tags = array_merge(
+				[
+					"first_name" => $user->first_name,
+					"last_name" => $user->last_name,
+					"class_title" => $class->title,
+					"class_date" => $class->date,
+					"class_end_date" => $class->end_date,
+					"location" => $class->location->name
+				],
+				$tagsIn
+			);
+
+		EmailHelper::sendEmail(EmailHelper::BOOKING_COMPLETE, $tags, $user->email);
 	}
 
 	public function removeFromClassPublic($classe_id) {

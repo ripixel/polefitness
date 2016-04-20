@@ -16,6 +16,7 @@ class EmailHelper
 	const BAD_TRANSACTION_CHANGE = 4;
 	const ACCEPT_ATTENDEE = 5;
 	const REJECT_ATTENDEE = 6;
+	const BOOKING_COMPLETE = 7;
 
 	static private function replaceTags($content, $tags)
 	{
