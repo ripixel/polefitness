@@ -8,7 +8,7 @@
 	<h1>Class Manager</h1>
 	<h2>Attendees for {{ $class->title }}</h2>
 	<a href="{{ action('ClassesController@edit', $class->id) }}" class="button button-with-icon"><i class="fa fa-pencil"></i> Edit Class</a>
-	
+
 	<table class="pure-table pure-table-striped admin-table pure-table-horizontal">
 		<thead>
 			<tr>
@@ -29,7 +29,7 @@
 						@else
 							<a href="{{ action('ClassesController@rejectAttendee', [$class->id, $attendee->id]) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to reject this user from the class?"><i class="fa fa-ban"></i> Reject</a>
 						@endif
-						<a href="{{ action('ClassesController@removeFromClassAdmin', [$class->id, $attendee->id]) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to remove this user from the class?"><i class="fa fa-ban"></i> Remove</a>
+						<a href="{{ action('ClassesController@removeFromClassAdmin', [$class->id, $attendee->id]) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to remove this user from the class?"><i class="fa fa-times"></i> Remove</a>
 					</td>
 					<td><a href="{{ action('UserController@adminEdit', $attendee->id) }}" class="button">{{ $attendee->fullname() }}</a></td>
 					@if($attendee->pivot->rejected)
@@ -52,6 +52,6 @@
 			@endforeach
 		</tbody>
 	</table>
-	
-	
+
+
 @endsection
