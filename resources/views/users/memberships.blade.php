@@ -32,7 +32,11 @@
 										<td><strong>{{ $user_membership->membership->name }}</strong></td>
 										<td>{{ $user_membership->created_at }}</td>
 										<td class="{{ $user_membership->transaction->goodBadStatus() }}">{{ $user_membership->transaction->status() }}</td>
-										<td>{{ $user_membership->spaces_left }}</td>
+										@if($user_membership->transaction->goodBadStatus() != "bad")
+											<td>{{ $user_membership->spaces_left }}</td>
+										@else
+											<td>N/A</td>
+										@endif
 									</tr>
 							@endforeach
 								</tbody>
