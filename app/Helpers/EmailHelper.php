@@ -12,6 +12,8 @@ class EmailHelper
 
 	const PASSWORD_RESET = 1;
 	const THREE_STRIKES = 2;
+	const GOOD_TRANSACTION_CHANGE = 3;
+	const BAD_TRANSACTION_CHANGE = 4;
 
 	static private function replaceTags($content, $tags)
 	{

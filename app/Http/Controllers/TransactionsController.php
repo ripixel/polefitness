@@ -26,6 +26,8 @@ class TransactionsController extends Controller
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markSuccessful();
 
+		$this->emailUser($transaction, "Successful", "good");
+
 		$this->grantMembershipIfApplicable($transaction);
 
 		return Redirect::back()->with("good", "Successfully marked payment as successful.");
@@ -35,12 +37,16 @@ class TransactionsController extends Controller
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markFailed();
 
+		$this->emailUser($transaction, "Failed", "bad");
+
 		return Redirect::back()->with("good", "Successfully marked payment as failed.");
 	}
 
 	public function markStrike($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markStrike();
+
+		$this->emailUser($transaction, "Strike", "bad");
 
 		$user = $transaction->user;
 
@@ -64,6 +70,8 @@ class TransactionsController extends Controller
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markResolved();
 
+		$this->emailUser($transaction, "Resolved", "good");
+
 		$this->grantMembershipIfApplicable($transaction);
 
 		return Redirect::back()->with("good", "Successfully marked payment as resolved.");
@@ -75,5 +83,26 @@ class TransactionsController extends Controller
 			$user->member = true;
 			$user->save();
 		}
+	}
+
+	private function emailUser($transaction, $status, $goodOrBad) {
+		$user = $transaction->user;
+
+		$tags = [
+			"first_name" => $user->first_name,
+			"last_name" => $user->last_name,
+			"status" => $status,
+			"transaction_name" => $transaction->name,
+			"transaction_description" => $transaction->description,
+			"transaction_amount" => sprintf('£%01.2f', $transaction->amount),
+			"payment_method" => $transaction->payment_method->name
+		];
+
+		$emailTemplate = EmailHelper::BAD_TRANSACTION_CHANGE;
+		if($goodOrBad == "good") {
+			$emailTemplate = EmailHelper::GOOD_TRANSACTION_CHANGE;
+		}
+
+		EmailHelper::sendEmail($emailTemplate, $tags, $user->email);
 	}
 }
