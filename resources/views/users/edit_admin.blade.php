@@ -59,13 +59,40 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="pure-u-1">
+				<h2>Owned Passes</h2>
+
+				<table class="pure-table pure-table-striped admin-table pure-table-horizontal">
+					<thead>
+						<tr>
+							<th>Pass Type</th>
+							<th>Pending</th>
+							<th>Successful/Resolved</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($memberships as $key => $membership)
+							@php $pending = $user->membership_spaces_pending($key)
+							@php $successful = $user->membership_spaces_successful($key)
+							@if($pending > 0 || $successful > 0)
+								<tr>
+									<td>{{ $membership }}</td>
+									<td>{{ $pending }}</td>
+									<td>{{ $successful }}</td>
+								</tr>
+							@endif
+						@endforeach
+					</tbody>
+				</table>
+			</div>
 		{!! Form::close() !!}
 
 		<div class="pure-u-1-2">
 			{!! Form::open(['method' => 'POST', 'url' => action('UserController@grantMembership'), 'class' => 'pure-form', 'style' => 'padding: 0;']) !!}
 			<div class="pure-g">
 				<div class="pure-u-1">
-					<h2>Grant Memberships</h2>
+					<h2>Grant Passes</h2>
 				</div>
 				<div class="pure-u-1-2" style="box-sizing: border-box; padding-right: 10px;">
 					{!! Form::label('membership_id','Membership') !!}
@@ -77,7 +104,7 @@
 				</div>
 				<div class="pure-u-1">
 					{!! Form::hidden('user_id', $user->id) !!}
-					{!! Form::submit('Grant Memberships', ['class' => 'button button-green']) !!}
+					{!! Form::submit('Grant Passes', ['class' => 'button button-green']) !!}
 				</div>
 			</div>
 			{!! Form::close() !!}
@@ -87,7 +114,7 @@
 			{!! Form::open(['method' => 'POST', 'url' => action('UserController@removeMembership'), 'class' => 'pure-form', 'style' => 'padding: 0;']) !!}
 			<div class="pure-g">
 				<div class="pure-u-1">
-					<h2>Remove Memberships</h2>
+					<h2>Remove Passes</h2>
 				</div>
 				<div class="pure-u-1-2" style="box-sizing: border-box; padding-right: 10px;">
 					{!! Form::label('membership_id','Membership') !!}
@@ -99,7 +126,7 @@
 				</div>
 				<div class="pure-u-1">
 					{!! Form::hidden('user_id', $user->id) !!}
-					{!! Form::submit('Remove Memberships', ['class' => 'button button-red']) !!}
+					{!! Form::submit('Remove Passes', ['class' => 'button button-red']) !!}
 				</div>
 			</div>
 			{!! Form::close() !!}

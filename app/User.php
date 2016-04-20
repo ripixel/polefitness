@@ -68,6 +68,30 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			->sum('user_memberships.spaces_left');
 	}
 
+    public function membership_spaces_pending($membership_id) {
+		return DB::table('user_memberships')
+			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+			->where('transactions.successful','=',0)
+			->where('transactions.failed','=',0)
+			->where('transactions.strike','=',0)
+			->where('transactions.resolved','=',0)
+			->where('user_memberships.membership_id','=', $membership_id)
+			->where('user_memberships.user_id','=',$this->id)
+			->sum('user_memberships.spaces_left');
+    }
+
+    public function membership_spaces_successful($membership_id) {
+		return DB::table('user_memberships')
+			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+			->where('user_memberships.membership_id','=', $membership_id)
+			->where('user_memberships.user_id','=',$this->id)
+            ->where(function($query) {
+                $query->where('transactions.successful','=',1)
+                ->orWhere('transactions.resolved','=',1);
+            })
+			->sum('user_memberships.spaces_left');
+    }
+
     public function total_membership_spaces_left() {
         return DB::table('user_memberships')
 			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
