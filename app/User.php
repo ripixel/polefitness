@@ -57,11 +57,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function user_memberships() {
         return $this->hasMany('App\User_Membership');
     }
-	
+
 	public function membership_spaces_left($membership_id) {
 		return DB::table('user_memberships')
 			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
-			->where('transactions.successful','=',1)
+			->where('transactions.failed','!=',1)
+            ->where('transactions.rejected','!=',1)
 			->where('user_memberships.membership_id','=', $membership_id)
 			->where('user_memberships.user_id','=',$this->id)
 			->sum('user_memberships.spaces_left');
@@ -70,7 +71,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function classes_attending() {
         return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
     }
-    
+
     public function picture_link_default() {
         if($this->picture_link == null || $this->picture_link == "") {
             return "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=" . urlencode( "http://www.uospolefitness.co.uk/img/profile.png" ) . "&s=" . 200;
@@ -78,22 +79,22 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return $this->picture_link;
         }
     }
-	
+
 	public function getFullnameAttribute() {
 		return $this->fullname();
 	}
-    
+
     public function fullname() {
         return $this->first_name . ' ' . $this->last_name;
     }
-	
+
 	public function goodBadStatus() {
 		if($this->status()=="Inactive") {
 			return "bad";
 		}
 		return "good";
 	}
-	
+
 	public function status() {
 		if($this->email_confirmed) {
 			if($this->admin) {
@@ -105,7 +106,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		}
 		return "Inactive";
 	}
-	
+
 	public function scopeAdmins($query) {
 		$query
 		->where('admin','=',1)
