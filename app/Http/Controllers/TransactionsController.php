@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Transaction;
 use Auth;
+use App\User;
 
 class TransactionsController extends Controller
 {
@@ -23,6 +24,8 @@ class TransactionsController extends Controller
 	public function markSuccessful($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markSuccessful();
+
+		$this->grantMembershipIfApplicable($transaction);
 
 		return Redirect::back()->with("good", "Successfully marked payment as successful.");
 	}
@@ -45,6 +48,16 @@ class TransactionsController extends Controller
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markResolved();
 
+		$this->grantMembershipIfApplicable($transaction);
+
 		return Redirect::back()->with("good", "Successfully marked payment as resolved.");
+	}
+
+	private function grantMembershipIfApplicable($transaction) {
+		if($transaction->grant_membership) {
+			$user = User::findOrFail($transaction->user_id);
+			$user->member = true;
+			$user->save();
+		}
 	}
 }
