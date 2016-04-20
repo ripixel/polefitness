@@ -39,7 +39,6 @@
 										@endif
 										@if($class->pivot->used_free_space)
 											<td class="good">Used Class Pass</td>
-											<td></td>
 										@else
 											@php $transaction = \App\Transaction::findOrFail($class->pivot->transaction_id)
 											<td class="{{ $transaction->goodBadStatus() }}"> {{ $transaction->payment_method->name }} - {{ $transaction->status() }} - {{ sprintf('£%01.2f', $transaction->amount) }}</td>
