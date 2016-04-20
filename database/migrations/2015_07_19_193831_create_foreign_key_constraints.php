@@ -15,6 +15,7 @@ class CreateForeignKeyConstraints extends Migration
         Schema::table('classes', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
 			$table->foreign('supervisor_id')->references('id')->on('users');
+			$table->foreign('instructor_id')->references('id')->on('users');
             $table->foreign('location_id')->references('id')->on('locations');
         });
 
