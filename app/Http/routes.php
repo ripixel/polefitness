@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::get('profile/memberships', 'UserController@memberships');
 	Route::get('profile/memberships/{membership_id}', 'UserController@purchaseMembership');
 	Route::post('profile/memberships/purchase', 'UserController@purchaseMembershipComplete');
-	
+
 	// Classes
 	Route::get('classes/{classe_id}', 'ClassesController@show');
 	Route::get('classes/{classe_id}/book', 'ClassesController@book');
@@ -67,7 +67,7 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/classes/{classe_id}/rejectAttendee/{user_id}', 'ClassesController@rejectAttendee');
 	Route::get('admin/classes/{classe_id}/acceptAttendee/{user_id}', 'ClassesController@acceptAttendee');
 	Route::get('admin/classes/{classe_id}/removeAttendee/{user_id}', 'ClassesController@removeFromClassAdmin');
-	
+
 	// Users Admin
 	Route::get('admin/users/{user_id}/edit', 'UserController@adminEdit');
 	Route::post('admin/users/grantMemberships', 'UserController@grantMembership');
@@ -75,25 +75,25 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::patch('admin/users/{user_id}', 'UserController@update');
 	Route::get('admin/users/{user_id}/transactions', 'UserController@adminTransactions');
 	Route::get('admin/users/{user_id}/classes', 'UserController@adminClasses');
-	
+
 	// Transactions Admin
 	Route::get('admin/transactions/{transaction_id}/edit/successful', 'TransactionsController@markSuccessful');
 	Route::get('admin/transactions/{transaction_id}/edit/failed', 'TransactionsController@markFailed');
-	Route::get('admin/transactions/{transaction_id}/edit/rejected', 'TransactionsController@markRejected');
+	Route::get('admin/transactions/{transaction_id}/edit/resolved', 'TransactionsController@markResolved');
 	Route::get('admin/transactions/{transaction_id}/edit/awaiting', 'TransactionsController@markAwaiting');
-	
+
 	// Memberships Admin
 	Route::get('admin/memberships/new', 'MembershipsController@create');
 	Route::post('admin/memberships/save', 'MembershipsController@store');
 	Route::get('admin/memberships/{membership_id}/edit/retire', 'MembershipsController@retire');
 	Route::get('admin/memberships/{membership_id}/edit/reactive', 'MembershipsController@reactivate');
-	
+
 	// Locations Admin
 	Route::get('admin/locations/new', 'LocationController@create');
 	Route::post('admin/locations/save', 'LocationController@store');
 	Route::get('admin/locations/{location_id}/edit', 'LocationController@edit');
 	Route::patch('admin/locations/{location_id}', 'LocationController@update');
-	
+
 	// Admin
 	Route::get('admin', 'AdminController@index');
 	// News
@@ -111,7 +111,7 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/transactions/successful', 'AdminController@transactionsSuccessful');
 	Route::get('admin/transactions/awaiting', 'AdminController@transactionsAwaiting');
 	Route::get('admin/transactions/failed', 'AdminController@transactionsFailed');
-	Route::get('admin/transactions/rejected', 'AdminController@transactionsRejected');
+	Route::get('admin/transactions/resolved', 'AdminController@transactionsResolved');
 	// Memberships
 	Route::get('admin/memberships', 'AdminController@memberships');
 	Route::get('admin/memberships/active', 'AdminController@membershipsActive');
@@ -123,7 +123,7 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/users/emails', 'UserController@emailDump');
 	// Other
 	Route::get('admin/locations', 'AdminController@locations');
-	
+
 	// News Admin
 	Route::get('admin/news/new', 'NewsController@create');
 	Route::post('admin/news/save', 'NewsController@store');

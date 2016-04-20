@@ -12,32 +12,32 @@ use App\Transaction;
 use Auth;
 
 class TransactionsController extends Controller
-{	
+{
 	public function markAwaiting($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markAwaiting();
-		
+
 		return Redirect::back()->with("good", "Successfully marked payment as awaiting.");
 	}
-	
+
 	public function markSuccessful($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markSuccessful();
-		
+
 		return Redirect::back()->with("good", "Successfully marked payment as successful.");
 	}
-	
+
 	public function markFailed($id) {
 		$transaction = Transaction::findOrFail($id);
 		$transaction->markFailed();
-		
+
 		return Redirect::back()->with("good", "Successfully marked payment as failed.");
 	}
-	
-	public function markRejected($id) {
+
+	public function markResolved($id) {
 		$transaction = Transaction::findOrFail($id);
-		$transaction->markRejected();
-		
-		return Redirect::back()->with("good", "Successfully marked payment as rejected.");
+		$transaction->markResolved();
+
+		return Redirect::back()->with("good", "Successfully marked payment as resolved.");
 	}
 }

@@ -62,7 +62,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return DB::table('user_memberships')
 			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
 			->where('transactions.failed','!=',1)
-            ->where('transactions.rejected','!=',1)
 			->where('user_memberships.membership_id','=', $membership_id)
 			->where('user_memberships.user_id','=',$this->id)
 			->sum('user_memberships.spaces_left');

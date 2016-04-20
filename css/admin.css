@@ -126,6 +126,16 @@ h1, h2, h3, h4, h5, h6 {
 	color: #fff;
 }
 
+.button-yellow {
+	border: 1px solid orange;
+	color: orange;
+}
+
+.button-yellow:hover, .button-yellow-selected {
+	background: orange;
+	color: #fff;
+}
+
 .confirmDelete, .button-red {
 	border: 1px solid red;
 	color: red;
