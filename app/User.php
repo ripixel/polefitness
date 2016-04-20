@@ -117,6 +117,26 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $return;
 	}
 
+    public function transactionStatus() {
+        $awaiting = $this->transactions()->awaiting()->count();
+        $strike = $this->transactions()->strike()->count();
+
+        if($awaiting == 0 && $strike == 0) {
+            return "Transactions";
+        } else {
+            if($awaiting > 0) {
+                $return = $awaiting . " Outstanding Transaction";
+                if($strike > 0) {
+                    $return .= ", " . $strike . " Strike";
+                }
+
+                return $return;
+            } else {
+                return $strike . " Strike Transaction";
+            }
+        }
+    }
+
 	public function scopeAdmins($query) {
 		$query
 		->where('admin','=',1)

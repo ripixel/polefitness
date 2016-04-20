@@ -121,6 +121,9 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	// Users
 	Route::get('admin/users', 'AdminController@users');
 	Route::get('admin/users/admins', 'AdminController@usersAdmins');
+	Route::get('admin/users/instructors', 'AdminController@usersInstructors');
+	Route::get('admin/users/outstanding', 'AdminController@usersOutstanding');
+	Route::get('admin/users/strike', 'AdminController@usersStrike');
 	Route::post('admin/users/byname', 'AdminController@userSearch');
 	Route::get('admin/users/emails', 'UserController@emailDump');
 	// Other

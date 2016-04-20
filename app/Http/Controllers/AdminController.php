@@ -186,6 +186,40 @@ class AdminController extends Controller
 		return view('users.admin', compact('users', 'subtitle'));
 	}
 
+	public function usersInstructors() {
+
+		$users = User::Instructors()->orderBy('first_name','asc')->get();
+		$subtitle = "Showing Instructors";
+
+		return view('users.admin', compact('users', 'subtitle'));
+	}
+
+	public function usersOutstanding() {
+
+		$subtitle = "Showing Users with Outstanding Payments";
+		$users = User::orderBy('first_name','asc')->get();
+		foreach($users as $key => $user) {
+			if(!strpos($user->transactionStatus(), "Outstanding Transaction")) {
+				$users->forget($key);
+			}
+		}
+
+		return view('users.admin', compact('users', 'subtitle'));
+	}
+
+	public function usersStrike() {
+
+		$subtitle = "Showing Users with Strike Payments";
+		$users = User::orderBy('first_name','asc')->get();
+		foreach($users as $key => $user) {
+			if(!strpos($user->transactionStatus(), "Strike")) {
+				$users->forget($key);
+			}
+		}
+
+		return view('users.admin', compact('users', 'subtitle'));
+	}
+
 	public function userSearch(Request $request) {
 		$first_name = $request->first_name;
 		$last_name = $request->last_name;
