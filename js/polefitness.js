@@ -1,8 +1,6 @@
 function squarify() {
 	$('.square').each(function() {
 		$(this).height($(this).width());
-		console.log("squaring");
-		console.log($(this));
 	})
 }
 
