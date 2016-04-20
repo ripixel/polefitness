@@ -146,6 +146,8 @@ class UserController extends Controller
 		// So if they're null, set the value to 0
 		$user->admin = $request->admin ? 1 : 0;
 		$user->email_confirmed = $request->email_confirmed ? 1 : 0;
+		$user->instructor = $request->instructor ? 1 : 0;
+		$user->member = $request->member ? 1 : 0;
 
 		$user->save();
 
@@ -199,6 +201,7 @@ class UserController extends Controller
 		$transaction->name = "Membership Fee";
 		$transaction->description = $membership->name;
 		$transaction->amount = $membership->cost;
+		$transaction->grant_membership = $membership->includes_membership;
 		$user->transactions()->save($transaction);
 
 		$user_membership = new User_Membership();
