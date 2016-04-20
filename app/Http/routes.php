@@ -117,6 +117,7 @@ Route::group(['middleware' => 'adminOnly'], function() {
 	Route::get('admin/classes', 'AdminController@classes');
 	Route::get('admin/classes/upcoming', 'AdminController@classesUpc');
 	Route::get('admin/classes/mine', 'AdminController@classesMine');
+	Route::get('admin/classes/instructing', 'AdminController@classesMineInstructor');
 	Route::get('admin/classes/supervising', 'AdminController@classesMineSupervisor');
 	Route::get('admin/classes/outstanding', 'AdminController@classesOutstanding');
 	Route::get('admin/users', 'AdminController@users');

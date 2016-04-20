@@ -75,6 +75,15 @@ class AdminController extends Controller
 		return view('classes.admin', compact('classes', 'subtitle'));
 	}
 
+	public function classesMineInstructor() {
+
+		$user = Auth::user();
+		$subtitle = "Showing Classes you're instructing";
+		$classes = $user->classes_instructing()->orderBy('created_at','desc')->get();
+
+		return view('classes.admin', compact('classes', 'subtitle'));
+	}
+
 	public function emails() {
 
 		$subtitle = "Showing All Email Templates";
