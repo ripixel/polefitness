@@ -17,6 +17,9 @@ class EmailHelper
 	const ACCEPT_ATTENDEE = 5;
 	const REJECT_ATTENDEE = 6;
 	const BOOKING_COMPLETE = 7;
+	const REMOVE_ATTENDEE = 8;
+	const CANCEL_CLASS_USER = 9;
+	const CANCEL_CLASS_ADMIN = 10;
 
 	static private function replaceTags($content, $tags)
 	{

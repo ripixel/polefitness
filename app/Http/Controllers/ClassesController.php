@@ -201,6 +201,32 @@ class ClassesController extends Controller
     public function destroy($id)
     {
 		$class = Classe::findOrFail($id);
+		$users = $class->all_attendees()->get();
+
+		foreach($users as $user) {
+			$tags = [
+				"first_name" => $user->first_name,
+				"last_name" => $user->last_name,
+				"class_title" => $class->title,
+				"class_date" => $class->date,
+				"class_end_date" => $class->end_date,
+				"location" => $class->location->name
+			];
+
+			EmailHelper::sendEmail(EmailHelper::CANCEL_CLASS_USER, $tags, $user->email);
+		}
+
+		$adminTags = [
+			"class_title" => $class->title,
+			"class_date" => $class->date,
+			"class_end_date" => $class->end_date,
+			"location" => $class->location->name
+		];
+
+		EmailHelper::sendEmail(EmailHelper::CANCEL_CLASS_ADMIN, $adminTags, $class->instructor->email);
+		EmailHelper::sendEmail(EmailHelper::CANCEL_CLASS_ADMIN, $adminTags, $class->supervisor->email);
+		EmailHelper::sendEmail(EmailHelper::CANCEL_CLASS_ADMIN, $adminTags, EmailHelper::POLE_EMAIL);
+
 		$class->all_attendees()->detach();
 		$class->payment_methods_allowed()->detach();
 		$class->memberships_allowed()->detach();
@@ -384,6 +410,17 @@ class ClassesController extends Controller
 		$class = Classe::findOrFail($classe_id);
 
 		$this->doRemoveFromClass($class, $user);
+
+		$tags = [
+					"first_name" => $user->first_name,
+					"last_name" => $user->last_name,
+					"class_title" => $class->title,
+					"class_date" => $class->date,
+					"class_end_date" => $class->end_date,
+					"location" => $class->location->name
+				];
+
+		EmailHelper::sendEmail(EmailHelper::REMOVE_ATTENDEE, $tags, $user->email);
 
 		return Redirect::back()->with("good", "Successfully removed from class.");
 	}
