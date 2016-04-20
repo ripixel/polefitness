@@ -14,6 +14,8 @@ class EmailHelper
 	const THREE_STRIKES = 2;
 	const GOOD_TRANSACTION_CHANGE = 3;
 	const BAD_TRANSACTION_CHANGE = 4;
+	const ACCEPT_ATTENDEE = 5;
+	const REJECT_ATTENDEE = 6;
 
 	static private function replaceTags($content, $tags)
 	{

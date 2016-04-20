@@ -87,7 +87,7 @@ class AdminController extends Controller
 	public function emails() {
 
 		$subtitle = "Showing All Email Templates";
-		$emails = Email::orderBy('name','desc')->get();
+		$emails = Email::orderBy('id','asc')->get();
 
 		return view('emails.admin', compact('emails', 'subtitle'));
 	}

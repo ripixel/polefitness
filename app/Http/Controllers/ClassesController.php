@@ -20,6 +20,7 @@ use App\User_Membership;
 use DB;
 use Carbon\Carbon;
 use Auth;
+use App\Helpers\EmailHelper;
 
 class ClassesController extends Controller
 {
@@ -219,6 +220,11 @@ class ClassesController extends Controller
 
 		$class->all_attendees()->updateExistingPivot($user_id, ['rejected' => 1]);
 
+		$user = User::findOrFail($user_id);
+		$tags = $this->getEmailTagsRejectAcceptAttendee($user, $class);
+
+		EmailHelper::sendEmail(EmailHelper::REJECT_ATTENDEE, $tags, $user->email);
+
 		return Redirect::back()->with("good", "Successfully rejected user.");
 	}
 
@@ -227,7 +233,23 @@ class ClassesController extends Controller
 
 		$class->all_attendees()->updateExistingPivot($user_id, ['rejected' => 0]);
 
+		$user = User::findOrFail($user_id);
+		$tags = $this->getEmailTagsRejectAcceptAttendee($user, $class);
+
+		EmailHelper::sendEmail(EmailHelper::ACCEPT_ATTENDEE, $tags, $user->email);
+
 		return Redirect::back()->with("good", "Successfully accepted user.");
+	}
+
+	private function getEmailTagsRejectAcceptAttendee($user, $class) {
+		return $tags = [
+			"first_name" => $user->first_name,
+			"last_name" => $user->last_name,
+			"class_title" => $class->title,
+			"class_date" => $class->date,
+			"class_end_date" => $class->end_date,
+			"location" => $class->location->name
+		];
 	}
 
 	public function bookClassMembership($class_id, $membership_id) {
