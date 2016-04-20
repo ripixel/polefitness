@@ -14,6 +14,11 @@
 </div>
 
 <div>
+{!! Form::label('instructor_id','Instructor') !!}
+{!! Form::select('instructor_id', $instructors, null, ['id' => 'instructor_id', 'class' => 'select2 pure-input-1']) !!}
+</div>
+
+<div>
 {!! Form::label('picture_link','Picture URL') !!}
 {!! Form::text('picture_link', null, ['class' => 'pure-input-1']) !!}
 </div>
@@ -24,7 +29,7 @@
 			{!! Form::label('date','Start Date/Time') !!}
 			{!! Form::text('date', null, ['class' => 'pure-input-1 datepicker']) !!}
 		</div>
-		
+
 		<div class="pure-u-1-2">
 			{!! Form::label('end_date','End Date/Time') !!}
 			{!! Form::text('end_date', null, ['class' => 'pure-input-1 datepicker']) !!}

@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'admin', 'member', 'picture_link', 'email_confirmed'];
+    protected $fillable = ['first_name', 'last_name', 'email', 'password', 'admin', 'member', 'picture_link', 'email_confirmed', 'instructor'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -89,27 +89,43 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
 	public function goodBadStatus() {
-		if($this->status()=="Inactive") {
+		if(strpos($this->status(), "Inactive")) {
 			return "bad";
 		}
 		return "good";
 	}
 
 	public function status() {
+        $return = null;
 		if($this->email_confirmed) {
 			if($this->admin) {
-				return "Administrator";
+				$return = "Administrator";
 			} else if($this->member) {
-				return "Society Member";
-			}
-			return "Non-Member";
-		}
-		return "Inactive";
+				$return = "Society Member";
+			} else {
+                $return = "Non-Member";
+            }
+		} else {
+            $return = "Inactive";
+        }
+
+
+        if($this->instructor) {
+            $return .= ", Instructor";
+        }
+
+        return $return;
 	}
 
 	public function scopeAdmins($query) {
 		$query
 		->where('admin','=',1)
+		->where('email_confirmed','=',1);
+	}
+
+	public function scopeInstructors($query) {
+		$query
+		->where('instructor','=',1)
 		->where('email_confirmed','=',1);
 	}
 }
