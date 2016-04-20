@@ -31,7 +31,7 @@
 					</div>
 				</div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/passes.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Passes</h3>
 						<p>See your current passes, and buy more.</p>
@@ -41,7 +41,7 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/classes.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Classes</h3>
 						<p>The classes you're booked on, past and future.</p>
@@ -51,7 +51,7 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: #ffd990;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/transactions.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Transactions</h3>
 						<p>View a summary of the transactions you've made using the site.</p>
