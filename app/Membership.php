@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Membership extends Model
 {
-	protected $fillable = ['name', 'cost', 'free_classes', 'includes_membership'];
+	protected $fillable = ['name', 'cost', 'free_classes', 'includes_membership', 'guest_pass'];
 
     public function user_memberships() {
         return $this->hasMany('App\User_Membership');
@@ -35,19 +35,26 @@ class Membership extends Model
 	}
 
 	public function scopeMemberships($query) {
-		$query->where('includes_memberships','=',1);
+		$query->where('includes_membership','=',1);
 	}
 
 	public function scopePassonly($query) {
-		$query->where('includes_memberships','=',0);
+		$query->where('includes_membership','=',0);
 	}
 
 	public function scopeActive($query) {
-		$query->where('active','=',1);
+		$query->where('active','=',1)
+		->where('guest_pass','=',0);
 	}
 
 	public function scopeRetired($query) {
-		$query->where('active','=',0);
+		$query->where('active','=',0)
+		->where('guest_pass','=',0);
+	}
+
+	public function scopeGuest($query) {
+		$query->where('active','=',1)
+		->where('guest_pass','=',1);
 	}
 
 	public function retire() {

@@ -34,10 +34,14 @@
 					@endif
 					<td class="{{ $membership->goodBadStatus() }}">{{ $membership->status() }}</td>
 					<td>
-						@if($membership->active)
-							<a href="{{ action('MembershipsController@retire', $membership->id) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to retire this membership?"><i class="fa fa-clock-o"></i> Retire</a>
+						@if($membership->guest_pass)
+							<em>Cannot retire the guest pass</em>
 						@else
-							<a href="{{ action('MembershipsController@reactivate', $membership->id) }}" class="button button-green button-with-icon confirmAction" data-confirmmessage="Are you sure you want to reactivate this membership?"><i class="fa fa-check"></i> Reactivate</a>
+							@if($membership->active)
+								<a href="{{ action('MembershipsController@retire', $membership->id) }}" class="button button-red button-with-icon confirmAction" data-confirmmessage="Are you sure you want to retire this membership?"><i class="fa fa-clock-o"></i> Retire</a>
+							@else
+								<a href="{{ action('MembershipsController@reactivate', $membership->id) }}" class="button button-green button-with-icon confirmAction" data-confirmmessage="Are you sure you want to reactivate this membership?"><i class="fa fa-check"></i> Reactivate</a>
+							@endif
 						@endif
 					</td>
 				</tr>
