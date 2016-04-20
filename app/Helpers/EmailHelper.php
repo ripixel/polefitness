@@ -38,7 +38,7 @@ class EmailHelper
 		$subject = EmailHelper::replaceTags($template->subject, $tags);
 		$content = EmailHelper::replaceTags($template->content, $tags);
 
-		Mail::raw($content, function($m) use ($to, $subject) {
+		Mail::send('emails.echo', ['html' => $content], function($m) use ($to, $subject) {
 			$m 	->to($to)
 				->subject($subject)
 				->from('noreply@uospolefitness.co.uk', 'UoS Pole Fitness Society');
