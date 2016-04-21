@@ -60,7 +60,6 @@ class ClassesController extends Controller
     public function copy($id)
     {
         $class = Classe::findOrFail($id);
-		$class->title = $class->title . " - CLONED";
 
 		$locations = Location::lists('name','id');
 		$payment_methods = Payment_Method::lists('name','id');
