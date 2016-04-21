@@ -32,17 +32,19 @@
 								@endif
 							</p>
 							{!! Form::open(['method' => 'POST', 'url' => action('ClassesController@bookClassPaymentComplete'), 'class' => 'pure-form', 'style' => 'padding: 0;']) !!}
-							
+
 							{!! Form::hidden('payment_method_id', $payment_method->id) !!}
 							{!! Form::hidden('classe_id', $class->id) !!}
-							
+
+							@include('classes.guest')
+
 							{!! Form::submit('Book Onto Class', ['class' => 'button button-on-white pure-input-1', 'style' => 'margin-top: 10px;']) !!}
-							
+
 							{!! Form::close() !!}
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -51,7 +53,7 @@
 @section('javascript')
 	<script src="{{ URL::asset('js/select2.min.js') }}"></script>
 	<script type="text/javascript">
-		$(function() {		
+		$(function() {
 			$(".select2").select2();
 		});
 	</script>

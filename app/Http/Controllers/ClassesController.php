@@ -172,6 +172,10 @@ class ClassesController extends Controller
 		$class = Classe::findOrFail($id);
 		$class->fill($request->all());
 
+		// Stupid checkboxes don't get a value sent back if they're not checked
+		// So if they're null, set the value to 0
+		$class->allow_guests = $request->allow_guests ? 1 : 0;
+
 		if($class->places_available < $class->attendees()->count()) {
 			return Redirect::back()->with("bad", "You cannot reduce the number of available places to lower than the amount of people already attending. You must reject some people from the class first if you wish to do this.");
 		}
@@ -323,7 +327,9 @@ class ClassesController extends Controller
 
 		$this->emailBookingComplete($user, $class, $tags);
 
-		return view('classes.show', compact('class','user'));
+		$this->bookGuest($user, $class, $request->guest_name);
+
+		return Redirect::action('ClassesController@show', [$class->id])->with("good", "Successfully booked onto class.");
 	}
 
 	public function bookClassPayment($class_id, $payment_method_id) {
@@ -374,7 +380,47 @@ class ClassesController extends Controller
 
 		$this->emailBookingComplete($user, $class, $tags);
 
-		return view('classes.show', compact('class','user'));
+		$this->bookGuest($user, $class, $request->guest_name);
+
+		return Redirect::action('ClassesController@show', [$class->id])->with("good", "Successfully booked onto class.");
+	}
+
+	private function bookGuest($user, $class, $name) {
+		$user_membership_id = DB::table('user_memberships')
+			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+			->where('transactions.failed','!=',1)
+			->where('transactions.strike','!=',1)
+			->where('user_memberships.user_id','=', $user->id)
+			->where('user_memberships.spaces_left','>',0)
+			->join('memberships', 'user_memberships.membership_id', '=', 'memberships.id')
+			->where('memberships.guest_pass','=',1)
+			->select('user_memberships.id')->first();
+
+		$user_membership = User_Membership::findOrFail($user_membership_id->id);
+
+		DB::table('classe_user')->insert([
+			'classe_id' => $class->id,
+			'user_id' => $user->id,
+			'created_at' => Carbon::now(),
+			'updated_at' => Carbon::now(),
+			'guest' => 1,
+			'guest_name' => $name,
+			'used_free_space' => 1,
+			'user_membership_id' => $user_membership->id,
+			'rejected' => 0
+		]);
+
+		$user_membership->spaces_left = $user_membership->spaces_left - 1;
+		$user_membership->save();
+
+		$tags = [
+			"payment_method" => "Guest Pass",
+			"cost" => "Free",
+			"guest_name" => $name
+		];
+
+		$this->emailGuestBookingComplete($user, $class, $tags);
+
 	}
 
 	private function emailBookingComplete($user, $class, $tagsIn) {
@@ -391,6 +437,22 @@ class ClassesController extends Controller
 			);
 
 		EmailHelper::sendEmail(EmailHelper::BOOKING_COMPLETE, $tags, $user->email);
+	}
+
+	private function emailGuestBookingComplete($user, $class, $tagsIn) {
+		$tags = array_merge(
+				[
+					"first_name" => $user->first_name,
+					"last_name" => $user->last_name,
+					"class_title" => $class->title,
+					"class_date" => $class->date,
+					"class_end_date" => $class->end_date,
+					"location" => $class->location->name
+				],
+				$tagsIn
+			);
+
+		EmailHelper::sendEmail(EmailHelper::GUEST_BOOKING_COMPLETE, $tags, $user->email);
 	}
 
 	public function removeFromClassPublic($classe_id) {

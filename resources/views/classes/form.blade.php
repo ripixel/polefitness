@@ -71,4 +71,9 @@
 {!! Form::select('location_id', $locations, null, ['id' => 'location_id', 'class' => 'select2 pure-input-1']) !!}
 </div>
 
+<div>
+	{!! Form::label('allow_guests','Allow Guests') !!}
+	{!! Form::checkbox('allow_guests') !!}
+</div>
+
 {!! Form::submit($submit_text, ['class' => 'button button-green']) !!}

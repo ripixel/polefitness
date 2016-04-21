@@ -22,6 +22,7 @@ class EmailHelper
 	const CANCEL_CLASS_ADMIN = 10;
 	const PURCHASE_COMPLETE = 11;
 	const ADMIN_ACTION_COMPLETE = 12;
+	const GUEST_BOOKING_COMPLETE = 13;
 
 	static private function replaceTags($content, $tags)
 	{

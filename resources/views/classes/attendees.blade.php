@@ -46,8 +46,13 @@
 					@endif
 					<td>{{ $attendee->pivot->created_at }}</td>
 					@if($attendee->pivot->used_free_space)
-						<td class="good">Used Membership Space</td>
-						<td></td>
+						@if($attendee->pivot->guest)
+							<td class="good">Used Guest Pass ({{ $attendee->pivot->guest_name }})</td>
+							<td></td>
+						@else
+							<td class="good">Used Class Pass</td>
+							<td></td>
+						@endif
 					@else
 						@php $transaction = \App\Transaction::findOrFail($attendee->pivot->transaction_id)
 						<td class="{{ $transaction->goodBadStatus() }}"> {{ $transaction->payment_method->name }} - {{ $transaction->status() }} - {{ sprintf('£%01.2f', $transaction->amount) }}</td>

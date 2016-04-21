@@ -18,6 +18,8 @@ class CreatePivotTables extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->timestamps();
 			$table->boolean('used_free-space');
+            $table->boolean('guest')->default(0)->index();
+            $table->string('guest_name');
 			$table->integer('transaction_id')->unsigned()->nullable();
 			$table->boolean('rejected');
 

@@ -10,7 +10,7 @@ class Classe extends Model
 {
 	protected $dates = ['date', 'end_date'];
 
-	protected $fillable = ['title', 'description', 'picture_link', 'date', 'end_date', 'supervisor_id', 'places_available', 'members_only', 'cost', 'cost_member', 'location_id', 'instructor_id'];
+	protected $fillable = ['title', 'description', 'picture_link', 'date', 'end_date', 'supervisor_id', 'places_available', 'members_only', 'cost', 'cost_member', 'location_id', 'instructor_id', 'allow_guests'];
 
     public function creator() {
         return $this->belongsTo('App\User', 'user_id');
@@ -30,7 +30,7 @@ class Classe extends Model
 
 	// regardless of approved/rejected status
     public function all_attendees() {
-        return $this->belongsToMany('App\User')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id')->orderBy('first_name','asc');
+        return $this->belongsToMany('App\User')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id', 'guest', 'guest_name')->orderBy('first_name','asc');
     }
 
 	// only approved attendees

@@ -17,6 +17,7 @@ class CreatePaymentMethodsTable extends Migration
             $table->string('name');
 			$table->boolean('has_cost');
             $table->boolean('active');
+            $table->boolean('guest_payment');
             $table->timestamps();
         });
     }

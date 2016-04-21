@@ -25,6 +25,8 @@
 							{!! Form::hidden('membership_id', $membership->id) !!}
 							{!! Form::hidden('classe_id', $class->id) !!}
 
+							@include('classes.guest')
+
 							{!! Form::submit('Book Onto Class', ['class' => 'button button-on-white pure-input-1', 'style' => 'margin-top: 10px;']) !!}
 
 							{!! Form::close() !!}

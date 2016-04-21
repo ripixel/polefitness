@@ -26,6 +26,7 @@ class CreateClassesTable extends Migration
             $table->integer('places_available');
             $table->double('cost');
 			$table->double('cost_member');
+            $table->boolean('allow_guests');
             $table->timestamps();
 
             //$table->foreign('user_id')->references('id')->on('users');

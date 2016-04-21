@@ -25,6 +25,8 @@
 									@if($class->memberships_allowed->count() > 0)
 										@php $booking_methods = True;
 										<p>There are currently {{ $class->places_available - $class->attendees->count() }} spaces available for this class.</p>
+										<p>If you wish to bring along a guest, you may arrange this after you have placed your booking.</p>
+										<h3>Pay by Pass</h3>
 										<p>The following pass types are accepted to book onto this class:</p>
 										@php $has_membership = False;
 										@foreach($class->memberships_allowed as $membership)
@@ -38,11 +40,12 @@
 
 										@if(!$has_membership)
 											<p>Alternatively, you can sign up for more class passes by clicking below:</p>
-											<a href="{{ action('UserController@memberships') }}" class="button button-on-white">Sign up for a new pass bundle</a>
+											<a href="{{ action('UserController@memberships') }}" class="button button-on-white">Buy more passes</a>
 										@endif
 									@endif
 
 									@if($class->payment_methods_allowed->count() > 0)
+										<h3>Pay by other method</h3>
 										<p>The cost for booking onto this class for you as a <strong>{{ $user->status() }}</strong> is <strong>
 											@if($user->member || $user->admin)
 												{{ sprintf('£%01.2f', $class->cost_member) }}

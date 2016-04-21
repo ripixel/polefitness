@@ -72,6 +72,17 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			->sum('user_memberships.spaces_left');
 	}
 
+	public function guest_passes_left() {
+		return DB::table('user_memberships')
+			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+			->where('transactions.failed','!=',1)
+			->where('transactions.strike','!=',1)
+			->where('user_memberships.user_id','=',$this->id)
+			->join('memberships', 'user_memberships.membership_id', '=', 'memberships.id')
+			->where('memberships.guest_pass','=',1)
+			->sum('user_memberships.spaces_left');
+	}
+
     public function membership_spaces_pending($membership_id) {
 		return DB::table('user_memberships')
 			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
@@ -106,7 +117,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     public function classes_attending() {
-        return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id');
+        return $this->belongsToMany('App\Classe')->withTimestamps()->withPivot('rejected', 'used_free_space', 'transaction_id', 'guest', 'guest_name');
     }
 
     public function picture_link_default() {
