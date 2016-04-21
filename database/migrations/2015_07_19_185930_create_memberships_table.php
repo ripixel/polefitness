@@ -15,6 +15,7 @@ class CreateMembershipsTable extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->text('description');
             $table->double('cost', 5,2);
 			$table->integer('free_classes');
 			$table->boolean('active')->default(1);

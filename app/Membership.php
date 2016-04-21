@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Membership extends Model
 {
-	protected $fillable = ['name', 'cost', 'free_classes', 'includes_membership', 'guest_pass'];
+	protected $fillable = ['name', 'cost', 'free_classes', 'includes_membership', 'guest_pass', 'description'];
 
     public function user_memberships() {
         return $this->hasMany('App\User_Membership');

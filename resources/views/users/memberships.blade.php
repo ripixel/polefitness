@@ -44,7 +44,11 @@
 
 							<h2>Purchase Passes</h2>
 							@foreach($memberships as $membership)
-								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white"><strong>{{ $membership->name }}</strong> - {{ sprintf('£%01.2f', $membership->cost) }} - {{ $membership->free_classes }} passes</a><br/>
+								<h3>{{ $membership->name }}</h3>
+								@if($membership->description)
+								<p>{{$membership->description }}</p>
+								@endif
+								<a href="{{ action('UserController@purchaseMembership', $membership->id) }}" style="margin-bottom: 5px; min-width: 100%;" class="button button-on-white"><strong>{{ sprintf('£%01.2f', $membership->cost) }}</strong> - {{ $membership->free_classes }} passes</a><br/>
 							@endforeach
 						</div>
 					</div>
