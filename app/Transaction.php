@@ -38,6 +38,13 @@ class Transaction extends Model
 		return $classId;
 	}
 
+	static public function getTransactionIdFromUserMembershipId($user_membership_id) {
+		return Transaction::findOrFail(DB::table('user_memberships')
+			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+			->where('user_memberships.id','=', $user_membership_id)
+			->select('transactions.id')->first()->id);
+	}
+
 	public function status() {
 		if($this->successful) return "Paid";
 		if($this->failed) return "Failed";

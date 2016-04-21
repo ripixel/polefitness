@@ -8,7 +8,7 @@ use Mail;
 
 class EmailHelper
 {
-	const POLE_EMAIL = 'admin@uospolefitness.co.uk';
+	const POLE_EMAIL = 'pole.fitness@sheffield.ac.uk';
 
 	const PASSWORD_RESET = 1;
 	const THREE_STRIKES = 2;

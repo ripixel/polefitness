@@ -123,7 +123,7 @@ class UserController extends Controller
 		if($user->member) {
 			$memberships = Membership::active()->passonly()->orderBy('cost','desc')->get();
 		} else {
-			$memberships = Membership::active()->orderBy('cost','desc')->get();
+			$memberships = Membership::active()->memberships()->orderBy('cost','desc')->get();
 		}
 
 		return view('users.memberships', compact('user','memberships'));

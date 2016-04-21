@@ -386,41 +386,42 @@ class ClassesController extends Controller
 	}
 
 	private function bookGuest($user, $class, $name) {
-		$user_membership_id = DB::table('user_memberships')
-			->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
-			->where('transactions.failed','!=',1)
-			->where('transactions.strike','!=',1)
-			->where('user_memberships.user_id','=', $user->id)
-			->where('user_memberships.spaces_left','>',0)
-			->join('memberships', 'user_memberships.membership_id', '=', 'memberships.id')
-			->where('memberships.guest_pass','=',1)
-			->select('user_memberships.id')->first();
+		if($name != null && $name != '') {
+			$user_membership_id = DB::table('user_memberships')
+				->join('transactions', 'user_memberships.transaction_id', '=', 'transactions.id')
+				->where('transactions.failed','!=',1)
+				->where('transactions.strike','!=',1)
+				->where('user_memberships.user_id','=', $user->id)
+				->where('user_memberships.spaces_left','>',0)
+				->join('memberships', 'user_memberships.membership_id', '=', 'memberships.id')
+				->where('memberships.guest_pass','=',1)
+				->select('user_memberships.id')->first();
 
-		$user_membership = User_Membership::findOrFail($user_membership_id->id);
+			$user_membership = User_Membership::findOrFail($user_membership_id->id);
 
-		DB::table('classe_user')->insert([
-			'classe_id' => $class->id,
-			'user_id' => $user->id,
-			'created_at' => Carbon::now(),
-			'updated_at' => Carbon::now(),
-			'guest' => 1,
-			'guest_name' => $name,
-			'used_free_space' => 1,
-			'user_membership_id' => $user_membership->id,
-			'rejected' => 0
-		]);
+			DB::table('classe_user')->insert([
+				'classe_id' => $class->id,
+				'user_id' => $user->id,
+				'created_at' => Carbon::now(),
+				'updated_at' => Carbon::now(),
+				'guest' => 1,
+				'guest_name' => $name,
+				'used_free_space' => 1,
+				'user_membership_id' => $user_membership->id,
+				'rejected' => 0
+			]);
 
-		$user_membership->spaces_left = $user_membership->spaces_left - 1;
-		$user_membership->save();
+			$user_membership->spaces_left = $user_membership->spaces_left - 1;
+			$user_membership->save();
 
-		$tags = [
-			"payment_method" => "Guest Pass",
-			"cost" => "Free",
-			"guest_name" => $name
-		];
+			$tags = [
+				"payment_method" => "Guest Pass",
+				"cost" => "Free",
+				"guest_name" => $name
+			];
 
-		$this->emailGuestBookingComplete($user, $class, $tags);
-
+			$this->emailGuestBookingComplete($user, $class, $tags);
+		}
 	}
 
 	private function emailBookingComplete($user, $class, $tagsIn) {
