@@ -21,6 +21,7 @@
 							<p><strong>Type:</strong> {{ $membership->name }}</p>
 							<p><strong>Price:</strong> {{ sprintf('£%01.2f', $membership->cost ) }}</p>
 							<p><strong>Class Entries Included:</strong> {{ $membership->free_classes }}</p>
+							<p><strong>Description:</strong> {{ $membership->description }}</p>
 							<p>How would you like to pay?</p>
 							{!! Form::open(['method' => 'POST', 'url' => action('UserController@purchaseMembershipComplete'), 'class' => 'pure-form', 'style' => 'padding: 0;']) !!}
 
