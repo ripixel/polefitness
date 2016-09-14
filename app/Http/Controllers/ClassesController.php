@@ -207,6 +207,9 @@ class ClassesController extends Controller
 		$users = $class->all_attendees()->get();
 
 		foreach($users as $user) {
+
+			$this->doRemoveFromClass($class, $user);
+
 			$tags = [
 				"first_name" => $user->first_name,
 				"last_name" => $user->last_name,

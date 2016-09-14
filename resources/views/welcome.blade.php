@@ -71,133 +71,84 @@
 					<h3>Feel free to contact any committee member or message us on our <a href="https://www.facebook.com/UniversityOfSheffieldPoleFitnessSociety?fref=ts" target="_blank">facebook page</a></h3>
 				</div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-12.jpg') no-repeat center center; background-size: cover;">
+				<!-- Row 1 -->
+
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-zoe.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Bethany Parsons</h3>
+						<h3>Zoe Allin</h3>
 						<p>President</p>
-						<p><a href="http://www.twitter.com/bthnyprsns"><i class="fa fa-twitter"></i></a> <a href="https://www.facebook.com/bethanyparsons95"><i class="fa fa-facebook"></i></a> <a href="http://www.instagram.com/bthnyprsns"><i class="fa fa-instagram"></i></a></p>
+						<p><a href="mailto:zkallin1@sheffield.ac.uk"><i class="fa fa-envelope"></i></a> <a href="http://www.instagram.com/zoallin" target="_blank"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-2.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-hannah.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Amy Walpole</h3>
+						<h3>Hannah Morgan</h3>
 						<p>Secretary</p>
-						<p><a href="#"><a href="http://www.instagram.com/teffgal"><i class="fa fa-instagram"></i></a></p>
+						<p><a href="mailto:hmorgan5@sheffield.ac.uk"><i class="fa fa-envelope"></i></a> <a href="http://www.instagram.com/moggienogging" target="_blank"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-19.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-alice.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Sophie Fisk</h3>
+						<h3>Alice Brammer</h3>
 						<p>Treasurer</p>
+						<p><a href="mailto:abrammer1@sheffield.ac.uk"><i class="fa fa-envelope"></i></a></p>
 					</div>
 				</div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-11.jpg') no-repeat center center; background-size: cover;">
+				<!-- Row 2 -->
+
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-ruben.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Victoria Holloway</h3>
-						<p>Kit Secretary</p>
+						<h3>Ruben Vilela</h3>
+						<p>Inclusions &amp; Class Supervisor</p>
+						<p><a href="mailto:rdossantosvilela1@sheffield.ac.uk"><i class="fa fa-envelope"></i></a></p>
 					</div>
 				</div>
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-6.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-beatrice.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Janice Dhanaraj</h3>
-						<p>Social Secretary</p>
+						<h3>Beatrice Anderson</h3>
+						<p>Competitions Secretary</p>
+						<p><a href="mailto:banderson1@sheffield.ac.uk"><i class="fa fa-envelope"></i></a> <a href="https://facebook.com/residentamerican" target="_blank"><i class="fa fa-facebook"></i></a> <a href="http://www.instagram.com/whatintheusername" target="_blank"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-14.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Maria Moller-Carter</h3>
-						<p>Publicity Officer</p>
-					</div>
-				</div>
-
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-3.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Ben Hawker</h3>
-						<p>Inclusions Officer</p>
-					</div>
-				</div>
-
-				<div class="pure-u-1-8 spacer"></div>
-
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-15.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Sharon Salt</h3>
-						<p>Media Officer</p>
-						<p><a href="http://www.twitter.com/sharonsalt"><i class="fa fa-twitter"></i></a> <a href="http://www.instagram.com/sharonsalt"><i class="fa fa-instagram"></i></a></p>
-					</div>
-				</div>
-
-				<div class="pure-u-1-8 spacer"></div>
-
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-10.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Teresa Liew</h3>
-						<p>Events Officer</p>
-						<p><a href="#"><a href="http://www.instagram.com/heartnapped"><i class="fa fa-instagram"></i></a></p>
-					</div>
-				</div>
-
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-16.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-alice.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Amy Spicer</h3>
-						<p>Tour Secretary</p>
+						<p>Class Supervisor</p>
+						<p><a href="mailto:aspicer-hadlington1@sheffield.ac.uk"><i class="fa fa-envelope"></i></a> <a href="http://www.instagram.com/amys20" target="_blank"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
+
+				<!-- Row 3 -->
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-13.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Emma Brudenell</h3>
-						<p>Tour Secretary</p>
-					</div>
-				</div>
-
-				<div class="pure-u-1-8 spacer"></div>
-
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-17.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Janice Yip</h3>
-						<p>Competitions Secretary</p><a href="http://www.instagram.com/janiceyipp"><i class="fa fa-instagram"></i></a></p>
-					</div>
-				</div>
-
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-20.jpg') no-repeat center center; background-size: cover;">
-					<div class="committee-member-desc">
-						<h3>Georgina Hunt</h3>
-						<p>Competitions Secretary</p>
-					</div>
-				</div>
-
-				<div class="pure-u-1-8 spacer"></div>
-
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-5.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-maddie.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Maddie Sinclair</h3>
-						<p>Charities Officer</p>
-						<p><a href="http://www.twitter.com/maddiesinc"><i class="fa fa-twitter"></i></a> <a href="http://www.instagram.com/maddiesinc"><i class="fa fa-instagram"></i></a></p>
+						<p>Class Supervisor</p>
+						<p><a href="mailto:Mesinclair1@Sheffield.ac.uk"><i class="fa fa-envelope"></i></a> <a href="http://www.instagram.com/maddiesinc" target="_blank"><i class="fa fa-instagram"></i></a></p>
 					</div>
 				</div>
 
-				<div class="pure-u-1-8 spacer"></div>
+				<div class="pure-u-1-4 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-18.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-mark.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
-						<h3>Harriet Fisher</h3>
-						<p>Fundraising Officer</p>
+						<h3>Mark Androulidakis</h3>
+						<p>Class Supervisor</p>
 					</div>
 				</div>
 			</div>
