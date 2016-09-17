@@ -123,7 +123,7 @@
 
 				<div class="pure-u-1-8 spacer"></div>
 
-				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-alice.jpg') no-repeat center center; background-size: cover;">
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-amy.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Amy Spicer</h3>
 						<p>Class Supervisor</p>
@@ -133,8 +133,6 @@
 
 				<!-- Row 3 -->
 
-				<div class="pure-u-1-8 spacer"></div>
-
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-maddie.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
 						<h3>Maddie Sinclair</h3>
@@ -143,7 +141,7 @@
 					</div>
 				</div>
 
-				<div class="pure-u-1-4 spacer"></div>
+				<div class="pure-u-1-8 spacer"></div>
 
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-mark.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
@@ -151,6 +149,28 @@
 						<p>Class Supervisor</p>
 					</div>
 				</div>
+
+				<div class="pure-u-1-8 spacer"></div>
+
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-crystal.jpg') no-repeat center center; background-size: cover;">
+					<div class="committee-member-desc">
+						<h3>Crystal Walls</h3>
+						<p>Social Secretary</p>
+					</div>
+				</div>
+
+				<!-- Row 4 -->
+
+				<div class="pure-u-5-8 spacer"></div>
+
+				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-ben.jpg') no-repeat center center; background-size: cover;">
+					<div class="committee-member-desc">
+						<h3>Ben Hawker</h3>
+						<p>Webmaster</p>
+					</div>
+				</div>
+
+
 			</div>
 		</div>
 	</div>
