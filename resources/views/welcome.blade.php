@@ -161,7 +161,7 @@
 
 				<!-- Row 4 -->
 
-				<div class="pure-u-5-8 spacer"></div>
+				<div class="pure-u-3-8 spacer"></div>
 
 				<div class="pure-u-1 pure-u-md-1-4 hero-committee-member square" style="background: url('img/com-ben.jpg') no-repeat center center; background-size: cover;">
 					<div class="committee-member-desc">
